@@ -1,0 +1,35 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "parser": "babel-eslint",
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "no-confusing-arrow": 0,
+        "react/jsx-quotes": 0,
+        "jsx-quotes": [
+          2,
+          "prefer-double"
+        ],
+        "no-unused-vars": [
+            "warn"
+        ],
+        "react/jsx-uses-react": 1,
+        "react/jsx-no-undef": 2,
+        "react/wrap-multilines": 2
+    }
+}
