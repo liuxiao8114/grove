@@ -1,11 +1,3 @@
-const m = (x, y) => {
-  return {
-    type: '',
-    real: x,
-    imag: y
-  }
-}
-
 function Complex(type, x, y) {
   this.type = type
   this.valueX = x

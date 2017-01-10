@@ -14,30 +14,21 @@ function inherit(p) {
 
 function range(from, to) {
   let r = inherit(range.methods)
-  r.from = from
-  r.to = to
   return r
 }
 
 range.methods = {
-  includes(n) {
-    for(let i = this.from; i <= this.to; i++) {
-      if(n === i) { return true }
-    }
-    return false
+  includes: o => {
+    if(typeof o !== 'number') return 'err type'
+    return o >= this.from && o <= this.to
   },
-  forEach(f) {
-    let that = this
+  forEach: f => {
     for(let i = this.from; i <= this.to; i++) {
-      f.call(that, (i - this.from))
+      f(i)
     }
   },
-  toString() {
+  toString: () => {
     return this.from + '...' + this.to
-  },
-  get(index) {
-    return index < (this.to - this.from) ?
-    (index - this.from) : 'not in range!'
   }
 }
 
