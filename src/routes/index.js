@@ -22,7 +22,7 @@ export default {
       return render(
       <App context={context}>
         {component}
-      </App>);
+      </App>)
     }
   },
 
@@ -36,7 +36,6 @@ export default {
             <Route path="/notifications"/>
             <Route path="/notifications"/>
           </IndexRoute>
-
         </Route>
       </Router>
     )

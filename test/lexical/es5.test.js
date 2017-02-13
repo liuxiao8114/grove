@@ -48,7 +48,7 @@ describe('es5 feature', () => {
   it('test closure for private var', () => {
     function counter(count) {
       return {
-        count() { return count++ },
+        count() { return ++count },
         reset() {
           count = 0
         }
@@ -58,10 +58,67 @@ describe('es5 feature', () => {
     expect(counter(10).count()).toEqual(11)
   })
 
-  /*
-  it('test closure for share var', () => {
+  //js高级设计7.2.1例
+  it('test closure in 7.2.1', () => {
+    function createFunctionsInit() {
+      var result = new Array()
 
+      for(var i = 0; i < 10; i++) {
+        result[i] = function() {
+          return i
+        }
+      }
+      return result
+    }
+
+    function createFunctionsDeal() {
+      var result = new Array()
+
+      for(var i = 0; i < 10; i++) {
+        result[i] = (function(num) {
+          return num
+        })(i)
+      }
+      return result
+    }
+
+    function createFunctionsReDeal() {
+      var result = new Array()
+
+      for(var i = 0; i < 10; i++) {
+        result[i] = (function(num) {
+          return function() {
+            return num
+          }
+        })(i)
+      }
+      return result
+    }
+
+    expect(createFunctionsInit()[5]()).toEqual(10)
+    expect(createFunctionsDeal()[5]).toEqual(5)
+    expect(createFunctionsReDeal()[5]()).toEqual(5)
   })
+
+  //js权威指南78.6例
+  it('test closure in 8.6', () => {
+    var scope = 'global scope'
+    function checkscope() {
+      var scope = 'local scope'
+      function f() { return scope }
+      return f
+    }
+
+    function checkscope2() {
+      var scope = 'local scope'
+      function f() { return this.scope }
+      return f
+    }
+    expect(checkscope()()).toEqual('local scope')
+    expect(checkscope2()()).toEqual(scope)
+  })
+
+  /*
 
   */
 
