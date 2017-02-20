@@ -29,14 +29,35 @@ nav {
 
   ul {
     a:link, a:visited {
-
+      color: blue;
     }
 
     a:hover, a:active {
-      color: #FF00FF;
+      color: red;
     }
   }
 }
+
+a {
+    &:link, &:visited {
+      color: green;
+    }
+
+    &:hover, &:active {
+      color: red;
+    }
+  }
+
+  a {
+      a:link, a:visited {
+        color: green;
+      }
+
+      a:hover, a:active {
+        color: red;
+      }
+    }
+
 
 section {
   margin-left: 200px;

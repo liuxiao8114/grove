@@ -10,6 +10,7 @@ import fs from 'fs';
 import { cons, car } from './chapterTwo/2.4Q.js'
 //import myMap from './chapterTwo/map.js'
 import permutations from './chapterTwo/pairs.js'
+import { fib, memoFib } from './chapterThree/3.3.3.js'
 
 describe('SICP chapter2', () => {
   it('Question 2.4', () => {
@@ -35,12 +36,17 @@ describe('SICP chapter2', () => {
   })
 
   it('pairs', () => {
-    expect(permutations(1)).to.equal([[1, 2, 3], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]])
+//    expect(permutations(1)).to.equal([[1, 2, 3], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]])
   })
 })
 
 describe('SICP chapter3', () => {
   it('cons & queue', () => {
-    expect()
+
+  })
+
+  it('test 3-27', () => {
+    expect(fib(4)).to.equal(3)
+    expect(memoFib(4)).to.equal(3)
   })
 })

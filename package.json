@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "babel-node tools/run start.js",
-    "test": "mocha \"test/lexical/es5.test.js\" --compilers js:babel-register",
+    "test": "mocha \"test/sicp/index.js\" --compilers js:babel-register",
     "server": "babel-node server.js"
   },
   "dependencies": {
