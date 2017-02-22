@@ -1,10 +1,11 @@
 body {
   background-color: #a3d5d3;
-  margin-bottom: 120px;
+  margin-bottom: 20px;
 }
 
 #main {
   width: 100%;
+  text-align: center;
   margin: 0 auto;
 }
 
@@ -38,27 +39,6 @@ nav {
   }
 }
 
-a {
-    &:link, &:visited {
-      color: green;
-    }
-
-    &:hover, &:active {
-      color: red;
-    }
-  }
-
-  a {
-      a:link, a:visited {
-        color: green;
-      }
-
-      a:hover, a:active {
-        color: red;
-      }
-    }
-
-
 section {
   margin-left: 200px;
 }
@@ -69,6 +49,6 @@ footer {
   left: 0;
   width: 100%;
   margin: 0;
-  height: 90px;
+  height: 20px;
   background-color: white;
 }
