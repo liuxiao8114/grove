@@ -1,0 +1,67 @@
+.container {
+  position: relative;
+
+  nav {
+    .elem {
+      left: 0;
+      position: absolute;
+      width: 200px;
+    }
+
+    .elem-red {
+      border: 3px solid #d64078;
+    }
+
+    .label {
+      background-color: #d64078;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+  }
+
+  .label {
+    left: 0;
+    padding: 0 3px 3px 0;
+    top: 0;
+  }
+
+  .endlabel {
+    bottom: 0;
+    padding: 3px 0 0 3px;
+    right: 0;
+  }
+
+  .label, .endlabel {
+    background-color: #6ac5ac;
+    color: #414142;
+    line-height: 1em;
+    position: absolute;
+  }
+
+  section {
+    .label {
+      color: #666;
+      cursor: pointer;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+  }
+
+  .content {
+    .elem-green {
+      border: 3px solid #96c02e;
+    }
+  }
+}
+
+body {
+  background: #fff none repeat scroll 0 0;
+  color: #1d2129;
+  direction: ltr;
+  line-height: 1.34;
+  margin: 0;
+  padding: 0;
+  unicode-bidi: embed;
+}

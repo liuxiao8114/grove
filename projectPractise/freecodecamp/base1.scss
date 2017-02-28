@@ -1,9 +1,10 @@
 body {
   background-color: #a3d5d3;
   margin-bottom: 20px;
+  display: flex;
 }
 
-#main {
+#content {
   width: 100%;
   text-align: center;
   margin: 0 auto;
@@ -13,12 +14,11 @@ header {
   position: absolute;
   width: 100%;
   top: 0;
-  height: 100px;
+  background-color: gray;
 }
 
 .container {
   position: relative;
-
 }
 
 nav {
@@ -27,6 +27,7 @@ nav {
   left: 0;
   margin: 0;
   padding: 0;
+  background-color: #F08080;
 
   ul {
     a:link, a:visited {
@@ -50,5 +51,5 @@ footer {
   width: 100%;
   margin: 0;
   height: 20px;
-  background-color: white;
+  background-color: gray;
 }
