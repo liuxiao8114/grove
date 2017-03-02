@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+}
+
+#container {
+  background-color: white;
+  margin: 0 0 1em;
+  padding: 1em;
+
+  .container.elem {
+    border: 3px solid #6ac5ac;
+    position: relative;
+
+    .elem {
+      border: 3px solid #6ac5ac;
+      position: relative;
+      p {
+        padding: 0 1em;
+      }
+    }
+
+    .label {
+      left: 0;
+      padding: 0 3px 3px 0;
+      top: 0;
+    }
+
+    .end-label {
+      bottom: 0;
+      padding: 3px 0 0 3px;
+      right: 0;
+    }
+
+    .label, .end-label {
+      background-color: #6ac5ac;
+      color: #414142;
+      line-height: 1em;
+      position: absolute;
+    }
+
+    nav {
+      a:link {
+        color: #d64078;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      ul {
+        list-style: disc outside none;
+      }
+    }
+
+    nav.elem {
+      left: 0;
+      position: absolute;
+      width: 200px;
+    }
+
+    nav.elem-red {
+      border: 3px solid #d64078;
+      > .label, > .end-label {
+        background-color: #d64078;
+        color: white;
+      }
+    }
+
+    section {
+      margin-left: 200px;
+    }
+
+    .elem-orange {
+      border: 3px solid #fdc72f;
+      > .label, > .end-label {
+        background-color: #fdc72f;
+      }
+    }
+
+    .elem-orange.ipsum {
+      background-color: #eee;
+      color: #734161;
+    }
+
+    footer.elem {
+      position: fixed;
+      text-align: center;
+      left: 0;
+      bottom: 0;
+      margin: 0;
+      height: 50px;
+      width: 100%;
+      z-index: 1;
+    }
+
+    footer.elem-green {
+      border: 3px solid #96c02e;
+      > .label, > .end-label {
+        background-color: #96c02e;
+      }
+    }
+
+    p {
+      margin: 1em 0;
+      code {
+        background-color: #ececec;
+      }
+    }
+  }
+}
+
+body {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 0 1em;
+  color: #414142;
+  font-family: Arial;
+  font-size: 1em;
+  line-height: 1.5em;
+}
