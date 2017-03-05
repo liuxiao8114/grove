@@ -1,8 +1,99 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-basis: 104px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .pip {
   display: block;
   width: 24px;
   height: 24px;
   border-radius: 50%;
   margin: 4px;
-  
+
+  background-color: #333;
+  box-shadow: inset 0 3px #111, inset 0 -3px #555;
+}
+
+.pip2 {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin: 4px;
+
+  background-color: #red;
+  box-shadow: inset 0 3px #111, inset 0 -3px #555;
+}
+
+.face {
+  width: 104px;
+  height: 104px;
+  margin:16px;
+  padding: 4px;
+
+  border-radius: 10%;
+  background-color: #e7e7e7;
+
+  box-shadow:
+    inset 0 5px white,
+    inset 0 -5px #bbb,
+    inset 5px 0 #d7d7d7,
+    inset -5px 0 #d7d7d7;
+}
+
+.one {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.two {
+  display: flex;
+  justify-content: space-between;
+  .pip:nth-child(2) {
+    align-self: flex-end;
+  }
+}
+
+.three {
+  display: flex;
+  justify-content: space-between;
+  .pip:nth-child(2) {
+    align-self: center;
+  }
+  .pip:nth-child(3) {
+    align-self: flex-end;
+  }
+}
+
+.four {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+.five {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  .self {
+    align-self: center;
+  }
+}
+
+.six {
+
+}
+
+.nine {
+
 }
