@@ -1,15 +1,72 @@
+@import "normal"
+
 body {
   display: flex;
   align-items: center;
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
+  section {
+    display: flex;
+    justify-content: inherit;
+    flex-basis: 100%;
+  }
 }
 
 .column {
   flex-basis: 104px;
   display: flex;
   justify-content: space-between;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  flex-basis: 100%;
+  .row {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+  }
+  .cell {
+    margin: 5px 5px;
+    text-align: center;
+    flex: 1;
+    background-color: #EE82EE;
+  }
+}
+
+.grid-percent {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-basis: 100%;
+
+  .row {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+  }
+
+  .cell {
+    margin: 5px 5px;
+    text-align: center;
+    flex: 1;
+    background-color: #EE82EE;
+  }
+
+  .1to2 {
+    flex: 0 0 50%;
+  }
+
+  .1to3 {
+    flex: 0 0 33.33%;
+  }
+
+  .1to4 {
+    flex: 0 0 25%;
+  }
 }
 
 .pip {
@@ -85,15 +142,31 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-content: space-between;
-  .self {
+  .column:nth-child(2) {
+    justify-content: center;
+  }
+}
+
+.five2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  .column:nth-child(1) {
     align-self: center;
   }
 }
 
 .six {
-
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
 }
 
-.nine {
-
+.seven {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  .column:nth-of-type(3) {
+    justify-content: flex-start;
+  }
 }
