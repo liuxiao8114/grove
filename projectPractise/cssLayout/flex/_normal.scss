@@ -1,0 +1,35 @@
+@@mixin horiz-vert-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#header {
+  @include horiz-vert-center;
+  height: 50px;
+  width: 100%;
+}
+
+#container {
+  display: flex;
+  height: 150px;
+  width: 100%;
+  #body-left {
+    @include horiz-vert-center;
+    order: -1;
+    flex: 1;
+    background-color: #8DB6CD;
+  }
+
+  #body-center {
+    @include horiz-vert-center;
+    flex:3;
+    background-color: #EDEDED
+  }
+
+  #body-right {
+    @include horiz-vert-center;
+    flex:1;
+    background-color: #EE7600;
+  }
+}

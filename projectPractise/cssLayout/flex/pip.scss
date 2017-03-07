@@ -1,4 +1,4 @@
-@import "normal"
+@import "normal";
 
 body {
   display: flex;
@@ -56,15 +56,15 @@ body {
     background-color: #EE82EE;
   }
 
-  .1to2 {
+  .one-to-two {
     flex: 0 0 50%;
   }
 
-  .1to3 {
+  .one-to-three {
     flex: 0 0 33.33%;
   }
 
-  .1to4 {
+  .one-to-four {
     flex: 0 0 25%;
   }
 }

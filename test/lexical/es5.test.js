@@ -123,12 +123,26 @@ describe('es5 feature', () => {
   */
 
   it('test fp', () => {
-    // function map(fn) {}
+    let fn = n => {
+      let a = [];
+      if(typeof n !== 'number' || n > 31) {
+        return
+      }
 
-    function map(fn) {
-      return
+      function iter(count, ret) {
+        if(count === 0) return ret
+        let j = Math.floor(Math.random() * 30 + 2)
+        console.log("j : " + j)
+        if(ret.indexOf(j) !== -1) return iter(count, ret)
+        ret[count-1] = j
+        console.log("ret : " + ret)
+        return iter(--count, ret)
+      }
+
+      return iter(n, a)
     }
-
+    console.log(fn(3))
+//    console.log(b[0] + " , " + b[1] + " , " + b[2])
   })
 
 

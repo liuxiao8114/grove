@@ -1,0 +1,30 @@
+@mixin column(
+  $line-color: #6ac5ac,
+  $font-color: #414142) {
+  border: 3px solid $line-color;
+  > .label, > .end-label {
+    background-color: $line-color;
+    color: $font-color;
+  }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#container {
+
+}
+
+body {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 0 1em;
+  color: #414142;
+  font-family: Arial;
+  font-size: 1em;
+  line-height: 1.5em;
+}
