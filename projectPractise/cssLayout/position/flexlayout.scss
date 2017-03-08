@@ -1,19 +1,15 @@
-@mixin column(
-  $line-color: #6ac5ac,
-  $font-color: #414142) {
-  border: 3px solid $line-color;
-  > .label, > .end-label {
-    background-color: $line-color;
-    color: $font-color;
-  }
-}
-
 * {
     box-sizing: border-box;
 }
 
-#container {
-
+@mixin column(
+  $line-color: #6ac5ac,
+  $font-color: #414142) {
+  border: 3px solid $line-color;
+  .label, .end-label {
+    background-color: $line-color;
+    color: $font-color;
+  }
 }
 
 body {
@@ -27,4 +23,57 @@ body {
   font-family: Arial;
   font-size: 1em;
   line-height: 1.5em;
+
+  #container {
+    display: flex;
+    position: relative;
+    @include column;
+
+    nav {
+      position: relative;
+      order: -1;
+      flex: 1;
+      @include column(#d64078, white);
+
+      a:link {
+        color: #d64078;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .flex-column {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      flex: 4;
+      @include column(#d64078, white);
+      section {
+        position: relative;
+        flex-basis: 100%;
+        @include column(#fdc72f, #414142);
+      }
+
+      .ipsum {
+        background-color: #eee;
+        color: #734161;
+      }
+    }
+
+    .label {
+      left: 0;
+      top: 0;
+    }
+
+    .end-label {
+      right: 0;
+      bottom: 0;
+    }
+
+    .label, .end-label {
+      position: absolute;
+    }
+  }
 }
