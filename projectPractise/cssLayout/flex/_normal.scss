@@ -1,13 +1,15 @@
-@@mixin horiz-vert-center {
+@mixin horiz-vert-center($back-color: white) {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: $back-color;
 }
 
 #header {
-  @include horiz-vert-center;
+  @include horiz-vert-center(#454545);
   height: 50px;
   width: 100%;
+  color: white;
 }
 
 #container {
@@ -15,21 +17,24 @@
   height: 150px;
   width: 100%;
   #body-left {
-    @include horiz-vert-center;
+    @include horiz-vert-center(#8DB6CD);
     order: -1;
     flex: 1;
-    background-color: #8DB6CD;
   }
 
   #body-center {
-    @include horiz-vert-center;
+    @include horiz-vert-center(#EDEDED);
     flex:3;
-    background-color: #EDEDED
   }
 
   #body-right {
-    @include horiz-vert-center;
+    @include horiz-vert-center(#EE7600);
     flex:1;
-    background-color: #EE7600;
   }
+}
+
+#footer {
+  @include horiz-vert-center(#454545);
+  width: 100%;
+  color: white;
 }

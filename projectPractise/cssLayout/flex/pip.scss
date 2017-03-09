@@ -1,4 +1,4 @@
-@import "normal";
+@import "normal"
 
 body {
   display: flex;
@@ -8,8 +8,9 @@ body {
   flex-wrap: wrap;
   section {
     display: flex;
+    flex-wrap: wrap;
     justify-content: inherit;
-    flex-basis: 100%;
+    width: 100%;
   }
 }
 
@@ -38,24 +39,7 @@ body {
 }
 
 .grid-percent {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex-basis: 100%;
-
-  .row {
-    display: flex;
-    flex-basis: 100%;
-    justify-content: space-between;
-  }
-
-  .cell {
-    margin: 5px 5px;
-    text-align: center;
-    flex: 1;
-    background-color: #EE82EE;
-  }
-
+  @extend .grid;
   .one-to-two {
     flex: 0 0 50%;
   }

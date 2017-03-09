@@ -2,13 +2,22 @@
     box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+  #container {
+    flex-direction: column;
+    flex: 1;
+  }
+}
+
 @mixin column(
   $line-color: #6ac5ac,
-  $font-color: #414142) {
+  $font-color: #414142,
+  $index: 1) {
   border: 3px solid $line-color;
   .label, .end-label {
     background-color: $line-color;
     color: $font-color;
+    z-index: $index;
   }
 }
 
@@ -33,7 +42,7 @@ body {
       position: relative;
       order: -1;
       flex: 1;
-      @include column(#d64078, white);
+      @include column(#d64078, white, 10);
 
       a:link {
         color: #d64078;
@@ -49,11 +58,11 @@ body {
       position: relative;
       flex-direction: column;
       flex: 4;
-      @include column(#d64078, white);
+      @include column(#d64078, white, -1);
       section {
         position: relative;
         flex-basis: 100%;
-        @include column(#fdc72f, #414142);
+        @include column(#fdc72f, #414142, 10);
       }
 
       .ipsum {
