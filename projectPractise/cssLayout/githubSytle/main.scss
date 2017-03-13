@@ -19,34 +19,89 @@
     color: rgba(255, 255, 255, 0.75);
     padding-bottom: 12px;
     padding-top: 12px;
-  }
 
-  .header-search {
-    font-size: 13px;
-    margin-right: 10px;
-    width: 300px;
-  }
+    .container {
+      display: flex;
+      margin: auto;
+      width: 980px;
+    }
 
-  .container {
-    margin: auto;
-    width: 980px;
-  }
+    .ul-header-layout {
+      .header-nav {
+        list-style: outside none none;
+      }
 
-  .header .header-search-wrapper {
-    background-color: rgba(255, 255, 255, 0.125);
-    border: 0 none;
-    box-shadow: none;
-    color: #fff;
-    font-size: inherit;
-    min-height: 30px;
-  }
+      .header-nav-item {
+        float: left;
+      }
 
-  .header-nav {
-      list-style: outside none none;
-  }
+      .header-search {
+        font-size: 13px;
+        margin-right: 10px;
+        width: 300px;
+        .header-search-wrapper {
+          display: table;
+          font-weight: normal;
+          max-width: 100%;
+          min-height: 0;
+          padding: 0;
+          vertical-align: middle;
+          width: 100%;
 
-  .header-search-wrapper {
+          background-color: rgba(255, 255, 255, 0.125);
+          border: 0 none;
+          box-shadow: none;
+          color: #fff;
+          font-size: inherit;
+          min-height: 30px;
+        }
 
+        .header-search-wrapper.focus {
+          background-color: rgba(255, 255, 255, 0.176);
+          box-shadow: none;
+          border-right-color: #282e34;
+          color: #fff;
+        }
+
+        .header-search-input {
+          color: inherit;
+          font-size: inherit;
+          min-height: 30px;
+        }
+      }
+    }
+
+    .user-nav {
+      margin-right: -8px;
+    }
+
+    .float-right {
+      float: right !important;
+    }
+
+    .header-nav-link {
+      color: rgba(255, 255, 255, 0.75);
+      display: block;
+      font-weight: 600;
+      line-height: 20px;
+      padding: 5px 8px;
+    }
+
+    .header-nav-link:hover, .header-nav-link:focus {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .header-search-input {
+      background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+      border: 0 none;
+      box-shadow: none;
+      display: table-cell;
+      min-height: 26px;
+      padding-bottom: 0;
+      padding-top: 0;
+      width: 99.999%;
+    }
   }
 
   ul {
@@ -59,32 +114,9 @@
 
   }
 
-  .header .header-search-input {
-    color: inherit;
-    font-size: inherit;
-    min-height: 30px;
-  }
-
   button, input, select, textarea {
     margin: 0;
     font: inherit;
-  }
-
-  .form-control, .form-select {
-
-  }
-
-  .header-nav-link {
-      color: rgba(255, 255, 255, 0.75);
-      display: block;
-      font-weight: 600;
-      line-height: 20px;
-      padding: 5px 8px;
-  }
-
-  .header-nav-link:hover, .header-nav-link:focus {
-    color: #fff;
-    text-decoration: none;
   }
 
   a {
@@ -93,4 +125,25 @@
   }
   a:hover {
       text-decoration: underline;
+  }
+
+  .form-control {
+    background-color: #fff;
+    background-position: right 8px center;
+    background-repeat: no-repeat;
+    border: 1px solid #d1d5da;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(27, 31, 35, 0.075) inset;
+    color: #24292e;
+    font-size: 14px;
+    line-height: 20px;
+    min-height: 34px;
+    outline: medium none;
+    padding: 6px 8px;
+    vertical-align: middle;
+  }
+  .form-control.focus, .form-control:focus, .form-select.focus, .form-select:focus {
+      border-color: #2188ff;
+      box-shadow: 0 1px 2px rgba(27, 31, 35, 0.075) inset, 0 0 0 0.2em rgba(3, 102, 214, 0.3);
+      outline: medium none;
   }
