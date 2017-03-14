@@ -22,7 +22,6 @@ class Button extends React.Component {
 }
 
 class MessageList extends React.Component {
-
   render(){
     const color = "purple";
     const children = this.props.messages.map(message => {
@@ -66,7 +65,7 @@ class MessageList extends React.Component {
     };
   }
 
-  render(){
+  render() {
     const children = this.props.messages.map(message => {
       <Message text={message.text}/>
     });
