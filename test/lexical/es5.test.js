@@ -100,7 +100,7 @@ describe('es5 feature', () => {
     expect(createFunctionsReDeal()[5]()).toEqual(5)
   })
 
-  //js权威指南78.6例
+  //js权威指南8.6例
   it('test closure in 8.6', () => {
     var scope = 'global scope'
     function checkscope() {
@@ -116,6 +116,28 @@ describe('es5 feature', () => {
     }
     expect(checkscope()()).toEqual('local scope')
     expect(checkscope2()()).toEqual(scope)
+  })
+
+  //js高设 22.1.4
+  it('test closure using bind', () => {
+    let addEventUtil = {}
+
+    Function.prototype.bind = context => {
+      const self = this;
+      return args => {
+        return self.apply(context, args)
+      }
+    }
+
+    let handler = {
+      message: '',
+      handleClick(event) {
+        alert(this.message)
+      }
+    }
+
+    addEventUtil.addEvent(handler.handleClick.bind(handler))
+
   })
 
   /*

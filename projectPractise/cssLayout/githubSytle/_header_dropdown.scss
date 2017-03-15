@@ -1,0 +1,36 @@
+.dropdown {
+  position: relative;
+}
+.dropdown.active .dropdown-menu-content {
+  display: block;
+  pointer-events: all;
+}
+
+.header-nav-item.active .dropdown-menu-content {
+  display: block;
+}
+
+.header-nav-item.active .tooltipped::before, .header-nav-item.active .tooltipped::after {
+    display: none;
+}
+
+.header-nav-item .dropdown-menu {
+    margin-top: 15px;
+    width: 180px;
+}
+
+.dropdown-menu {
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 4px;
+    box-shadow: 0 3px 12px rgba(27, 31, 35, 0.15);
+    left: 0;
+    margin-top: 2px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    position: absolute;
+    top: 100%;
+    width: 160px;
+    z-index: 100;
+}
