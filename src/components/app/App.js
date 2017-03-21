@@ -1,7 +1,6 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory, Link} from 'react-router';
-import NavLink from './NavLink'; // eslint-disable-line
-import Navigation from './Navigation';
+import Header from './header';
 
 const App = React.createClass({
   getInitialState(){
@@ -10,9 +9,7 @@ const App = React.createClass({
   render(){
     return (
       <div>
-        <Navigation></Navigation>
-        <p>React content Link</p>
-        <Link to="/about">About</Link>
+        <Header />
       </div>
     )
   }

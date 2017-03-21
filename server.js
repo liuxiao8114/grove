@@ -12,9 +12,9 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 
 // console.log('clientConfig : ' + webpackConfig);
 var app = express();
-const clientConfig = webpackConfig.find(x => x.target === 'web')
+//const clientConfig = webpackConfig.find(x => x.target === 'web')
 
-const compiler = webpack(clientConfig);
+const compiler = webpack(webpackConfig);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -1,12 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
-import Modal from './component/modal/Modal'
+//import Modal from './component/modal/Modal'
 
-/*
-1.点击按钮，触发弹窗
-2.弹窗逻辑
-3.事件绑定
-*/
 function run(){
   const container = document.getElementById('app');
   const div = document.createElement('div');
@@ -21,6 +16,7 @@ function run(){
   element.appendChild(textNode);
   document.body.appendChild(element);
   console.log('The client is run!');  //eslint-disable-line
+  render(<div>Hello my git!</div>, document.getElementById('app')) //Error!
 }
 
 if(['loaded', 'interactive', 'complete'].includes(document.readyState) && document.body){
