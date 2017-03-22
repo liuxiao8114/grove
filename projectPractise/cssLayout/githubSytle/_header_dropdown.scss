@@ -11,26 +11,72 @@
 }
 
 .header-nav-item.active .tooltipped::before, .header-nav-item.active .tooltipped::after {
-    display: none;
+  display: none;
 }
 
 .header-nav-item .dropdown-menu {
-    margin-top: 15px;
-    width: 180px;
+  margin-top: 15px;
+  width: 180px;
 }
 
 .dropdown-menu {
-    background-clip: padding-box;
-    background-color: #fff;
-    border: 1px solid rgba(27, 31, 35, 0.15);
-    border-radius: 4px;
-    box-shadow: 0 3px 12px rgba(27, 31, 35, 0.15);
-    left: 0;
-    margin-top: 2px;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    position: absolute;
-    top: 100%;
-    width: 160px;
-    z-index: 100;
+  background-clip: padding-box;
+  background-color: #fff;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 3px 12px rgba(27, 31, 35, 0.15);
+  left: 0;
+  margin-top: 2px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  position: absolute;
+  top: 100%;
+  width: 160px;
+  z-index: 100;
+}
+
+.dropdown-menu-sw::before {
+
+}
+
+.dropdown-menu-sw::after {
+
+}
+
+.dropdown-menu::before {
+
+}
+
+.dropdown-menu::after {
+
+}
+
+.dropdown-header {
+
+}
+
+.dropdown-divider {
+  background-color: #e1e4e8;
+  height: 1px;
+  margin: 8px 1px;
+}
+
+.dropdown-item {
+  color: #24292e;
+  display: block;
+  overflow: hidden;
+  paddding: 4px 10px 4px 15px;
+}
+
+.logout-form {
+
+}
+
+.css-truncate.css-truncate-target, .css-truncate .css-truncate-target {
+  display: inline-block;
+  max-width: 125px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+  white-space: nowrap;
 }

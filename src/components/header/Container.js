@@ -1,13 +1,19 @@
 import React from 'react'
 import HeaderSearch from './HeaderSearch.js'
-import UserLink from './UserLink.js'
+import HeaderLinksContainer from './HeaderLinksContainer.js'
 
-class Container extends React.Component {
+/*
+<HeaderSearch/>
+<HeaderLinksContainer/>
+*/
+export default class Container extends React.Component {
+  constructor(props) {
+    super(props)
+  }
   render() {
     return (
-      <div>
-        <HeaderSearch/>
-        <UserLink/>
+      <div className="container">
+        Hello Git!
       </div>
     )
   }

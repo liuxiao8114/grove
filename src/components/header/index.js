@@ -1,10 +1,10 @@
 import React from 'react'
 import Container from 'Container'
-import 'Header.scss'
+import classes from 'Header.scss'
 
 export default function Header() {
   return (
-    <div className= "header">
+    <div className={classes.header}>
       <Container/>
     </div>
   )
