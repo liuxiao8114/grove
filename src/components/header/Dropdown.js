@@ -2,6 +2,11 @@ import React from 'react'
 import { Link } from 'react-router'
 
 class Dropdown extends React.Component {
+
+  renderItem() {
+    
+  }
+
   render() {
     return (
       <div class="dropdown-menu-content js-menu-content">
