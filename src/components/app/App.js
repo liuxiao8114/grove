@@ -1,18 +1,17 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory, Link} from 'react-router';
-import Header from './header';
+import Header from '../header'
+import Body from '../body'
 
 const App = React.createClass({
-  getInitialState(){
-
-  },
-  render(){
+  render() {
     return (
       <div>
-        <Header />
+        <Header/>
+        <Body/>
       </div>
     )
   }
-});
+})
 
 export default App;
