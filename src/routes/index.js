@@ -10,9 +10,9 @@ export default React.createClass({
           <Route path="pulls"></Route>
           <Route path="issues"></Route>
           <Route path="gist"></Route>
-        <Route path="stars"></Route>
-      <Route path="/:username"></Route>
-      <Route path="/:username"></Route>
+          <Route path="stars"></Route>
+          <Route path="/:username"></Route>
+          <Route path="/:username"></Route>
         </IndexRoute>
       </Router>
     )

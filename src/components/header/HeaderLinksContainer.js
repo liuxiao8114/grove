@@ -7,8 +7,8 @@ import UserLink from './UserLink'
 export default function HeaderLinksContainer(props) {
   return (
     <div className="ul-header-layout">
-      <NavLink/>
-      <UserLink/>
+      <NavLink links={props.navlinks}/>
+      <UserLink links={props.userlinks}/>
     </div>
   )
 }
