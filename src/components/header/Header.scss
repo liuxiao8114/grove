@@ -6,6 +6,9 @@
   padding-bottom: 12px;
   padding-top: 12px;
   .container {
+    display: flex;
+    margin: auto;
+    width: 980px;
     @import "header_dropdown";
     @import "header_link";
     @import "header_search";

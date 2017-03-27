@@ -1,0 +1,29 @@
+.ul-header-layout {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  .header-nav {
+    list-style: outside none none;
+  }
+
+  .header-nav-item {
+    float: left;
+  }
+
+  .user-nav {
+    margin-right: -8px;
+  }
+
+  .header-nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    display: block;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 5px 8px;
+  }
+
+  .header-nav-link:hover, .header-nav-link:focus {
+    color: #fff;
+    text-decoration: none;
+  }
+}

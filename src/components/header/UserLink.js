@@ -1,16 +1,28 @@
 import React from 'react'
-import { Link } from 'react-router'
 import HeaderLink from './HeaderLink'
 import Dropdown from './Dropdown'
 
-export default function UserLink(props) {
-  function renderItem(i) {
-    return (<HeaderLink  />)
+export default class UserLink extends React.Component {
+  constructor(props) {
+    super(props)
   }
 
-  return (
-    <ul id="user-links" className="header-nav user-nav float-right">
-      {props.links.map(renderItem)}
-    </ul>
-  )
+  renderLink(link) {
+    return (<HeaderLink key={link.name} item={link}/>)
+  }
+
+  renderDropdown(dropdown) {
+
+  }
+
+  render() {
+    const { links, repoDropdown, userDropdown } = this.props.links
+    return (
+      <ul id="user-links" className="header-nav user-nav float-right">
+        {links.map(this.renderLink)}
+        <Dropdown key="repoDropdown" items={repoDropdown}/>
+        <Dropdown key="userDropdown" items={userDropdown}/>
+      </ul>
+    )
+  }
 }

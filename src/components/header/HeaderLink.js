@@ -1,7 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
-
-import Dropdown from './Dropdown'
+//import { Link } from 'react-router'
 
 export default class HeaderLink extends React.Component {
   constructor(props) {
@@ -10,18 +8,19 @@ export default class HeaderLink extends React.Component {
   }
 
   handleClick(e) {
-    const dropdown = this.props.dropdown
-    if(!dropdown) return
     e.preventDefault()
-    return <Dropdown />
+    console.log(e.value + ' : link clicked!')
+    return
   }
 
   render() {
-    const { name, link, dropdown } = this.props
+    const { name, link } = this.props.item
+    /*
+        <Link to={link} className="header-nav-link" onClick={this.handleClick}>{name}</Link>
+    */
     return (
       <div className="header-nav-item">
-        <Link to={link} className="header-nav-link" onClick={this.handleClick}>{name}</Link>
-        {dropdown}
+        <a href="#" className="header-nav-link" onClick={this.handleClick}>{name}</a>
       </div>
     )
   }

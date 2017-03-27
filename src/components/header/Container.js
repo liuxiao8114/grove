@@ -1,4 +1,4 @@
- import React from 'react'
+import React from 'react'
 import HeaderSearch from './HeaderSearch.js'
 import HeaderLinksContainer from './HeaderLinksContainer.js'
 
@@ -11,7 +11,7 @@ export default class Container extends React.Component {
     return (
       <div className="container">
         <HeaderSearch/>
-        <HeaderLinksContainer/>
+        <HeaderLinksContainer navLinks={this.props.navLinks} userLinks={this.props.userLinks}/>
       </div>
     )
   }

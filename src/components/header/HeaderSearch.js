@@ -20,7 +20,7 @@ export default class HeaderSearch extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="header-search js-site-search">
         <form action="/search">
           <label className="form-control header-search-wrapper focus">
             <input className="header-search-input js-site-search-focus" type="text" placeholder="Search Github"/>

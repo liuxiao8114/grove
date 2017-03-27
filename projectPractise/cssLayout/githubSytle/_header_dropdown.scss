@@ -44,11 +44,18 @@
 }
 
 .dropdown-menu::before {
-
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: transparent transparent rgba(27, 31, 35, 0.15);
+  border-image: none;
+  border-style: solid;
+  border-width: 8px;
 }
 
 .dropdown-menu::after {
-
+  
 }
 
 .dropdown-header {

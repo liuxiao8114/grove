@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router'
+//import { Link } from 'react-router'
 
 export default class DropdownItem extends React.Component {
   render() {
-    const { itemName, link } = this.props
+    const { name, url } = this.props
+    // <Link to={url} className="dropdown-item">{name}</Link>
     return (
-      <Link to={link} className="dropdown-item">{itemName}</Link>
+      <a href={url} className="dropdown-item">{name}</a>
     )
   }
 }
