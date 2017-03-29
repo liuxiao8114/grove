@@ -3,8 +3,7 @@ import React from 'react'
 import DropdownItem from './DropdownItem'
 
 const USER_NAME = 'username'
-let lastCategory = null
-let dividerNo = 1
+let lastCategory = null, dividerFlag = false, dividerNo = 1
 
 export default class Dropdown extends React.Component {
   constructor(props) {
@@ -22,14 +21,21 @@ export default class Dropdown extends React.Component {
 
   renderItem(item) {
     if(item.category === USER_NAME) {
+      dividerFlag = true
       return (
         <div key="dropdown-header" className="dropdown-header header-nav-current-user">
-          Signed in as
+          Signed in as{' '}
           <strong className="css-truncate-target">{item.name}</strong>
         </div>
       )
-    } else if(!lastCategory || item.category !== lastCategory) {
-      return <div key={dividerNo++} className="dropdown-divider" />
+    } else if(dividerFlag && (!lastCategory || item.category !== lastCategory)) {
+      lastCategory = item.category
+      return (
+        [
+          <div key={dividerNo++} className="dropdown-divider" />,
+          <DropdownItem key={item.name} item={item}/>
+        ]
+      )
     } else {
       return <DropdownItem key={item.name} item={item}/>
     }
