@@ -1,0 +1,8 @@
+blockquote::before {
+  content: open-quote;
+  top: 0px;
+  background-color: #ddd;
+  color: #fff;
+  line-height: 42px;
+  position: relative;
+}
