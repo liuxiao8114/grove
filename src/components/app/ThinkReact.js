@@ -5,12 +5,27 @@ export default class FilterableProductTable extends React.Component {
   constructor(props) {
     super(props)
     this.state = { filterText: '', inStockOnly: false }
+    this.onFilterTextInput = this.onFilterTextInput.bind(this)
+    this.onInstockInput = this.onInstockInput.bind(this)
+  }
+
+  onFilterTextInput(value) {
+    this.setState({
+      filterText: value
+    })
+  }
+
+  onInstockInput(value) {
+    this.setState({
+      inStockOnly: value
+    })
   }
 
   render() {
     return (
       <div>
-        <SearchBar filterText={this.state.filterText} inStockOnly={this.state.inStockOnly}/>
+        <SearchBar filterText={this.state.filterText} inStockOnly={this.state.inStockOnly}
+          onFilterTextInput={this.onFilterTextInput} onInstockInput={this.onInstockInput}/>
         <ProductTable filterText={this.state.filterText} inStockOnly={this.state.inStockOnly} products={this.props.products}/>
       </div>
     )
@@ -18,13 +33,27 @@ export default class FilterableProductTable extends React.Component {
 }
 
 class SearchBar extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleInput = this.handleInput.bind(this)
+  }
+
+  handleChange(e) {
+    this.props.onFilterTextInput(e.target.value)
+  }
+
+  handleInput(e) {
+    this.props.onInstockInput(e.target.checked)
+  }
+
   render() {
     const placeName = 'Search...'
     return (
       <form>
-        <input type="text" placeholder={placeName} value={this.props.filterText}/>
+        <input type="text" placeholder={placeName} value={this.props.filterText} onChange={this.handleChange}/>
         <p>
-          <input type="checkbox" checked={this.props.inStockOnly}/>
+          <input type="checkbox" checked={this.props.inStockOnly} onChange={this.handleInput}/>
             {' '}
             Only show products in stock
         </p>
