@@ -89,6 +89,13 @@
     overflow: hidden;
     padding: 4px 10px 4px 15px;
   }
+
+  .dropdown-item:hover {
+    background-color: #0366d6;
+    color: #fff;
+    cursor:pointer;
+    text-decoration:none;
+  }
 }
 
 .dropdown.active .dropdown-menu-content {
@@ -98,10 +105,6 @@
 
 .header-nav-item.active .dropdown-menu-content {
   display: block;
-}
-
-.header-nav-item.active .tooltipped::before, .header-nav-item.active .tooltipped::after {
-  display: none;
 }
 
 .header-nav-item .dropdown-menu {

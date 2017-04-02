@@ -2,15 +2,9 @@ import React from 'react'
 import HeaderLink from './HeaderLink'
 import DropdownLink from './DropdownLink'
 
-const DEFAULT_STYLE = 'header-nav-item dropdown'
-const ACTIVE = 'active'
-
 export default class UserLink extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      dropdownStyle: DEFAULT_STYLE
-    }
     this.renderItem = this.renderItem.bind(this)
     this.renderLink = this.renderLink.bind(this)
     this.renderDropdownLink = this.renderDropdownLink.bind(this)
@@ -21,7 +15,7 @@ export default class UserLink extends React.Component {
   }
 
   renderDropdownLink(link) {
-    return (<DropdownLink key={link.name} item={link} cssStyle={this.state.dropdownStyle}/>)
+    return (<DropdownLink key={link.name} item={link}/>)
   }
 
   renderItem(item) {

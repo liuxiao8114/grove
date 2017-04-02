@@ -21,16 +21,17 @@ export default class DropdownLink extends React.Component {
     return
   }
 
+  handleItemHover() {
+    console.log('dropdownItem hover!')
+  }
+
   render() {
     const { name, link, dropdown } = this.props.item
-    /*
-      1.监听hover事件，定义回调
-      2.mouseover和mouseout
-    */
+
     return (
       <div className={this.state.style}>
         <Link to={link} className="header-nav-link" onClick={this.handleClick}>{name}</Link>
-        <Dropdown items={dropdown}/>
+        <Dropdown items={dropdown} onHover={this.handleItemHover}/>
       </div>
     )
   }

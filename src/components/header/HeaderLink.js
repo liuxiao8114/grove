@@ -1,5 +1,5 @@
 import React from 'react'
-//import { Link } from 'react-router'
+import { Link } from 'react-router'
 
 export default class HeaderLink extends React.Component {
   constructor(props) {
@@ -15,12 +15,9 @@ export default class HeaderLink extends React.Component {
 
   render() {
     const { name, link } = this.props.item
-    /*
-        <Link to={link} className="header-nav-link" onClick={this.handleClick}>{name}</Link>
-    */
     return (
       <div className="header-nav-item">
-        <a href="#" className="header-nav-link" onClick={this.handleClick}>{name}</a>
+        <Link to={link} className="header-nav-link" onClick={this.handleClick}>{name}</Link>
       </div>
     )
   }
