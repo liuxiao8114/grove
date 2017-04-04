@@ -11,7 +11,8 @@ export default class Container extends React.Component {
     return (
       <div className="container">
         <HeaderSearch/>
-        <HeaderLinksContainer navLinks={this.props.navLinks} userLinks={this.props.userLinks}/>
+        <HeaderLinksContainer navLinks={this.props.navLinks} userLinks={this.props.userLinks}
+          dropdownDisplay={this.props.dropdownDisplay} handleDropdownClick={this.props.handleDropdownClick}/>
       </div>
     )
   }

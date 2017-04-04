@@ -4,7 +4,8 @@ import { Link }  from 'react-router'
 import Dropdown from './Dropdown'
 
 const DEFAULT_STYLE = 'header-nav-item dropdown'
-const ACTIVE = 'active'
+const ACTIVE = 'header-nav-item dropdown active'
+let times = 0
 
 export default class DropdownLink extends React.Component {
   constructor(props) {
@@ -17,12 +18,17 @@ export default class DropdownLink extends React.Component {
 
   handleClick(e) {
     e.preventDefault()
-    this.setState({ style : this.state.style.lastIndexOf(ACTIVE) === -1 ? (DEFAULT_STYLE + ' ' + ACTIVE) : DEFAULT_STYLE})
+    console.log((times++) + ' : ' + this.props.dropdownDisplay)
+    this.props.handleDropdownClick(e)
+    this.setState({ style : ACTIVE })
     return
   }
 
-  handleItemHover() {
-    console.log('dropdownItem hover!')
+  componentWillReceiveProps() {
+    console.log((times++) + ' update!: ' + this.props.dropdownDisplay)
+    if(!this.props.dropdownDisplay && this.state.style === ACTIVE) {
+      this.setState({ style : DEFAULT_STYLE })
+    }
   }
 
   render() {
@@ -31,7 +37,7 @@ export default class DropdownLink extends React.Component {
     return (
       <div className={this.state.style}>
         <Link to={link} className="header-nav-link" onClick={this.handleClick}>{name}</Link>
-        <Dropdown items={dropdown} onHover={this.handleItemHover}/>
+        <Dropdown items={dropdown}/>
       </div>
     )
   }

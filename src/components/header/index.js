@@ -28,10 +28,11 @@ const userlinks = [
   { name: 'U', url: '/notifications', dropdown: userDropdown }
 ]
 
-export default function Header() {
+export default function Header(props) {
   return (
     <div className="header">
-      <Container navLinks={navLinks} userLinks={userlinks}/>
+      <Container navLinks={navLinks} userLinks={userlinks}
+        dropdownDisplay={props.dropdownDisplay} handleDropdownClick={props.handleDropdownClick}/>
     </div>
   )
 }

@@ -7,7 +7,8 @@ export default function HeaderLinksContainer(props) {
   return (
     <div className="ul-header-layout">
       <NavLink links={props.navLinks}/>
-      <UserLink links={props.userLinks}/>
+      <UserLink links={props.userLinks}
+        dropdownDisplay={props.dropdownDisplay} handleDropdownClick={props.handleDropdownClick}/>
     </div>
   )
 }

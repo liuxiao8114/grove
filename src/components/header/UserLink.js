@@ -15,7 +15,8 @@ export default class UserLink extends React.Component {
   }
 
   renderDropdownLink(link) {
-    return (<DropdownLink key={link.name} item={link}/>)
+    return (<DropdownLink key={link.name} item={link}
+      handleDropdownClick={this.props.handleDropdownClick} dropdownDisplay={this.props.dropdownDisplay}/>)
   }
 
   renderItem(item) {
