@@ -2,6 +2,7 @@ import React from 'react'
 import { Link }  from 'react-router'
 
 import Dropdown from './Dropdown'
+import classes from './_header_tooltipped.scss'
 
 const DEFAULT_STYLE = 'header-nav-item dropdown'
 const ACTIVE = 'header-nav-item dropdown active'
@@ -14,6 +15,7 @@ export default class DropdownLink extends React.Component {
       style: DEFAULT_STYLE
     }
     this.handleClick = this.handleClick.bind(this)
+    this.handleMouseOver = this.handleMouseOver.bind(this)
   }
 
   handleClick(e) {
@@ -24,6 +26,15 @@ export default class DropdownLink extends React.Component {
     return
   }
 
+  handleMouseOver(e) {
+    e.preventDefault()
+    //wait 1s
+    console.log('check start!')
+    console.log(classes)
+    console.log('Is display valid : ' + classes['$tooltipped-display'])
+
+  }
+
   componentWillReceiveProps() {
 //    console.log((times++) + ' update!: ' + this.props.dropdownDisplay)
     if(!this.props.dropdownDisplay && this.state.style === ACTIVE) {
@@ -32,11 +43,14 @@ export default class DropdownLink extends React.Component {
   }
 
   render() {
-    const { name, link, dropdown } = this.props.item
-
+    const { name, link, tips, dropdown } = this.props.item
+    const LINK_STYLE_S = 'header-nav-link tooltipped tooltipped-s',
+          LINK_STYLE_SW = 'header-nav-link tooltipped tooltipped-sw',
+          User_CONFIG = 'User'
     return (
       <div className={this.state.style}>
-        <Link to={link} className="header-nav-link" onClick={this.handleClick}>{name}</Link>
+        <Link to={link} className={name === User_CONFIG ? LINK_STYLE_SW : LINK_STYLE_S}
+          aria-label={tips} onClick={this.handleClick} onMouseOver={this.handleMouseOver}>{name}</Link>
         <Dropdown items={dropdown}/>
       </div>
     )
