@@ -6,13 +6,15 @@ import classes from './_header_tooltipped.scss'
 
 const DEFAULT_STYLE = 'header-nav-item dropdown'
 const ACTIVE = 'header-nav-item dropdown active'
+
 //let times = 0
 
 export default class DropdownLink extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      style: DEFAULT_STYLE
+      style: DEFAULT_STYLE,
+      linkDisplay: 'hide'
     }
     this.handleClick = this.handleClick.bind(this)
     this.handleMouseOver = this.handleMouseOver.bind(this)
@@ -28,10 +30,14 @@ export default class DropdownLink extends React.Component {
 
   handleMouseOver(e) {
     e.preventDefault()
-    //wait 1s
+    //TODO: wait 1s
+    this.setState({ linkDisplay : 'show' })
+
+    /* test import sccs and try to change it
     console.log('check start!')
     console.log(classes)
     console.log('Is display valid : ' + classes['$tooltipped-display'])
+    */
 
   }
 
@@ -44,12 +50,14 @@ export default class DropdownLink extends React.Component {
 
   render() {
     const { name, link, tips, dropdown } = this.props.item
+
     const LINK_STYLE_S = 'header-nav-link tooltipped tooltipped-s',
           LINK_STYLE_SW = 'header-nav-link tooltipped tooltipped-sw',
           User_CONFIG = 'User'
+
     return (
       <div className={this.state.style}>
-        <Link to={link} className={name === User_CONFIG ? LINK_STYLE_SW : LINK_STYLE_S}
+        <Link to={link} className={name === User_CONFIG ? LINK_STYLE_SW : LINK_STYLE_S + ' ' + this.state.linkDisplay}
           aria-label={tips} onClick={this.handleClick} onMouseOver={this.handleMouseOver}>{name}</Link>
         <Dropdown items={dropdown}/>
       </div>

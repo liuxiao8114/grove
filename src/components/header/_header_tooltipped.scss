@@ -1,4 +1,4 @@
-$tooltipped-display: none;
+$tooltipped-display: block;
 .tooltipped {
   position: relative;
 }
@@ -37,7 +37,7 @@ $tooltipped-display: none;
   text-decoration: none;
   text-shadow: none;
   text-transform: none;
-  word-wrap: break-word;
+  width: fit-content;
   z-index: 1000000;
 }
 
@@ -45,6 +45,10 @@ $tooltipped-display: none;
   margin-top: 5px;
   right: 50%;
   top: 100%;
+}
+
+.tooltipped-s::after {
+  transform: translateX(50%);
 }
 
 .tooltipped-se::after {

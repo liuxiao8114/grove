@@ -6,14 +6,15 @@ export default React.createClass({
   render() {
     return (
       <Router>
-        <IndexRoute path="/" component={App}>
+        <Route path="/" component={App}>
+          <IndexRoute component={Body}/>
           <Route path="pulls"></Route>
           <Route path="issues"></Route>
           <Route path="gist"></Route>
           <Route path="stars"></Route>
           <Route path="/:username"></Route>
           <Route path="/:username"></Route>
-        </IndexRoute>
+        </Route>
       </Router>
     )
   }
