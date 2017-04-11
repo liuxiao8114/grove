@@ -64,7 +64,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.get('*', (req, res) => {
-  // match routes
+// match routes
 //  path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif')
 // if the current working directory is /home/myself/node,
 // this returns '/home/myself/node/wwwroot/static_files/gif/image.gif'
