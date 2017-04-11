@@ -34,3 +34,9 @@ export default class App extends React.Component {
     )
   }
 }
+
+/*
+<div className={this.state.modalDisplay ? 'menu-active' : ''}>
+
+</div>
+*/

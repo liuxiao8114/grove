@@ -1,24 +1,12 @@
 import React from 'react'
 import { render } from 'react-dom'
 import ThinkReact from './components/app/ThinkReact'
-import App from './components/app/App'
+//import App from './components/app/App'
+import Root from './routes'
 
 function run() {
-  const container = document.getElementById('app');
-  const div = document.createElement('div');
-  div.id = 'createdDiv';
-  div.text = 'Hello World';
-
-  document.body.appendChild(div);
-
-  var element = document.createElement("div");
-  element.className = "message";
-  var textNode = document.createTextNode("Hello world!");
-  element.appendChild(textNode);
-  document.body.appendChild(element);
-
   console.log('The client is run!');  //eslint-disable-line
-  render(<App/>, document.getElementById('app')) //Error!
+  render(<Root/>, document.getElementById('app')) //Error!
   /*
   const PRODUCTS = [
     {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},

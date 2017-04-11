@@ -24,8 +24,8 @@ const repoDropdown = [
 
 const userlinks = [
   { name: 'Noti', url: '/notifications', tips:'You have unread notifications', dropdown: null },
-  { name: 'Repo', url: '/notifications', tips:'Create new...', dropdown: repoDropdown },
-  { name: 'User', url: '/notifications', tips:'View profile and more', dropdown: userDropdown }
+  { name: 'Repo', url: null, tips:'Create new...', dropdown: repoDropdown },
+  { name: 'User', url: null, tips:'View profile and more', dropdown: userDropdown }
 ]
 
 export default function Header(props) {
