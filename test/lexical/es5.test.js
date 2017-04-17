@@ -140,10 +140,6 @@ describe('es5 feature', () => {
 
   })
 
-  /*
-
-  */
-
   it('test fp', () => {
     let fn = n => {
       let a = [];
@@ -167,5 +163,47 @@ describe('es5 feature', () => {
 //    console.log(b[0] + " , " + b[1] + " , " + b[2])
   })
 
+  it('', () => {
 
+    function map(arr, callback, args) {
+      let ret = [], value = null;
+      if(typeof arr === Array) {
+        for(let i = 0; i < arr.length; i++ ) {
+          value = callback(arr[i], args)
+          if(value) ret.push(value)
+        }
+        return ret
+      } else {
+        for(let i in arr) {
+          value = callback(arr[i], args)
+          if(value) ret.push(value)
+        }
+      }
+
+      return ret
+
+    }
+
+    // items.map(fn)
+    Array.prototype.myMap = fn => {
+      let ret = []
+      for(let i = 0; i < this.length; i++) {
+        ret.push(fn(this[i]))
+      }
+      return ret
+    }
+
+    // args.reduce(() => {}, 1)
+    function reduce(o, fn, init) {
+      var prev = init || o[0],
+      cur = init ? o[1] : o[0]
+      
+      return index => {
+        var ret = fn(prev, cur, index)
+        if(ret) return reduce(o.slice(1), fn, ret)
+        return ret
+      }
+    }
+
+  })
 })

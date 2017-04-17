@@ -15,7 +15,7 @@ export default class Body extends React.Component {
       <div>
         <div>This is body waitting for edit!</div>
         <div className="modal-backdrop" onClick={this.handleClick}></div>
-        {this.props.children}
+        {this.props.content}
       </div>
     )
   }

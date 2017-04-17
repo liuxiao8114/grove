@@ -32,11 +32,11 @@ export default class DropdownLink extends React.Component {
     e.preventDefault()
     //TODO: wait 1s
     this.setState({ linkDisplay : 'show' })
-
-    /* test import sccs and try to change it
     console.log('check start!')
-    console.log(classes)
+    console.log(classes.tooltipped)
     console.log('Is display valid : ' + classes['$tooltipped-display'])
+    /* test import sccs and try to change it
+
     */
 
   }

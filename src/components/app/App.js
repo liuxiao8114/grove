@@ -29,7 +29,7 @@ export default class App extends React.Component {
     return (
       <div className={this.state.modalDisplay ? 'menu-active' : ''}>
         <Header dropdownDisplay={this.state.dropdownDisplay} handleDropdownClick={this.handleDropdownClick}/>
-        <Body modalDisplay={this.state.modalDisplay} handleModalClick={this.handleModalClick}/>
+        <Body modalDisplay={this.state.modalDisplay} handleModalClick={this.handleModalClick} content={this.props.children}/>
       </div>
     )
   }
