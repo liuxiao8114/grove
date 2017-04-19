@@ -1,16 +1,8 @@
- .header {
+.header {
   display: flex;
   justify-content: center;
   background-color: #24292e;
   color: rgba(255, 255, 255, 0.75);
   padding-bottom: 12px;
   padding-top: 12px;
-  .container {
-    display: flex;
-    margin: auto;
-    width: 980px;
-    @import "header_dropdown";
-    @import "header_link";
-    @import "header_search";
-  }
 }

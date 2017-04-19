@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
+import style from './HeaderLink.scss'
 
 export default class HeaderLink extends React.Component {
   constructor(props) {
@@ -16,8 +17,8 @@ export default class HeaderLink extends React.Component {
   render() {
     const { name, link } = this.props.item
     return (
-      <div className="header-nav-item">
-        <Link to={link} className="header-nav-link" onClick={this.handleClick}>{name}</Link>
+      <div className={style['header-nav-item']}>
+        <Link to={link} className={style['header-nav-link']} onClick={this.handleClick}>{name}</Link>
       </div>
     )
   }

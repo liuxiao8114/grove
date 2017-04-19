@@ -1,6 +1,6 @@
 import React from 'react'
-import Container from './Container'
-import './Header.scss'
+import Container from './container/Container'
+import style from './Header.scss'
 
 const navLinks = [
   { name: 'Pull requests', url: '/pulls' },
@@ -30,7 +30,7 @@ const userlinks = [
 
 export default function Header(props) {
   return (
-    <div className="header">
+    <div className={style.header}>
       <Container navLinks={navLinks} userLinks={userlinks}
         dropdownDisplay={props.dropdownDisplay} handleDropdownClick={props.handleDropdownClick}/>
     </div>

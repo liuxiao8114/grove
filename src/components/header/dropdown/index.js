@@ -2,7 +2,7 @@ import React from 'react'
 import { Link }  from 'react-router'
 
 import Dropdown from './Dropdown'
-import classes from './_header_tooltipped.scss'
+import classes from './Tooltipped.scss'
 
 const DEFAULT_STYLE = 'header-nav-item dropdown'
 const ACTIVE = 'header-nav-item dropdown active'
@@ -34,11 +34,10 @@ export default class DropdownLink extends React.Component {
     this.setState({ linkDisplay : 'show' })
     console.log('check start!')
     console.log(classes.tooltipped)
-    console.log('Is display valid : ' + classes['$tooltipped-display'])
+    console.log('Is display valid : ' + classes['tooltipped-display'])
     /* test import sccs and try to change it
 
     */
-
   }
 
   componentWillReceiveProps() {

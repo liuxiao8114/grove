@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './HeaderSearch.scss'
 
 export default class HeaderSearch extends React.Component {
   constructor(props) {
@@ -20,10 +21,10 @@ export default class HeaderSearch extends React.Component {
 
   render() {
     return (
-      <div className="header-search js-site-search">
+      <div className={style['header-search'] + ' ' + 'js-site-search'}>
         <form action="/search">
-          <label className="form-control header-search-wrapper focus">
-            <input className="header-search-input js-site-search-focus" type="text" placeholder="Search Github"/>
+          <label className={style['form-control'] + ' ' + style['header-search-wrapper'] + ' ' + style.focus}>
+            <input className={style['header-search-input']} type="text" placeholder="Search Github"/>
           </label>
         </form>
       </div>

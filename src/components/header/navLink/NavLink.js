@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderLink from './HeaderLink'
+import HeaderLink from '../headerLink/HeaderLink'
 
 export default function NavLink(props) {
   function renderItem(i) {

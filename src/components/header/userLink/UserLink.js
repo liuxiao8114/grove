@@ -1,6 +1,7 @@
 import React from 'react'
-import HeaderLink from './HeaderLink'
-import DropdownLink from './DropdownLink'
+import HeaderLink from '../headerLink/HeaderLink'
+import DropdownLink from '../dropdown'
+import style from './UserLink.scss'
 
 export default class UserLink extends React.Component {
   constructor(props) {
@@ -25,8 +26,9 @@ export default class UserLink extends React.Component {
   }
 
   render() {
+    //TODO: no defination of float-right becarse using flex
     return (
-      <ul id="user-links" className="header-nav user-nav float-right">
+      <ul id="user-links" className={style['header-nav'] + style['user-nav'] + ' ' + 'float-right'}>
         {this.props.links.map(this.renderItem)}
       </ul>
     )
