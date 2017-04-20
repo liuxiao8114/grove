@@ -1,5 +1,6 @@
 import React from 'react'
 import HeaderLink from '../headerLink/HeaderLink'
+import style from './NavLink.scss'
 
 export default function NavLink(props) {
   function renderItem(i) {
@@ -7,7 +8,7 @@ export default function NavLink(props) {
   }
 
   return (
-    <ul className="header-nav" role="navigation">
+    <ul className={style['header-nav']} role="navigation">
       {props.links.map(renderItem)}
     </ul>
   )

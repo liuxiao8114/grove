@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router'
+import style from './DropdownItem.scss'
 
 export default class DropdownItem extends React.Component {
   render() {
     const { name, url } = this.props.item
     return (
-      <Link to={url} className="dropdown-item">{name}</Link>
+      <Link to={url} className={style['dropdown-item']}>{name}</Link>
     )
   }
 }

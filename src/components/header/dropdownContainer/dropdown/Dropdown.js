@@ -1,6 +1,7 @@
 import React from 'react'
 
 import DropdownItem from './DropdownItem'
+import style from './Dropdown.scss'
 
 const USER_NAME = 'username'
 
@@ -34,7 +35,7 @@ export default class Dropdown extends React.Component {
         rows.push(<DropdownItem key={item.name} item={item}/>)
       } else if(lastCategory && item.category !== lastCategory) {
         lastCategory = item.category
-        rows.push(<div key={dividerNo++} className="dropdown-divider" />)
+        rows.push(<div key={dividerNo++} className={style['dropdown-divider']} />)
         rows.push(<DropdownItem key={item.name} item={item}/>)
       } else {
         rows.push(<DropdownItem key={item.name} item={item}/>)

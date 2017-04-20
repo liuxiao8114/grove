@@ -1,0 +1,44 @@
+.dropdown {
+  position: relative;
+}
+
+.header-nav-item {
+  float: left;
+}
+
+.header-nav-link {
+  color: rgba(255, 255, 255, 0.75);
+  display: block;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 5px 8px;
+  cursor:pointer;
+}
+
+.dropdown.active .dropdown-menu-content {
+  display: block;
+  pointer-events: all;
+}
+
+.header-nav-item.active .dropdown-menu-content {
+  display: block;
+}
+
+.logout-form {
+
+}
+
+.header-nav-item .dropdown-menu {
+  margin-top: 15px;
+  width: 180px;
+}
+
+
+.css-truncate.css-truncate-target, .css-truncate .css-truncate-target {
+  display: inline-block;
+  max-width: 125px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+  white-space: nowrap;
+}

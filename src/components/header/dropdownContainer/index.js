@@ -2,10 +2,11 @@ import React from 'react'
 import { Link }  from 'react-router'
 
 import Dropdown from './Dropdown'
-import classes from './Tooltipped.scss'
+import tooltipStyle from './Tooltipped.scss'
+import style from './Dropdown.scss'
 
-const DEFAULT_STYLE = 'header-nav-item dropdown'
-const ACTIVE = 'header-nav-item dropdown active'
+const DEFAULT_STYLE = style['header-nav-item'] + ' ' + style['dropdown']
+const ACTIVE = style['header-nav-item'] + ' ' + style['dropdown'] + ' ' + style['active']
 
 //let times = 0
 
@@ -33,8 +34,9 @@ export default class DropdownLink extends React.Component {
     //TODO: wait 1s
     this.setState({ linkDisplay : 'show' })
     console.log('check start!')
-    console.log(classes.tooltipped)
-    console.log('Is display valid : ' + classes['tooltipped-display'])
+    console.log(tooltipStyle.tooltipped)
+    console.log('Is display valid $: ' + tooltipStyle['$tooltipped-display'])
+    console.log('Is display valid camt: ' + tooltipStyle['tooltippedDisplay'])
     /* test import sccs and try to change it
 
     */
@@ -50,8 +52,8 @@ export default class DropdownLink extends React.Component {
   render() {
     const { name, link, tips, dropdown } = this.props.item
 
-    const LINK_STYLE_S = 'header-nav-link tooltipped tooltipped-s',
-          LINK_STYLE_SW = 'header-nav-link tooltipped tooltipped-sw',
+    const LINK_STYLE_S = style['header-nav-link'] + ' '  + tooltipStyle['tooltipped'] + ' ' + tooltipStyle['tooltipped-s'],
+          LINK_STYLE_SW = style['header-nav-link'] + ' '  + tooltipStyle['tooltipped'] + ' ' + tooltipStyle['tooltipped-sw'],
           User_CONFIG = 'User'
 
     return (
