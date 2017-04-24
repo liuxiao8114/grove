@@ -1,6 +1,6 @@
 import React from 'react'
 
-import DropdownItem from './DropdownItem'
+import DropdownItem from '../dropdownItem/DropdownItem'
 import style from './Dropdown.scss'
 
 const USER_NAME = 'username'
@@ -25,9 +25,9 @@ export default class Dropdown extends React.Component {
       if(item.category === USER_NAME) {
         lastCategory = item.category
         rows.push(
-          <div key="dropdown-header" className="dropdown-header header-nav-current-user">
+          <div key="dropdown-header" className={style['dropdown-header']}>
             Signed in as{' '}
-            <strong className="css-truncate-target">{item.name}</strong>
+            <strong className={style['css-truncate-target']}>{item.name}</strong>
           </div>
         )
       } else if(!lastCategory) {
@@ -43,12 +43,9 @@ export default class Dropdown extends React.Component {
     }
 
     this.props.items.forEach(renderItem)
-
     return (
-      <div className="dropdown-menu-content js-menu-content">
-        <div className="dropdown-menu dropdown-menu-sw">
-          {rows}
-        </div>
+      <div className={this.props.dropdownDisplay ? style['dropdown-sw-active'] : style['dropdown-menu-sw']}>
+        {rows}
       </div>
     )
   }

@@ -13,3 +13,22 @@ body {
   margin: 0;
   padding: 0;
 }
+
+ul {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+button, input, select, textarea {
+  margin: 0;
+  font: inherit;
+}
+
+a {
+  color: #0366d6;
+  text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}

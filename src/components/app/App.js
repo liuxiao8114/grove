@@ -1,6 +1,6 @@
 import React from 'react';
-import { Router, Route, IndexRoute, browserHistory, Link} from 'react-router';
-import './App.scss'
+import { Router, Route, IndexRoute, browserHistory, Link } from 'react-router';
+import style from './App.scss'
 import Header from '../header'
 import Body from '../body'
 
@@ -13,8 +13,10 @@ export default class App extends React.Component {
   }
 
   handleDropdownClick() {
+    console.log('refresh state!')
     this.setState({
-      modalDisplay: true
+      modalDisplay: true,
+      dropdownDisplay: true
     })
   }
 
@@ -27,7 +29,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className={this.state.modalDisplay ? 'menu-active' : ''}>
+      <div>
         <Header dropdownDisplay={this.state.dropdownDisplay} handleDropdownClick={this.handleDropdownClick}/>
         <Body modalDisplay={this.state.modalDisplay} handleModalClick={this.handleModalClick} content={this.props.children}/>
       </div>
