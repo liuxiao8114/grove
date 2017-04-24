@@ -5,7 +5,7 @@ import Dropdown from './dropdown/Dropdown'
 import tooltipStyle from './Tooltipped.scss'
 import style from './index.scss'
 
-//let times = 0
+
 
 export default class DropdownLink extends React.Component {
   constructor(props) {
@@ -19,7 +19,6 @@ export default class DropdownLink extends React.Component {
 
   handleClick(e) {
     e.preventDefault()
-//    console.log((times++) + ' : ' + this.props.dropdownDisplay)
     this.props.handleDropdownClick(e)
     this.setState({ isDropdownDisplay: true })
     return
@@ -34,8 +33,7 @@ export default class DropdownLink extends React.Component {
   }
 
   componentWillReceiveProps() {
-//    console.log((times++) + ' update!: ' + this.props.dropdownDisplay)
-    if(!this.props.dropdownDisplay && this.state.isDropdownDisplay) {
+    if(this.state.isDropdownDisplay) {
       this.setState({ isDropdownDisplay: false })
     }
   }

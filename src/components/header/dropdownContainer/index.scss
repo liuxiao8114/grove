@@ -6,12 +6,7 @@
 }
 
 .header-nav-link {
-  color: rgba(255, 255, 255, 0.75);
-  display: block;
-  font-weight: 600;
-  line-height: 20px;
-  padding: 5px 8px;
-  cursor:pointer;
+  composes: header-nav-link from '../headerLink/HeaderLink.scss';
 }
 
 .dropdown.active .dropdown-menu-content {

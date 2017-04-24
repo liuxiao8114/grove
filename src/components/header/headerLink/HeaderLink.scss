@@ -10,3 +10,8 @@
   padding: 5px 8px;
   cursor:pointer;
 }
+
+.header-nav-link:hover, .header-nav-link:focus {
+  color: #fff;
+  text-decoration: none;
+}
