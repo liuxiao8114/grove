@@ -9,7 +9,7 @@
   composes: header-nav-link from '../headerLink/HeaderLink.scss';
 }
 
-.dropdown.active .dropdown-menu-content {
+.dropdown-active .dropdown-menu-content {
   display: block;
   pointer-events: all;
 }

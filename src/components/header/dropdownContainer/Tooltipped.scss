@@ -1,11 +1,7 @@
-$tooltipped-display: block;
+$tooltipped-display: none;
 .tooltipped {
+  display: block;
   position: relative;
-  display: $tooltipped-display;
-}
-
-:export {
-  tooltippedDisplay: $tooltipped-display;
 }
 
 .tooltipped::before {
@@ -17,6 +13,11 @@ $tooltipped-display: block;
   width: 0;
   height: 0;
   z-index: 1000001;
+}
+
+.tooltipped-s, .tooltipped-se, .tooltipped-sw {
+  composes: tooltipped;
+  background-color: red;
 }
 
 .tooltipped-s::before, .tooltipped-se::before, .tooltipped-sw::before {
@@ -64,6 +65,14 @@ $tooltipped-display: block;
   margin-right: -15px;
 }
 
+.tooltipped-hide {
+  display: none;
+}
+
 .header-nav-item.active .tooltipped::before, .header-nav-item.active .tooltipped::after {
   display: none;
+}
+
+:export {
+  tooltippedDisplay: $tooltipped-display;
 }

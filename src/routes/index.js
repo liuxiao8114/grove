@@ -3,6 +3,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import App from '../components/app/App'
 import Header from '../components/header'
 import Body from '../components/body'
+import Entry from '../components/entry'
 import Profile from '../components/body/profile'
 import Stars from '../components/body/stars'
 
@@ -11,6 +12,7 @@ export default React.createClass({
     return (
       <Router history={browserHistory}>
         <Route path="/" component={App}>
+          <IndexRoute component={Entry}/>
           <Route path="profile" component={Profile}></Route>
           <Route path="pulls"></Route>
           <Route path="issues"></Route>

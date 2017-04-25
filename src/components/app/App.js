@@ -13,7 +13,6 @@ export default class App extends React.Component {
   }
 
   handleDropdownClick() {
-    console.log('refresh state!')
     this.setState({
       modalDisplay: true
     })

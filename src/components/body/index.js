@@ -14,7 +14,6 @@ export default class Body extends React.Component {
   render() {
     return (
       <div>
-        <div>This is body waitting for edit!</div>
         <div className={this.props.modalDisplay ? style['modal-active'] : style['modal-backdrop']} onClick={this.handleClick}></div>
         {this.props.content}
       </div>
