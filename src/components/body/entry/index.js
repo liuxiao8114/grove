@@ -7,7 +7,7 @@ export default class Entry extends React.Component {
 
   render() {
     return (
-      <div>This is body waitting for edit!</div>
+      <div>This is body entry waitting for edit!</div>
     )
   }
 }

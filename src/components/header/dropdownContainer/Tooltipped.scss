@@ -1,6 +1,4 @@
-$tooltipped-display: none;
 .tooltipped {
-  display: block;
   position: relative;
 }
 
@@ -8,6 +6,7 @@ $tooltipped-display: none;
   border: 5px solid transparent;
   color: rgba(0, 0, 0, 0.8);
   content: "";
+  display: none;
   pointer-events: none;
   position: absolute;
   width: 0;
@@ -15,9 +14,18 @@ $tooltipped-display: none;
   z-index: 1000001;
 }
 
+.tooltipped:hover::before, .tooltipped:hover::after {
+  animation-delay: 2.4s;
+  animation-duration: 0.1s;
+  animation-fill-mode: forwards;
+  animation-name: tooltip-appear;
+  animation-timing-function: ease-in;
+  display: inline-block;
+  text-decoration: none;
+}
+
 .tooltipped-s, .tooltipped-se, .tooltipped-sw {
   composes: tooltipped;
-  background-color: red;
 }
 
 .tooltipped-s::before, .tooltipped-se::before, .tooltipped-sw::before {
@@ -33,6 +41,7 @@ $tooltipped-display: none;
   border-radius: 3px;
   color: #fff;
   content: attr(aria-label);
+  display: none;
   font: 11px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   padding: 5px 8px;
   pointer-events: none;
@@ -65,14 +74,6 @@ $tooltipped-display: none;
   margin-right: -15px;
 }
 
-.tooltipped-hide {
-  display: none;
-}
-
 .header-nav-item.active .tooltipped::before, .header-nav-item.active .tooltipped::after {
   display: none;
-}
-
-:export {
-  tooltippedDisplay: $tooltipped-display;
 }

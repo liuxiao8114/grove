@@ -1,10 +1,12 @@
 import React from 'react';
 import { Router, Route, IndexRoute, browserHistory, Link } from 'react-router';
-import style from './App.scss'
-import Header from '../header'
-import Body from '../body'
+import { connect } from 'react-redux'
 
-export default class App extends React.Component {
+import style from './App.scss'
+import Header from '../components/header'
+import Body from '../components/body'
+
+class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = { modalDisplay: false, dropdownDisplay: false}
@@ -36,8 +38,8 @@ export default class App extends React.Component {
   }
 }
 
-/*
-<div className={this.state.modalDisplay ? 'menu-active' : ''}>
+function mapStateToProps(state, ownProps) {
+  
+}
 
-</div>
-*/
+export default connect()(App)

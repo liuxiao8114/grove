@@ -3,7 +3,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import App from '../components/app/App'
 import Header from '../components/header'
 import Body from '../components/body'
-import Entry from '../components/entry'
+import Entry from '../components/body/entry'
 import Profile from '../components/body/profile'
 import Stars from '../components/body/stars'
 
