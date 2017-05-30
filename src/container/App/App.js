@@ -9,7 +9,7 @@ import Body from '../components/body'
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { modalDisplay: false, dropdownDisplay: false}
+    this.state = { modalDisplay: false, dropdownDisplay: false }
     this.handleDropdownClick = this.handleDropdownClick.bind(this)
     this.handleModalClick = this.handleModalClick.bind(this)
   }
@@ -38,8 +38,12 @@ class App extends React.Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  
+const mapStateToProps = (state, ownProps) => {
+
 }
 
-export default connect()(App)
+const mapDispatchToProps = dispatch => {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
