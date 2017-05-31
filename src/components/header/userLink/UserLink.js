@@ -26,9 +26,9 @@ export default class UserLink extends React.Component {
   }
 
   render() {
-    //TODO: no defination of float-right becarse using flex
+    //TODO: no defination of float-right becarse of using flex
     return (
-      <ul id="user-links" className={style['user-nav'] + ' ' + 'float-right'}>
+      <ul id="user-links" className={style['user-nav']}>
         {this.props.links.map(this.renderItem)}
       </ul>
     )

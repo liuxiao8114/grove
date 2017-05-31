@@ -8,6 +8,25 @@ alert种类：
   fork simple
   push
 
+{
+  todos: [
+    { id: 1, text: '', complete: false },
+    { id: 2, text: '', complete: false }
+  ],
+  visibilityFilter: 'SHOW_ALL'
+}
+
+{
+  headerDropdowns: [
+    { id: 1, name: 'userConfig', isDisplay: false },
+    { id: 2, name: 'repository', isDisplay: false }
+  ],
+  headerSearch: {
+    
+  }
+  // fetch header data
+  // fetch body data
+}
 
 ├──App
    ├──Header
@@ -16,6 +35,13 @@ alert种类：
          ├──NavLinks
          ├──UserLinks
 
+components
+  NavLink
+  NavLinkItem
+  Dropdown
+  DropdownItem
+
+containers
 
 
 Repository:

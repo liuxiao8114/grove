@@ -54,6 +54,10 @@ export default function connect(mapStateToProps, mapDispatchToProps, mergeProps)
         return mappedDispatch
       }
 
+      isSubscribed() {
+        
+      }
+
       render() {
 
       }
