@@ -38,8 +38,10 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-
+const mapStateToProps = state => {
+  return {
+    isDropdownDisplay: state
+  }
 }
 
 const mapDispatchToProps = dispatch => {
