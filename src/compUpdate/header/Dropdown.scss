@@ -1,0 +1,106 @@
+$dropdown-display: none;
+
+.dropdown-menu {
+  background-clip: padding-box;
+  background-color: #fff;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 3px 12px rgba(27, 31, 35, 0.15);
+  display: none;
+  left: 0;
+  margin-top: 2px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  position: absolute;
+  top: 100%;
+  width: 160px;
+  z-index: 100;
+
+  //compose from header-nav-item
+  margin-top: 15px;
+  width: 180px;
+}
+
+.dropdown-menu::before {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: transparent transparent rgba(27, 31, 35, 0.15);
+  border-image: none;
+  border-style: solid;
+  border-width: 8px;
+}
+
+.dropdown-menu::after {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: transparent transparent #fff;
+  border-image: none;
+  border-style: solid;
+  border-width: 7px;
+}
+
+.dropdown-menu::before, .dropdown-menu::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+}
+
+.dropdown-menu-sw {
+  composes: dropdown-menu;
+  left: auto;
+  right: 0;
+}
+
+.dropdown-menu-sw::before {
+  left: auto;
+  right: 9px;
+  top: -16px;
+}
+
+.dropdown-menu-sw::after {
+  left: auto;
+  right: 10px;
+  top: -14px;
+}
+
+.dropdown-header {
+  color: #586069;
+  font-size: 12px;
+  padding: 4px 15px;
+  // combine from header-nav-current-user
+  font-size: inherit;
+  padding-bottom: 0;
+}
+
+.dropdown-divider {
+  background-color: #e1e4e8;
+  height: 1px;
+  margin: 8px 1px;
+}
+
+.css-truncate-target {
+  display: inline-block;
+  max-width: 125px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.dropdown-active {
+  composes: dropdown-menu;
+  display: block;
+}
+
+.dropdown-sw-active {
+  composes: dropdown-menu-sw;
+  display: block;
+}
+
+:export {
+  dropdownDisplay: $dropdown-display;
+}
