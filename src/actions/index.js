@@ -1,5 +1,5 @@
 export const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN'
-export const TOGGLE_ALL_DROPDOWN = 'TOGGLE_ALL_DROPDOWN'
+export const TOGGLE_BODY_MODAL = 'TOGGLE_BODY_MODAL'
 export const REPO_SEARCH = 'REPO_SEARCH'
 
 export const toggleDropdown = id => {
@@ -9,9 +9,9 @@ export const toggleDropdown = id => {
   }
 }
 
-export const toggleAllDropdown = status => {
+export const toggleBodyModal = status => {
   return {
-    type: TOGGLE_ALL_DROPDOWN,
+    type: TOGGLE_BODY_MODAL,
     status
   }
 }
@@ -23,3 +23,6 @@ export const RepoSearch = keyword => {
     keyword
   }
 }
+
+export const loadNavLinks = '';
+export const loadUserLinks = '';

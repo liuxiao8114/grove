@@ -9,6 +9,20 @@ Range.prototype = {
   },
 
   foreach(f) {
-    
+
   }
 }
+
+function eat(food) {
+  return 'i ' + food
+}
+
+const manageAction = {
+  eat: food => eat(food),
+  anotherEat: eat
+}
+
+const FISH = 'FISH'
+
+manageAction.eat(FISH)
+manageAction.anotherEat(FISH)

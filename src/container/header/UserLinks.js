@@ -7,13 +7,13 @@ import HeaderLink from '../headerLink/HeaderLink'
 import DropdownLink from '../dropdownContainer'
 import style from './UserLinks.scss'
 
-const UserLinks = ({ links, onClick, isDisplay }) => {
+const UserLinks = ({ links, onClick }) => {
   return (
     <ul id="user-links" className={style['user-nav']}>
       {links.map(link => {
         if(link.dropdown)
           return (<DropdownLink key={link.name} link={link}
-            onClick={() => onClick(link.name)} isDisplay={isDisplay}/>)
+            onClick={() => onClick(link.name)}/>)
         return (<HeaderLink key={link.name} link={link}/>)
       })}
     </ul>
@@ -21,17 +21,13 @@ const UserLinks = ({ links, onClick, isDisplay }) => {
 }
 
 function getLinks(state, filter) {
-  switch(filter) {
-    
-  }
+
 }
 
 const mapStateToProps = state => {
   return {
-
     //TODO: how to build links?
-    links: ,
-    isDisplay: state.dropdownDisplay
+    links: ''
   }
 }
 

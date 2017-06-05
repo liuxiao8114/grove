@@ -3,6 +3,15 @@ export default function createStore(reducer, preloadedState, enhancer) {
       currentListeners = [],
       nextListeners = currentListeners
 
+  if(typeof preloadedState === 'function' && !enhancer) {
+    enhancer = preloadedState
+    preloadedState = null
+  }
+
+  if(enhancer) {
+    return enhancer(createStore)(reducer, preloadedState)
+  }
+
   function getState() {
     return currentState
   }

@@ -40,9 +40,10 @@ describe('es5 feature', () => {
     const last = funcs[funcs.length - 1]
     const rest = funcs.slice(0, -1)
     expect(rest.reduceRight((composed, f) => {
-      let done = f(composed)
-      return done
+      return f(composed)
     }, last('last'))).toEqual('first is: second is: last is: last')
+    expect(funcs.reduce((prev, cur) => (...args) => prev(cur(...args)))('last'))
+    .toEqual('first is: second is: last is: last')
   })
 
   it('test closure for private var', () => {
@@ -148,10 +149,11 @@ describe('es5 feature', () => {
         this.events.e = fn
       },
       emit(e, ...args) {
-        if(this.events.e)
-          this.events.e(args)
-        else
-          throw new Error('no this event!')
+        try {
+          return this.events.e(args)
+        } catch(ex) {
+          throw new Error('no this event')
+        }
       }
     }
 
@@ -277,7 +279,7 @@ describe('es5 feature', () => {
   })
 
   it('test this', () => {
-    var app = function() {}
+    var app = {} // while it occurs error with cannot assign to read only property when var app = function(){}
     app.login = function() {
       this.name = 'xiao'
       this.pass = '3385'

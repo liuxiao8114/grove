@@ -15,7 +15,7 @@ export const DropdownLink = ({ item, isDisplay, onClick }) => {
     <div className={style['dropdown']}>
       <div className={style['header-nav-link'] + ' '
         + (name === USER_CONFIG ? tooltipStyle['tooltipped-s'] : tooltipStyle['tooltipped-sw'])}
-        aria-label={tips} onClick={e => { e.preventDefault(); onClick(name) }}>{name}</div>
+        aria-label={tips} onClick={onClick}>{name}</div>
       <Dropdown items={content} isDisplay={isDisplay}/>
     </div>
   )
@@ -23,17 +23,12 @@ export const DropdownLink = ({ item, isDisplay, onClick }) => {
 
 // no necessary ?
 const mapStateToProps = (state) => {
+  const item = '',
+        isDisplay = ''
   return {
-    isDisplay: state.dropdowns
+    isDisplay,
+    item
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onClick: name => {
-      dispatch(dropdownToggle(name))
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(DropdownLink)
+export default connect(mapStateToProps)(DropdownLink)
