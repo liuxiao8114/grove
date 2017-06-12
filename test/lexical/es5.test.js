@@ -39,9 +39,8 @@ describe('es5 feature', () => {
     const funcs = [fn1, fn2, fn3]
     const last = funcs[funcs.length - 1]
     const rest = funcs.slice(0, -1)
-    expect(rest.reduceRight((composed, f) => {
-      return f(composed)
-    }, last('last'))).toEqual('first is: second is: last is: last')
+    expect(rest.reduceRight((composed, f) => f(composed),last('last')))
+    .toEqual('first is: second is: last is: last')
     expect(funcs.reduce((prev, cur) => (...args) => prev(cur(...args)))('last'))
     .toEqual('first is: second is: last is: last')
   })

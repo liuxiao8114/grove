@@ -12,15 +12,16 @@ export default function bindActionCreators(actionCreators, dispatch) {
   if(typeof actionCreators !== 'object' || actionCreators === null) {
     throw new Error()
   }
-
+  const boundActionCreators = {}
   const keys = Object.keys(actionCreators)
   for(let i = 0; i < keys.length; i++) {
     const key = keys[i]
     const actionCreator = actionCreators[key]
     if(typeof actionCreator === 'function') {
-      bindActionCreator(actionCreator, dispatch)
+      boundActionCreators[key] = bindActionCreator(actionCreator, dispatch)
     } else {
       warning(`bindActionCreators expected a function actionCreator for key '${key}', instead received type '${typeof actionCreator}'.`)
     }
   }
+  return boundActionCreators
 }

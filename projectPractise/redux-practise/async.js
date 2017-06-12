@@ -1,17 +1,20 @@
 import React from 'react'
+import { createStore, combineReducers, applyMiddlewares } from 'redux'
+import thunk from 'redux-thunk'
+import logger from 'redux-logger'
 
 const SELECT_REDDIT = 'SELECT_REDDIT'
 const INVAILDATE_REDDIT = 'INVAILDATE_REDDIT'
 
-const selectReddit = reddit => {
+const selectReddit = reddit => ({
   type: SELECT_REDDIT,
   reddit
-}
+})
 
-const invaildateReddit = reddit => {
+const invaildateReddit = reddit => ({
   type: INVAILDATE_REDDIT,
   reddit
-}
+})
 
 const REQUEST_POSTS = 'REQUEST_POSTS'
 const RESPONSE_POSTS = 'RESPONSE_POSTS'
@@ -60,7 +63,9 @@ export const fetchPostsIfNeeded = reddit => (dispatch, getState) => {
 /*components */
 const Picker = ({ value, options, onChange }) => {
   return (
+    <div>
 
+    </div>
   )
 }
 
@@ -107,7 +112,7 @@ class App extends React.Component {
         <Picker onChange={this.handleChange} value={selectedReddit} options={['reactjs', 'frontend']}/>
         <p>
         {
-          lastUpdated && lastUpdated at {new Date(lastUpdated).toLocaleTimeString()}
+          lastUpdated && 'lastUpdated at' + new Date(lastUpdated).toLocaleTimeString()
         }
         {
           !isFetching && <button onClick={this.handleRefreshClick}>Refresh</button>
@@ -116,7 +121,7 @@ class App extends React.Component {
         {isEmpty ?
           (isFetching ? <h2>Loading... {' ' + selectedReddit}</h2> : <h2>Empty</h2>) :
           <div style={{opacity: isFetching ? 0.5 : 1}}>
-            <Post posts={posts}/>
+            <Posts posts={posts}/>
           </div>
         }
       </div>
@@ -124,5 +129,51 @@ class App extends React.Component {
   }
 }
 
-
 /* reducers*/
+const selectedReddit = (state, action) => {
+  if(action.type === SELECT_REDDIT) {
+    return action.reddit
+  }
+  return state
+}
+
+const postsReddit = (state = {
+  isFetching: false,
+  di
+
+}, action) => {
+  switch(action.type) {
+    case REQUEST_POSTS: {
+      return {
+        ...state,
+        isFetching: true,
+        didInvaildate: false
+      }
+    }
+    case INVAILDATE_REDDIT: {
+      return {
+        ...state,
+        didInvaildate: true
+      }
+    }
+    case RESPONSE_POSTS: {
+      return {
+        ...state,
+        isFetching: false,
+        posts: state.posts.
+      }
+    }
+  }
+}
+
+const rootReducer = combineReducers({
+  selectedReddit,
+  postsReddit
+})
+
+const middlewares = [ thunk ]
+if(process.env.NODE_ENV === 'production') {
+  middlewares.push(logger())
+}
+
+const store = createStore(rootReducer, applyMiddlewares(...middlewares))
