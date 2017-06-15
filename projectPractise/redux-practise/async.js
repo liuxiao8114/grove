@@ -139,7 +139,7 @@ const selectedReddit = (state, action) => {
 
 const postsReddit = (state = {
   isFetching: false,
-  di
+  didI
 
 }, action) => {
   switch(action.type) {

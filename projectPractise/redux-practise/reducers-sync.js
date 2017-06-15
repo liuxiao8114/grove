@@ -96,7 +96,7 @@ function combineReducer(reducers) {
       const initState = reducer(undefined, createStore.ActionTypes)
 
       if(typeof initState === 'undefined') {
-        throw new Error(``)
+        throw new Error(`reducer need an initial state while it received undefined as args`)
       }
     }
   }
@@ -114,7 +114,7 @@ function combineReducer(reducers) {
         throw new Error()
       }
       nextState[key] = nextStateForKey
-      state[key] ? nextState[key] = state[key](state[key], action) : nextState[key] = finalReducers[key]
+//      state[key] ? nextState[key] = state[key](state[key], action) : nextState[key] = finalReducers[key]
       hasChanged = hasChanged || nextState[key] !== previousStateForKey
     }
     return hasChanged ? nextState : state
