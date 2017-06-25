@@ -24,5 +24,5 @@ export const RepoSearch = keyword => {
   }
 }
 
-export const loadNavLinks = '';
-export const loadUserLinks = '';
+export const loadNavLinks = ''
+export const loadUserLinks = ''
