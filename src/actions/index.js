@@ -2,10 +2,11 @@ export const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN'
 export const TOGGLE_BODY_MODAL = 'TOGGLE_BODY_MODAL'
 export const REPO_SEARCH = 'REPO_SEARCH'
 
-export const toggleDropdown = id => {
+export const toggleDropdown = (id, isDisplay) => {
   return {
     type: TOGGLE_DROPDOWN,
-    id
+    id,
+    isDisplay: !isDisplay
   }
 }
 
@@ -17,10 +18,10 @@ export const toggleBodyModal = status => {
 }
 
 // async fetch
-export const RepoSearch = keyword => {
+export const RepoSearch = (dispatch, getState) => text => {
   return {
     type: REPO_SEARCH,
-    keyword
+    text
   }
 }
 

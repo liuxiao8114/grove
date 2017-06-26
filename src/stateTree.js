@@ -1,24 +1,50 @@
 const state = {
-  header: {
-    navLinks: [
+  entities: {
+    users: {
+      xiao: {
+        login: 'xiao',
+        avatarUrl: '',
+        address: ''
+      },
+      Dan:{
 
-    ],
-    userLinks: [
-      
-    ],
-    dropdowns: [
-      { id: 1, name: '', isDisplay: false, items: {} },
-      { id: 2, name: '', isDisplay: false, items: {} }
-    ],
-    isModalDisplay: false,
-    search: {
+      }
+    },
+    repos: {
+      grove: {
+
+      },
+      webpack: {
+
+      }
+    },
+    links: {
+      navLinks: [
+
+      ],
+      userLinks: [
+
+      ]
+    },
+    dropdowns: {
+      headers: [
+        { id: 1, name: '', isDisplay: false, items: {} },
+        { id: 2, name: '', isDisplay: false, items: {} }
+      ]
+    }
+  },
+
+  pagination: {
+    recentActions: {
+
+    },
+    searchRepos: {
       keyword: '',
       isFetching: false,
       posts: [],
       lastUpdated: ''
     }
   },
-  body: {
 
-  }
+  isBodyModalDisplay: false
 }

@@ -6,11 +6,11 @@ import style from './App.scss'
 import Header from '../components/header'
 import Body from '../components/body'
 
-const App = ({ isDropdownDisplay, isModalDisplay }) => {
+const App = ({ isDropdownDisplay, isModalDisplay, children }) => {
   return (
     <div>
       <Header />
-      <Body content={this.props.children}/>
+      <Body isModalDisplay={isModalDisplay} content={children}/>
     </div>
   )
 }
