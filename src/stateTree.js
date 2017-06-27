@@ -28,8 +28,8 @@ const state = {
     },
     dropdowns: {
       headers: [
-        { id: 1, name: '', isDisplay: false, items: {} },
-        { id: 2, name: '', isDisplay: false, items: {} }
+        { id: 1, name: '', items: {} },
+        { id: 2, name: '', items: {} }
       ]
     }
   },
@@ -45,6 +45,5 @@ const state = {
       lastUpdated: ''
     }
   },
-
-  isBodyModalDisplay: false
+  selectedDropdown: null
 }

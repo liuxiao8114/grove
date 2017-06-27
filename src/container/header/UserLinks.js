@@ -1,19 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { toggleDropdown } from '../actions'
+import { toggleDropdown, selectedDropdown } from '../actions'
 
 import HeaderLink from '../headerLink/HeaderLink'
 import DropdownLink from '../dropdownContainer'
 import style from './UserLinks.scss'
 
-const UserLinks = ({ links, onClick, isModalDisplay }) => {
+const UserLinks = ({ links, onClick, selectedDropdown = null }) => {
   return (
     <ul id="user-links" className={style['user-nav']}>
       {links.map(link => {
         if(link.dropdown)
-          return (<DropdownLink key={link.name} link={link} isModalDisplay={isModalDisplay}
-            onClick={() => onClick(link.name)}/>)
+          return (<DropdownLink key={link.name} link={link}
+            onClick={() => onClick(link.name)} isDisplay={selectedDropdown}/>)
         return (<HeaderLink key={link.name} link={link}/>)
       })}
     </ul>
@@ -22,14 +22,16 @@ const UserLinks = ({ links, onClick, isModalDisplay }) => {
 
 const mapStateToProps = state => {
   return {
-    //TODO: how to build links?
-    links: state.entities.userLinks
+    links: state.entities.userLinks,
+    selectedDropdown: state.selectedDropdown
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onClick: (id) => dispatch(toggleDropdown(id))
+    onClick: (id) => {
+      dispatch(selectedDropdown(id))
+    }
   }
 }
 

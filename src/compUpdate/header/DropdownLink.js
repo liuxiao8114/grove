@@ -9,7 +9,7 @@ import style from './dropdown.scss'
 
 const USER_CONFIG = 'User'
 
-export const DropdownLink = ({ item, isModalDisplay, onClick }) => {
+export const DropdownLink = ({ item, onClick }) => {
   const { name, tips, content } = item
 
   return (
@@ -17,7 +17,7 @@ export const DropdownLink = ({ item, isModalDisplay, onClick }) => {
       <div className={style['header-nav-link'] + ' '
         + (name === USER_CONFIG ? tooltipStyle['tooltipped-s'] : tooltipStyle['tooltipped-sw'])}
         aria-label={tips} onClick={onClick}>{name}</div>
-      <Dropdown items={content} isDisplay={isModalDisplay && item.isDisplay}/>
+      <Dropdown items={content} isDisplay={item.isDisplay}/>
     </div>
   )
 }

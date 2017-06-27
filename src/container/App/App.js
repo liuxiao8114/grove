@@ -6,24 +6,13 @@ import style from './App.scss'
 import Header from '../components/header'
 import Body from '../components/body'
 
-const App = ({ isDropdownDisplay, isModalDisplay, children }) => {
+const App = ({ children }) => {
   return (
     <div>
       <Header />
-      <Body isModalDisplay={isModalDisplay} content={children}/>
+      <Body content={children}/>
     </div>
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    isDropdownDisplay: state.isDropdownDisplay,
-    isModalDisplay: state.isModalDisplay
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App
