@@ -15,6 +15,12 @@
 
   function Headers(headers) {
     this.map = {}
+    if(headers instanceof Headers) {
+      
+    }
+  }
+
+  Headers.prototype.append = (name, value) => {
 
   }
 
@@ -37,6 +43,13 @@
     return promise
   }
 
+  function Body() {
+    this.text = function() {
+
+    }
+  }
+
+
   function Request(input, options) {
     options = options || {}
     var body = options.Body
@@ -48,10 +61,6 @@
     }
 
     this.url = input.url
-
-  }
-
-  function Body() {
 
   }
 

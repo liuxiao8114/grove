@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { toggleDropdown, selectedDropdown } from '../actions'
+import { selectedDropdown } from '../actions'
 
 import HeaderLink from '../headerLink/HeaderLink'
 import DropdownLink from '../dropdownContainer'
@@ -11,18 +11,19 @@ const UserLinks = ({ links, onClick, selectedDropdown = null }) => {
   return (
     <ul id="user-links" className={style['user-nav']}>
       {links.map(link => {
-        if(link.dropdown)
+        if(link.dropdownId)
           return (<DropdownLink key={link.name} link={link}
-            onClick={() => onClick(link.name)} isDisplay={selectedDropdown}/>)
+            onClick={() => onClick(link.dropdownId)}
+            isDisplay={ selectedDropdown && selectedDropdown.id === link.dropdownId}/>)
         return (<HeaderLink key={link.name} link={link}/>)
       })}
     </ul>
   )
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    links: state.entities.userLinks,
+    links: ownProps.userLinks,
     selectedDropdown: state.selectedDropdown
   }
 }

@@ -1,7 +1,13 @@
-import { TOGGLE_DROPDOWN, TOGGLE_ALL_DROPDOWN } from '../actions'
+import { TOGGLE_DROPDOWN, SELECTED_DROPDOWN, TOGGLE_ALL_DROPDOWN } from '../actions'
 
 const dropdown = (state = {}, action) => {
   switch (action.type) {
+    case SELECTED_DROPDOWN: {
+      return Object.assign({}, state, {
+        selectedDropdown: state.entities.dropdown[action.id]
+      })
+    }
+
     case TOGGLE_DROPDOWN: {
       return Object.assign({}, state, {
         isModalDisplay: true,
@@ -14,7 +20,7 @@ const dropdown = (state = {}, action) => {
         })
       })
     }
-
+    
     case TOGGLE_ALL_DROPDOWN: {
       return Object.assign({}, state, {
         isModalDisplay: false,
@@ -23,10 +29,7 @@ const dropdown = (state = {}, action) => {
         })
       })
     }
-
     default:
       return state
-
   }
-
 }

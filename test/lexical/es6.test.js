@@ -8,41 +8,8 @@ import fs from 'fs';
 
 const cache = new Map();
 
-describe('ES5', () => {
-  it('bind', () => {
-    function foo(end, routePath, urlPath) {
-      const key = `${routePath}|${end}`;
-      let regexp = cache.get(key);
-
-      if(!regexp){
-        const keys = [];
-        regexp = {pattern: toRegExp(routePath, keys, { end }), keys};
-        cache.set(key, regexp);
-      }
-
-      /*
-      if(!regexp){
-        const keys = [];
-        regexp = { pattern: toRegExp(routePath, keys, { end }), keys};
-      }
-      console.log(key);
-      console.log(regexp);
-      console.log(keys);
-      */
-      const m = regexp.pattern.exec(urlPath);
-      if(!m){
-        return undefined;
-      }
-    }
-
-    const matchPath = foo.bind(undefined, true);
-//  const matchBasePath = foo.bind(undefined, false);
-    expect(matchPath('/foo/:bar','/foo/bar')).to.equal('route : OK');
-  });
-});
-
-describe('async', () => {
-  it('promise then', () => {
+describe('Promise', () => {
+  it('Promise.prototype.then', () => {
     let result;
     const promise = Promise.resolve(() => {
       console.log('new Promise');
@@ -59,9 +26,25 @@ describe('async', () => {
       console.log('new Promise3');
       expect(result).to.equal('liu');
     });
-
   });
 
+  it('shows right process when in then nested', () => {
+    const FIN_FLAG = 'FIN_FLAG'
+    const p1 = new Promise((resolve, reject) => {
+      console.log(1)
+      Promise.resolve(console.log(2)).then(() => {
+        console.log(3)
+        resolve(FIN_FLAG)
+      })
+    })
+    return p1.then(ret => {
+      console.log(4)
+      expect(ret).to.equal(FIN_FLAG)
+    })
+  })
+})
+
+describe('async', () => {
   it('Thunk', () => {
     function foo(name, age, cb){
       cb(name, age);
@@ -108,19 +91,19 @@ describe('async', () => {
     */
     function Thunkify(fn){
       return function(){
-        var args;
+        var args = new Array(arguments.length);
+        for(var i = 0; i < arguments.length; i++) {
+          args[i].push(arguments[i])
+        }
         return function(done){
           let called;
-          args.push(function(...args){
-
+          args.push(function(){
             if(called){
               return;
             }
-
-            done.call(null, ...args);
+            done.call(null, arguments);
             called = true;
           });
-
         }
       };
     }
@@ -129,3 +112,35 @@ describe('async', () => {
 
 /* eslint-enable no-console*/
 /* eslint-enable no-unused-expressions*/
+
+    /*
+    describe('ES5', () => {
+      it('bind', () => {
+     function foo(end, routePath, urlPath) {
+      const key = `${routePath}|${end}`;
+      let regexp = cache.get(key);
+
+      if(!regexp){
+        const keys = [];
+        regexp = {pattern: toRegExp(routePath, keys, { end }), keys};
+        cache.set(key, regexp);
+      }
+      if(!regexp){
+        const keys = [];
+        regexp = { pattern: toRegExp(routePath, keys, { end }), keys};
+      }
+      console.log(key);
+      console.log(regexp);
+      console.log(keys);
+      const m = regexp.pattern.exec(urlPath);
+      if(!m){
+        return undefined;
+      }
+    }
+
+    const matchPath = foo.bind(undefined, true);
+//  const matchBasePath = foo.bind(undefined, false);
+    expect(matchPath('/foo/:bar','/foo/bar')).to.equal('route : OK');
+  });
+  });
+*/

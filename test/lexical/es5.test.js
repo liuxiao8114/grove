@@ -264,17 +264,19 @@ describe('es5 feature', () => {
 
     // args.reduce(() => {}, 1)
     function reduce(o, fn, init) {
-      var prev = init || o[0],
-      cur = init ? o[1] : o[0]
+      if(!o || o.length === 0) return init
 
-      return index => {
-        var ret = fn(prev, cur, index)
-        if(ret) return reduce(o.slice(1), fn, ret)
-        return ret
-      }
+      var prev = init || o[0],
+          cur = init ? o[0] : o[1],
+          i = 0
+      console.log('index: ' + i + ', prev: ' + prev + ', cur: ' + cur + ', array[0]: ' + o[0])
+      return reduce(o.slice(init ? 1 : 2), fn, fn(prev, cur, i++))
     }
 
     expect([1, 3, 5].myMap(i => (i + 1))[0]).toEqual(2)
+    expect(reduce([1, 3, 5], function(prev, cur) {
+      return prev + cur
+    })).toEqual(9)
   })
 
   it('test this', () => {

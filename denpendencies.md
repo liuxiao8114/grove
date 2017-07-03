@@ -16,3 +16,5 @@ cnpm install --save-dev redux-devtools-log-monitor
 cnpm install --save-dev redux-devtools-dock-monitor
 
 cnpm install --save normalizr
+
+cnpm install --save-dev mocha chai expect 

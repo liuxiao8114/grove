@@ -1,18 +1,19 @@
 import React from 'react'
-import style from './index.scss'
-import Entry from './entry'
-
 import { connect } from 'react-redux'
+
+import { hideBodyModal } from '../../actions'
+import Entry from './entry'
+import style from './index.scss'
 
 export class Body extends React.Component {
 
   render() {
-    const { isBodyModalDisplay, content, handleClick } = this.props
+    const { isBodyModalDisplay, content, hideBodyModal } = this.props
 
     return (
       <div>
         <div className={isBodyModalDisplay ? style['modal-active'] : style['modal-backdrop']}
-          onClick={handleClick}>
+          onClick={hideBodyModal}>
         </div>
         {content || <Entry/>}
       </div>
@@ -27,10 +28,6 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleClick:
-  }
-}
-
-export default connect(mapStateToProps)(Body)
+export default connect(mapStateToProps, {
+  hideBodyModal
+})(Body)

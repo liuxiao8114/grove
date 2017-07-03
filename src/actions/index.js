@@ -1,36 +1,37 @@
-export const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN'
-export const TOGGLE_BODY_MODAL = 'TOGGLE_BODY_MODAL'
-export const REPO_SEARCH = 'REPO_SEARCH'
+export const RESET_BODY_MODAL = 'RESET_BODY_MODAL'
 export const SELECTED_DROPDOWN = 'SELECTED_DROPDOWN'
+export const REPO_SEARCH = 'REPO_SEARCH'
+export const USER_SEARCH = 'USER_SEARCH'
+export const CODE_SEARCH = 'CODE_SEARCH'
 
-export const toggleDropdown = (dropdownId, isDisplay) => {
+const resetBodyModal = () => {
   return {
-    type: TOGGLE_DROPDOWN,
-    dropdownId,
-    isDisplay: !isDisplay
+    type: RESET_BODY_MODAL
   }
 }
 
-export const toggleBodyModal = (dropdownId, isDisplay = false) => {
-  return {
-    type: TOGGLE_BODY_MODAL,
-    dropdownId,
-    isDisplay
-  }
+export const hideBodyModal = () => (dispatch, getState) => {
+  const selectedDropdown = getState().selectedDropdown
+  if(!selectedDropdown) return null
+  return dispatch(resetBodyModal(selectedDropdown.id))
 }
 
 // async fetch
-export const RepoSearch = (dispatch, getState) => text => {
+export const repoSearch = text => (dispatch, getState) => {
+  const repos = getState().pagination
   return {
     type: REPO_SEARCH,
+    endpoint: `/repository_search`,
     text
   }
 }
 
-export const resetBodyModal = dropdownId => {
-  return {
+export const codeSearch = {
 
-  }
+}
+
+export const userSearch = {
+
 }
 
 export const selectedDropdown = id => {
@@ -39,6 +40,3 @@ export const selectedDropdown = id => {
     id
   }
 }
-
-export const loadNavLinks = ''
-export const loadUserLinks = ''
