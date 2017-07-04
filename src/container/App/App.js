@@ -6,7 +6,7 @@ import Header from '../components/header'
 import Body from '../components/body'
 import style from './App.scss'
 
-class App extends Component {
+export class App extends Component {
   handleSubmit(nextValue) {
     browserHistory.push(`/${nextValue}`)
   }

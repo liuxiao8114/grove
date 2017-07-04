@@ -4,19 +4,27 @@ export const REPO_SEARCH = 'REPO_SEARCH'
 export const USER_SEARCH = 'USER_SEARCH'
 export const CODE_SEARCH = 'CODE_SEARCH'
 
+export const selectedDropdown = id => {
+  return {
+    type: SELECTED_DROPDOWN,
+    id
+  }
+}
+
 const resetBodyModal = () => {
   return {
     type: RESET_BODY_MODAL
   }
 }
 
+//Deprecated, should rewrite in reducer
 export const hideBodyModal = () => (dispatch, getState) => {
   const selectedDropdown = getState().selectedDropdown
   if(!selectedDropdown) return null
   return dispatch(resetBodyModal(selectedDropdown.id))
 }
 
-// async fetch
+// TODO: async fetch and use Github API
 export const repoSearch = text => (dispatch, getState) => {
   const repos = getState().pagination
   return {
@@ -26,17 +34,12 @@ export const repoSearch = text => (dispatch, getState) => {
   }
 }
 
+// TODO: async fetch and use Github API
 export const codeSearch = {
 
 }
 
+// TODO: async fetch and use Github API
 export const userSearch = {
 
-}
-
-export const selectedDropdown = id => {
-  return {
-    type: SELECTED_DROPDOWN,
-    id
-  }
 }

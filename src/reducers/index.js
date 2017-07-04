@@ -12,7 +12,7 @@ export const resetBodyModal = (state, action) => {
 }
 
 export const selectDropdown = (state, action) => {
-  if(actions.type === SELECTED_DROPDOWN) {
+  if(action.type === SELECTED_DROPDOWN) {
     return {
       ...state,
       selectedDropdown: {

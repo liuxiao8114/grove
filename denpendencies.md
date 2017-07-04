@@ -17,4 +17,4 @@ cnpm install --save-dev redux-devtools-dock-monitor
 
 cnpm install --save normalizr
 
-cnpm install --save-dev mocha chai expect 
+cnpm install --save-dev mocha chai expect sinon
