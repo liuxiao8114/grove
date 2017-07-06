@@ -1,18 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import HeaderSearch from '../../container/header/HeaderSearch.js'
-import NavLinks from '../../container/header/NavLinks'
-import UserLinks from '../../container/header/UserLinks'
+import HeaderSearch from '../../containers/header/HeaderSearch.js'
+import NavLinks from '../../containers/header/NavLinks'
+import UserLinks from '../../containers/header/UserLinks'
 import style from './Header.scss'
 
 let navId = 1, userId = 1
 const links =  {
-  navLinks: {
-    '1': { id: navId++, name: 'Pull requests', url: '/pulls', category: 'nav' },
-    '2': { id: navId++, name: 'Issues', url: '/issues' },
-    '3': { id: navId++, name: 'Gist', url: '/gist' }
-  },
+  navLinks: [
+    { id: navId++, name: 'Pull requests', url: '/pulls', category: 'nav' },
+    { id: navId++, name: 'Issues', url: '/issues' },
+    { id: navId++, name: 'Gist', url: '/gist' }
+  ],
   userLinks: [
     { id: userId++, name: 'Noti', url: '/notifications', tips: 'You have unread notifications', dropdownId: null },
     { id: userId++, name: 'Repo', url: null, tips: 'Create new...', dropdownId: 'repoDropdown' },

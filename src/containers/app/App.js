@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux'
 
-import Header from '../components/header'
-import Body from '../components/body'
+import Header from '../../components/header/Header'
+import Body from '../body'
 import style from './App.scss'
 
 export class App extends Component {

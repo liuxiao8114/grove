@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { selectedDropdown } from '/src/actions'
+import { selectedDropdown } from '../../actions'
 
 import HeaderLink from '../../components/header/HeaderLink'
 import DropdownLink from '../../components/header/DropdownLink'
@@ -22,23 +22,29 @@ const dropdowns =  {
  ]
 }
 
-const UserLinks = ({ links, onClick, selectedDropdown = null }) => {
-  return (
-    <ul id="user-links" className={style['user-nav']}>
-      {links.map(link => {
-        if(link.dropdownId)
-          return (<DropdownLink key={link.name} link={dropdowns[link.dropdownId]}
-            onClick={() => onClick(link.dropdownId)}
-            isDisplay={ selectedDropdown && selectedDropdown.id === link.dropdownId}/>)
-        return (<HeaderLink key={link.name} link={link}/>)
-      })}
-    </ul>
-  )
+//const UserLinks = ({ links, onClick, selectedDropdown = null }) => {
+export class UserLinks extends Component {
+  render() {
+    const { links, onClick, selectedDropdown = null } = this.props
+    return (
+      <ul id="user-links" className={style['user-nav']}>
+        {links && links.map(link => {
+          if(link.dropdownId) {
+            console.log('drodown id: ' + link.dropdownId)
+              return (<DropdownLink key={link.id} link={dropdowns[link.dropdownId]}
+                onClick={() => onClick(link.dropdownId)}
+                isDisplay={selectedDropdown && selectedDropdown.id === link.dropdownId}/>)
+          }
+          return (<HeaderLink key={link.id} link={link}/>)
+        })}
+      </ul>
+    )
+  }
 }
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    links: ownProps.userLinks,
+    links: ownProps.links,
     selectedDropdown: state.selectedDropdown
   }
 }

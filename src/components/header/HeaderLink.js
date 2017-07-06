@@ -15,10 +15,10 @@ export default class HeaderLink extends React.Component {
   }
 
   render() {
-    const { name, link } = this.props.item
+    const { name, url } = this.props.item
     return (
       <div className={style['header-nav-item']}>
-        <Link to={link} className={style['header-nav-link']} onClick={this.handleClick}>{name}</Link>
+        <Link to={url} className={style['header-nav-link']} onClick={this.handleClick}>{name}</Link>
       </div>
     )
   }

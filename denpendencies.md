@@ -18,3 +18,9 @@ cnpm install --save-dev redux-devtools-dock-monitor
 cnpm install --save normalizr
 
 cnpm install --save-dev mocha chai expect sinon
+
+//fix unit test to ignore scss
+cnpm install --save-dev ignore-styles
+
+//fix object rest-spread compile(need to add plugin in .babelrc)
+cnpm install --save-dev babel-plugin-transform-object-rest-spread

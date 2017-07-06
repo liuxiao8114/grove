@@ -1,12 +1,12 @@
 import React from 'react'
 
-import Dropdown from './dropdown/Dropdown'
+import Dropdown from './Dropdown'
 import tooltipStyle from './Tooltipped.scss'
-import style from './dropdown.scss'
+import style from './DropdownLink.scss'
 
 const USER_CONFIG = 'User'
 
-export const DropdownLink = ({ item, onClick, isDisplay }) => {
+const DropdownLink = ({ item, onClick, isDisplay }) => {
   const { name, tips, content } = item
 
   return (
@@ -20,3 +20,5 @@ export const DropdownLink = ({ item, onClick, isDisplay }) => {
     </div>
   )
 }
+
+export default DropdownLink

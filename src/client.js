@@ -1,12 +1,20 @@
+import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
-import ThinkReact from './components/app/ThinkReact'
+import { browserHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+import configureStore from './store/configureStore'
+import Foo from './containers/Root'
+
+//import ThinkReact from './components/app/ThinkReact'
 //import App from './components/app/App'
-import Root from './routes'
+
+const store = configureStore()
+const history = syncHistoryWithStore(browserHistory, store)
 
 function run() {
   console.log('The client is run!');  //eslint-disable-line
-  render(<Root/>, document.getElementById('app')) //Error!
+  render(<Foo store={store} history={history}/>, document.getElementById('app')) //Error!
   /*
   const PRODUCTS = [
     {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},

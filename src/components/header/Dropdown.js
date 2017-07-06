@@ -1,6 +1,6 @@
 import React from 'react'
 
-import DropdownItem from '../dropdownItem/DropdownItem'
+import DropdownItem from './DropdownItem'
 import style from './Dropdown.scss'
 
 const USER_NAME = 'username'
