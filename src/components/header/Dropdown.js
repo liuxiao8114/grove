@@ -5,7 +5,7 @@ import style from './Dropdown.scss'
 
 const USER_NAME = 'username'
 
-const Dropdown = ({ items, dropdownDisplay, handleClick }) => {
+const Dropdown = ({ items, dropdownDisplay }) => {
   let rows = []
   let lastCategory = null, dividerNo = 1
   const renderItem = item => {

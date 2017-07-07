@@ -6,9 +6,7 @@ import style from './DropdownLink.scss'
 
 const USER_CONFIG = 'User'
 
-const DropdownLink = ({ item, onClick, isDisplay }) => {
-  const { name, tips, content } = item
-
+const DropdownLink = ({ link, name, tips = '', onClick, isDisplay = false }) => {
   return (
     <div className={style['dropdown']}>
       <div className={style['header-nav-link'] + ' '
@@ -16,7 +14,7 @@ const DropdownLink = ({ item, onClick, isDisplay }) => {
         aria-label={tips} onClick={onClick}>
         {name}
       </div>
-      <Dropdown items={content} isDisplay={isDisplay}/>
+      <Dropdown items={link} dropdownDisplay={isDisplay}/>
     </div>
   )
 }

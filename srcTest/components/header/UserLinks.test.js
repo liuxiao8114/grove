@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 
 import { UserLinks } from '../../../src/containers/header/UserLinks'
 import HeaderLink from '../../../src/components/header/HeaderLink'
-import DropdownLink from '../../../src/components/header/HeaderLink'
+import DropdownLink from '../../../src/components/header/DropdownLink'
 
 describe('<UserLinks/>', () => {
   it('should only render itself when no link', () => {
@@ -24,7 +24,7 @@ describe('<UserLinks/>', () => {
       onClick: sinon.spy(),
       selectedDropdown: null
     }
-    const subComponentsWrapper = shallow(<UserLinks {...props}/>).find('ul').children()
+    const subComponentsWrapper = shallow(<UserLinks {...props}/>).find('#user-links').children()
     expect(subComponentsWrapper.length).to.equal(2)
     expect(subComponentsWrapper.find(HeaderLink).length).to.equal(2)
   })
@@ -40,11 +40,11 @@ describe('<UserLinks/>', () => {
       onClick: sinon.spy(),
       selectedDropdown: null
     }
-    const subComponentsWrapper = shallow(<UserLinks {...props}/>).find('ul').children()
-    expect(subComponentsWrapper.length).to.equal(3)
-    const dropdownLinksWrapper = subComponentsWrapper.find(DropdownLink)
+    const wrapper = shallow(<UserLinks {...props}/>)
+    expect(wrapper.children().length).to.equal(3)
+    const dropdownLinksWrapper = wrapper.find(DropdownLink)
     expect(dropdownLinksWrapper).to.have.length(2)
 //    dropdownLinksWrapper.find('[key=1]').simulate('click')
-//    expect()
+//    expect(props.onClick.calledOnce).to.be.true
   })
 })
