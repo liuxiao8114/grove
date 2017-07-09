@@ -17,8 +17,8 @@ const config = {
     rules: [
       {
         test: /.\jsx?$/,
-        exclude: '/node_modules',
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        exclude: path.resolve(ROOT_PATH,'node_modules/')
       },{
         test: /\.scss$/,
         use: [
