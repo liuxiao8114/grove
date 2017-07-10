@@ -11,7 +11,7 @@ export const selectedDropdown = id => {
   }
 }
 
-const resetBodyModal = () => {
+export const resetBodyModal = () => {
   return {
     type: RESET_BODY_MODAL
   }
