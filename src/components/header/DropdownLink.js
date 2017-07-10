@@ -1,12 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-import Dropdown from './Dropdown'
+import Dropdown from '../../containers/header/Dropdown'
 import tooltipStyle from './Tooltipped.scss'
 import style from './DropdownLink.scss'
 
 const USER_CONFIG = 'User'
 
-const DropdownLink = ({ link, name, tips = '', onClick, isDisplay = false }) => {
+const DropdownLink = ({ link, name, tips = '', onClick }) => {
   return (
     <div className={style['dropdown']}>
       <div className={style['header-nav-link'] + ' '
@@ -14,7 +15,7 @@ const DropdownLink = ({ link, name, tips = '', onClick, isDisplay = false }) => 
         aria-label={tips} onClick={onClick}>
         {name}
       </div>
-      <Dropdown items={link} dropdownDisplay={isDisplay}/>
+      <Dropdown items={link} />
     </div>
   )
 }

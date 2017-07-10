@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
 import DropdownLink from '../../../src/components/header/DropdownLink'
-import Dropdown from '../../../src/components/header/Dropdown'
+import Dropdown from '../../../src/containers/header/Dropdown'
 
 describe('<DropdownLink/>', () => {
   it('should render itself when userDropdown', () => {
@@ -12,8 +12,7 @@ describe('<DropdownLink/>', () => {
       link: 'userLinks',
       name: 'user',
       tips: '',
-      onClick: sinon.spy(),
-      isDisplay: false
+      onClick: sinon.spy()
     }
     const wrapper = shallow(<DropdownLink {...props}/>),
           parentDivWrapper = wrapper.children(),

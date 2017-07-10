@@ -18,7 +18,7 @@ const resetBodyModal = () => {
 }
 
 //Deprecated, should rewrite in reducer
-export const hideBodyModal = () => (dispatch, getState) => {
+const hideBodyModal = () => (dispatch, getState) => {
   const selectedDropdown = getState().selectedDropdown
   if(!selectedDropdown) return null
   return dispatch(resetBodyModal(selectedDropdown.id))

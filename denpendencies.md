@@ -13,7 +13,7 @@ cnpm i --save-dev react-test-renderer
 
 cnpm install --save-dev redux-devtools
 cnpm install --save-dev redux-devtools-log-monitor
-cnpm install --save-dev redux-devtools-dock-monitor
+npm install --save-dev redux-devtools-dock-monitor@1.2.0
 
 cnpm install --save normalizr
 

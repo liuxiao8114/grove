@@ -7,8 +7,10 @@ import DevTools from './DevTools'
 
 const Root = ({ store, history }) => (
   <Provider store={store}>
-    <Router routes={routes} history={history}/>
-    <DevTools/>
+    <div>
+      <Router routes={routes} history={history}/>
+      <DevTools/>
+    </div>
   </Provider>
 )
 

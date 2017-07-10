@@ -9,14 +9,14 @@ import style from './Header.scss'
 let navId = 1, userId = 1
 const links =  {
   navLinks: [
-    { id: navId++, name: 'Pull requests', url: '/pulls', category: 'nav' },
-    { id: navId++, name: 'Issues', url: '/issues' },
-    { id: navId++, name: 'Gist', url: '/gist' }
+    { id: 'navLinks_' + navId++, name: 'Pull requests', url: '/pulls', category: 'nav' },
+    { id: 'navLinks_' + navId++, name: 'Issues', url: '/issues' },
+    { id: 'navLinks_' + navId++, name: 'Gist', url: '/gist' }
   ],
   userLinks: [
-    { id: userId++, name: 'Noti', url: '/notifications', tips: 'You have unread notifications', dropdownId: null },
-    { id: userId++, name: 'Repo', url: null, tips: 'Create new...', dropdownId: 'repoDropdown' },
-    { id: userId++, name: 'User', url: null, tips: 'View profile and more', dropdownId: 'userDropdown' }
+    { id: 'userLinks_' + userId++, name: 'Noti', url: '/notifications', tips: 'You have unread notifications', dropdownId: null },
+    { id: 'userLinks_' + userId++, name: 'Repo', url: null, tips: 'Create new...', dropdownId: 'repoDropdown' },
+    { id: 'userLinks_' + userId++, name: 'User', url: null, tips: 'View profile and more', dropdownId: 'userDropdown' }
   ]
 }
 

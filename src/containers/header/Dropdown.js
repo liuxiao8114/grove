@@ -1,11 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-import DropdownItem from './DropdownItem'
+import DropdownItem from '../../components/header/DropdownItem'
 import style from './Dropdown.scss'
 
 const USER_NAME = 'username'
 
-const Dropdown = ({ items, dropdownDisplay }) => {
+const Dropdown = ({ items, dropdownDisplay = false}) => {
   let rows = []
   let lastCategory = null, dividerNo = 1
   const renderItem = item => {
@@ -38,4 +39,8 @@ const Dropdown = ({ items, dropdownDisplay }) => {
   )
 }
 
-export default Dropdown
+const mapStateToProps = (state, ownProps) => ({
+  dropdownDisplay: state.selectedDropdown && (state.selectedDropdown === ownProps.items[0].id.slice(0, -2))
+})
+
+export default connect(mapStateToProps)(Dropdown)

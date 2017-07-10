@@ -8,8 +8,7 @@ import style from './index.scss'
 export class Body extends React.Component {
 
   render() {
-    const { isBodyModalDisplay, content, hideBodyModal } = this.props
-
+    const { isBodyModalDisplay = false, content, hideBodyModal } = this.props
     return (
       <div>
         <div className={isBodyModalDisplay ? style['modal-active'] : style['modal-backdrop']}

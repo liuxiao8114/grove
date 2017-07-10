@@ -11,23 +11,23 @@ let udropdownID = 0, rDropdownId = 0
 
 const dropdowns =  {
  userDropdown: [
-   { id: udropdownID++, category: 'username', name: 'liuxiao8114' },
-   { id: udropdownID++, category: 'userItems', name: 'Your profile', url: '/profile' },
-   { id: udropdownID++, category: 'userItems', name: 'Your stars', url: '/stars' },
-   { id: udropdownID++, category: 'userItems', name: 'Explore', url: '/explore' },
-   { id: udropdownID++, category: 'systemItems', name: 'Setting', url: '/setting' }
+   { id: 'userDropdown_' + udropdownID++, category: 'username', name: 'liuxiao8114' },
+   { id: 'userDropdown_' + udropdownID++, category: 'userItems', name: 'Your profile', url: '/profile' },
+   { id: 'userDropdown_' + udropdownID++, category: 'userItems', name: 'Your stars', url: '/stars' },
+   { id: 'userDropdown_' + udropdownID++, category: 'userItems', name: 'Explore', url: '/explore' },
+   { id: 'userDropdown_' + udropdownID++, category: 'systemItems', name: 'Setting', url: '/setting' }
  ],
  repoDropdown: [
-   { id: rDropdownId++, category: 'repository', name: 'New repository', url: '/new' },
-   { id: rDropdownId++, category: 'repository', name: 'Import repository', url: '/import' },
-   { id: rDropdownId++, category: 'repository', name: 'New gist', url: '/gist' }
+   { id: 'repoDropdown_' + rDropdownId++, category: 'repository', name: 'New repository', url: '/new' },
+   { id: 'repoDropdown_' + rDropdownId++, category: 'repository', name: 'Import repository', url: '/import' },
+   { id: 'repoDropdown_' + rDropdownId++, category: 'repository', name: 'New gist', url: '/gist' }
  ]
 }
 
 //const UserLinks = ({ links, onClick, selectedDropdown = null }) => {
 export class UserLinks extends Component {
   render() {
-    const { links, onClick, selectedDropdown = null } = this.props
+    const { links, onClick } = this.props
     return (
       <ul id="user-links" className={style['user-nav']}>
         {links && links.map(link => {
@@ -37,20 +37,12 @@ export class UserLinks extends Component {
               name= {link.name}
               tips={link.tips}
               link={dropdowns[link.dropdownId]}
-              onClick={() => onClick(link.dropdownId)}
-              isDisplay={selectedDropdown && selectedDropdown.id === link.dropdownId}/>)
+              onClick={() => onClick(link.dropdownId)}/>)
           }
           return (<HeaderLink key={link.id} item={link}/>)
         })}
       </ul>
     )
-  }
-}
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-    links: ownProps.links,
-    selectedDropdown: state.selectedDropdown
   }
 }
 
@@ -62,4 +54,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserLinks)
+export default connect(null, mapDispatchToProps)(UserLinks)
