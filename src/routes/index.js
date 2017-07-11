@@ -4,8 +4,28 @@ import App from '../containers/app/App'
 import Entry from '../containers/body/entry'
 import Profile from '../containers/body/profile'
 import Stars from '../containers/body/stars'
+import Settings from '../containers/body/settings'
 
-export default
+const routes = {
+  path: '/',
+  component: App,
+  indexRoute: { component: Entry },
+  childRoutes: [
+    { path: 'profile', component: Profile },
+    { path: 'stars', component: Stars },
+    { path: 'settings',
+      component: Settings,
+      childRoutes: [
+        { path: 'profile' },
+        { path: 'admin' },
+        { path: 'emails' }
+      ]
+    }
+  ]
+}
+
+export default routes
+/*
 <Route path="/" component={App}>
   <IndexRoute component={Entry}/>
   <Route path="profile" component={Profile}></Route>
@@ -14,4 +34,14 @@ export default
   <Route path="gist"></Route>
   <Route path="stars" component={Stars}></Route>
   <Route path="/:username"></Route>
+  <Route path="/settings" component={Settings}>
+    <IndexRoute path="profile" component={}></IndexRoute>
+    <Route path="admin"></Route>
+    <Route path="emails"></Route>
+  </Route>
+  <Route component={Settings}>
+    <Route path="admin"></Route>
+    <Route path="emails"></Route>
+  </Route>
 </Route>
+*/
