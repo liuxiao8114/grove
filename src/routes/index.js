@@ -1,10 +1,12 @@
 import React from 'react';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Route, IndexRoute } from 'react-router'
 import App from '../containers/app/App'
 import Entry from '../containers/body/entry'
 import Profile from '../containers/body/profile'
 import Stars from '../containers/body/stars'
+
 import Settings from '../containers/body/settings'
+import SettingProfile from ''
 
 const routes = {
   path: '/',
@@ -15,8 +17,8 @@ const routes = {
     { path: 'stars', component: Stars },
     { path: 'settings',
       component: Settings,
+      indexRoute: { path: 'profile', component: SettingProfile },
       childRoutes: [
-        { path: 'profile' },
         { path: 'admin' },
         { path: 'emails' }
       ]

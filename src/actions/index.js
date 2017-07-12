@@ -17,13 +17,6 @@ export const resetBodyModal = () => {
   }
 }
 
-//Deprecated, should rewrite in reducer
-const hideBodyModal = () => (dispatch, getState) => {
-  const selectedDropdown = getState().selectedDropdown
-  if(!selectedDropdown) return null
-  return dispatch(resetBodyModal(selectedDropdown.id))
-}
-
 // TODO: async fetch and use Github API
 export const repoSearch = text => (dispatch, getState) => {
   const repos = getState().pagination
@@ -42,4 +35,10 @@ export const codeSearch = {
 // TODO: async fetch and use Github API
 export const userSearch = {
 
+}
+
+export const selectedSettings = name => {
+  return {
+    
+  }
 }

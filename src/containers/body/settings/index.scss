@@ -12,6 +12,10 @@
   width: 980px;
 }
 
+.settings-container {
+  composes: page-content container;
+}
+
 .col-3 {
   width: 25%;
 }
@@ -59,4 +63,17 @@ a {
   border-bottom: 1px solid #e1e4e8;
   display: block;
   padding: 8px 10px;
+}
+
+.menu-item-selected::before {
+  background-color: #e36209;
+
+
+}
+
+.menu-item-selected {
+  composes: menu-item;
+  background-color: #fff;
+  color: #24292e;
+  cursor: default;
 }
