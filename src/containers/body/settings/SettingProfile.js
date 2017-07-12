@@ -13,7 +13,6 @@ class SettingsProfile extends Component {
       <div class="subhead mt-0 mb-0">
         <h2 class="subhead-heading">Public Profile</h2>
       </div>
-      
     )
   }
 }
