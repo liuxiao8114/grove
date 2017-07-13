@@ -6,7 +6,7 @@ import Profile from '../containers/body/profile'
 import Stars from '../containers/body/stars'
 
 import Settings from '../containers/body/settings'
-import SettingProfile from ''
+import SettingProfile from '../containers/body/settings/SettingProfile'
 
 const routes = {
   path: '/',

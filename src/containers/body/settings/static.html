@@ -24,15 +24,15 @@
             <label for="">Name</label>
           </dt>
           <dd>
-            <input type="text" class="form-control" id="" name="user_profile_name">
+            <input type="text" class="form-control" id="user_profile_name" name="user[profile_name]" />
           </dd>
         </dl>
         <dl class="form-group">
           <dt>
-            <label for="user_profile_bio">Public email</label>
+            <label for="user_profile_email">Public email</label>
           </dt>
           <dd>
-            <select name="" id="" class="form-select select">
+            <select name="user[profile_email]" id="user_profile_email" class="form-select select">
               <option value="">Select a varified email to display</option>
               <option value="">liuxiao8114@163.com</option>
               <option value="">1042443484@qq.com</option>
@@ -44,12 +44,25 @@
             <label for="">Bio</label>
           </dt>
           <dd>
-            <textarea></textarea>
+            <textarea id="" class="form-control"></textarea>
             <p class="note"></p>
           </dd>
         </dl>
-        <dl class="form-group"></dl>
-        <dl class="form-group"></dl>
+        <dl class="form-group">
+          <dt>
+            <label for="user_profile_blog">URL</label>
+          </dt>
+          <dd>
+            <input id="user_profile_blog" name="user[profile_blog]" size="30" type="url" />
+          </dd>
+        </dl>
+        <hr />
+        <dl class="form-group">
+          
+        </dl>
+        <p>
+          <button class="btn btn-primary" type="submit"></button>
+        </p>
       </div>
     </form>
   </div>
