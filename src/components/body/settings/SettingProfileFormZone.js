@@ -1,3 +1,4 @@
+/*
 <dl class="form-group">
   <dt>
     <label for="user_profile_name">Name</label>
@@ -42,3 +43,4 @@
 <p>
   <button class="btn btn-primary" type="submit"></button>
 </p>
+*/

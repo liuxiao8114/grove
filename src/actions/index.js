@@ -4,6 +4,15 @@ export const REPO_SEARCH = 'REPO_SEARCH'
 export const USER_SEARCH = 'USER_SEARCH'
 export const CODE_SEARCH = 'CODE_SEARCH'
 
+export const SIGN_IN = 'SIGN_IN'
+
+export const signIn = nameOrMail => {
+  return {
+    type: SIGN_IN,
+    nameOrMail
+  }
+}
+
 export const selectedDropdown = id => {
   return {
     type: SELECTED_DROPDOWN,
@@ -39,6 +48,6 @@ export const userSearch = {
 
 export const selectedSettings = name => {
   return {
-    
+
   }
 }

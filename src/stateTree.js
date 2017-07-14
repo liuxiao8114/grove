@@ -4,7 +4,7 @@ const state = {
       xiao: {
         login: 'xiao',
         avatarUrl: '',
-        address: ''
+        emails: []
       },
       Dan:{
 

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import { resetBodyModal } from '../../actions'
 import Header from '../../components/header/Header'
+import Login from ''
 import style from './App.scss'
 
 export class App extends Component {
@@ -12,6 +13,10 @@ export class App extends Component {
   }
 
   render() {
+    if(!this.props.login) {
+      return <Login />
+    }
+
     const { selectedDropdown = null, inputValue, resetBodyModal } = this.props
     return (
       <div>
@@ -28,6 +33,7 @@ export class App extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
+  login: state.login,
   inputValue: ownProps.location.pathname.substring(1),
   selectedDropdown: state.selectedDropdown
 })
