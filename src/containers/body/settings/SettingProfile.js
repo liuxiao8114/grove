@@ -12,9 +12,6 @@ const InputCell = (id, name, placeholder) => {
 }
 
 const SelectCell = () => {
-  return (
-
-  )
 }
 
 const TextareaCell = () => {
@@ -34,7 +31,7 @@ class SettingProfile extends Component {
         </div>
         <form action="/users/liuxiao8114" class="columns">
           <div class="column two-thirds">
-            
+
           </div>
         </form>
       </div>

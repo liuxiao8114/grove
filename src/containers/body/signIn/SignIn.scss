@@ -1,0 +1,98 @@
+.session-authentication {
+  background-color: #f9f9f9;
+}
+
+.auth-form {
+  margin: 0 auto;
+  width: 340px;
+}
+
+.auth-form-header {
+  background-color: transparent;
+  border: 0 none;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+  text-shadow: none;
+}
+
+.auth-form-body {
+   border-top: 1px solid #d8dee2;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background-color: #fff;
+  padding: 20px;
+}
+
+h1 {
+  composes: auth-form-header;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: 600;
+}
+
+.label-password {
+  display: flex;
+  justify-content:space-between;
+}
+
+.label-link {
+
+}
+
+/* need global work
+.form-control {
+  background-color: #fff;
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  border: 1px solid #d1d5da;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(27, 31, 35, 0.075) inset;
+  color: #24292e;
+  font-size: 14px;
+  line-height: 20px;
+  min-height: 34px;
+  outline: medium none;
+  padding: 6px 8px;
+  vertical-align: middle;
+}
+
+.form-control.focus, .form-control:focus, .form-select.focus, .form-select:focus {
+    border-color: #2188ff;
+    box-shadow: 0 1px 2px rgba(27, 31, 35, 0.075) inset, 0 0 0 0.2em rgba(3, 102, 214, 0.3);
+    outline: medium none;
+}
+*/
+
+
+.input-block {
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.btn {
+  background-color: #28a745;
+  border-radius: 0.25em;
+  border: 1px solid rgba(27, 31, 35, 0.2);
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 6px 12px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-block {
+  display: block;
+  text-align: center;
+  width: 100%;
+}

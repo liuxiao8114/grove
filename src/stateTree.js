@@ -4,6 +4,7 @@ const state = {
       xiao: {
         login: 'xiao',
         avatarUrl: '',
+        publicEmail: '',
         emails: []
       },
       Dan:{
@@ -18,6 +19,10 @@ const state = {
 
       }
     }
+  },
+
+  currentUser: {
+
   },
 
   pagination: {

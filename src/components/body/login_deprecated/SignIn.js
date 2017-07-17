@@ -17,7 +17,7 @@ class SignIn extends Component {
               <h1>Sign in to Github</h1>
             </div>
             <div className="auth-form-body mt3">
-              <div>need to be toggle(error msg)</div>
+              <div>need to be toggled(error msg)</div>
               <label for="login_field">Username or email address</label>
               <input type="text" className="form-control input-block" name="username"/>
               <label for="password" className="label-password">
@@ -35,7 +35,7 @@ class SignIn extends Component {
 }
 
 const handleSubmit = dispatch => event => {
-  
+
   dispatch()
 }
 

@@ -5,11 +5,36 @@ export const USER_SEARCH = 'USER_SEARCH'
 export const CODE_SEARCH = 'CODE_SEARCH'
 
 export const SIGN_IN = 'SIGN_IN'
+export const SIGN_IN_ERROR = 'SIGN_IN_ERROR'
 
-export const signIn = nameOrMail => {
+export const signIn = (nameOrMail, password) => {
+  const mailExp = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
+  let username, publicEmail = null
+  if(mailExp.exec(nameOrMail)) {
+    username = nameOrMail.substring(0, nameOrMail.indexOf('@'))
+    publicEmail = nameOrMail
+  } else {
+    username = nameOrMail
+  }
   return {
     type: SIGN_IN,
-    nameOrMail
+    username,
+    password,
+    publicEmail
+  }
+}
+
+export const signInError = msg => ({
+  type: SIGN_IN_ERROR,
+  msg
+})
+
+//TODO: async auth
+export const shouldFetchUser = (nameOrMail) => (dispatch, getState) => {
+  if(getState().entities.users[nameOrMail]) {
+    return
+  } else {
+    return
   }
 }
 
