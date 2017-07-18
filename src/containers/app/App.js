@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import { resetBodyModal } from '../../actions'
 import Header from '../../components/header/Header'
-import SignIn from ''
+import SignIn from '../../containers/body/signIn'
 import style from './App.scss'
 
 export class App extends Component {

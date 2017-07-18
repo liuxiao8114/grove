@@ -1,6 +1,6 @@
-import { SIGN_IN, SIGN_UP } from '../actions'
+import { SIGN_IN, SIGN_UP, SIGN_IN_ERROR } from '../actions'
 
-export const signUp = (state = {
+export const signUpUser = (state = {
   users: {
     admin: {
       username: 'admin',
@@ -23,11 +23,20 @@ export const signUp = (state = {
   return state
 }
 
-export const signIn = (state = {}, action) => {
+export const currentUser = (state = null, action) => {
   if(action.type === SIGN_IN) {
     return {
-      username: 'admin',
-      password: 1234
+      username: action.username,
+      password: action.password
+    }
+  }
+  return state
+}
+
+export const signInError = (state = null, action) => {
+  if(action.type === SIGN_IN_ERROR) {
+    return {
+      error: action.msg
     }
   }
   return state

@@ -47,21 +47,4 @@ describe('<UserLinks/>', () => {
     userWrapper.simulate('click')
     expect(props.onClick.calledOnce).to.be.true
   })
-
-  it('should display Dropdown when selected', () => {
-    let userId = 0
-    const props = {
-      links: [
-        { id: userId++, name: 'Repo', url: null, tips: 'Create new...', dropdownId: 'repoDropdown' },
-        { id: userId++, name: 'User', url: null, tips: 'View profile and more', dropdownId: 'userDropdown' }
-      ],
-      onClick: sinon.spy(),
-      selectedDropdown: 'repoDropdown'
-    }
-    const wrapper = shallow(<UserLinks {...props}/>)
-    const userDropdownWrapper = wrapper.find('[name="User"]')
-    expect(userDropdownWrapper.props().isDisplay).to.equal.false
-    const repoDropdownWrapper = wrapper.find('[name="Repo"]')
-    expect(repoDropdownWrapper.props().isDisplay).to.be.ture
-  })
 })

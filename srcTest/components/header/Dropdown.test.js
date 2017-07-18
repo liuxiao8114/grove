@@ -1,7 +1,7 @@
-import React from 'react';
-import sinon from 'sinon';
-import { expect } from 'chai';
-import { shallow } from 'enzyme';
+import React from 'react'
+import sinon from 'sinon'
+import { expect } from 'chai'
+import { shallow } from 'enzyme'
 
 import { Provider } from 'react-redux'
 
@@ -37,5 +37,12 @@ describe('<Dropdown/>', () => {
     expect(subComponentWrapper.find('div').length).to.equal(1)
     expect(subComponentWrapper.find(DropdownItem).length).to.equal(1)
 */
+  })
+
+  it('should render itself when ohters\' type of dropdown', () => {
+    const props = {
+      items: dropdowns.repoDropdown,
+      dropdownDisplay: false
+    }
   })
 })

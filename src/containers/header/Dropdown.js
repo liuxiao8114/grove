@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import DropdownItem from '../../components/header/DropdownItem'
+import { resetBodyModal } from '../../actions'
 import style from './Dropdown.scss'
 
 const USER_NAME = 'username'
@@ -20,13 +21,13 @@ const Dropdown = ({ items, dropdownDisplay = false}) => {
       )
     } else if(!lastCategory) {
       lastCategory = item.category
-      rows.push(<DropdownItem key={item.name} item={item}/>)
+      rows.push(<DropdownItem key={item.name} item={item} onClick={resetBodyModal}/>)
     } else if(lastCategory && item.category !== lastCategory) {
       lastCategory = item.category
       rows.push(<div key={dividerNo++} className={style['dropdown-divider']} />)
-      rows.push(<DropdownItem key={item.name} item={item}/>)
+      rows.push(<DropdownItem key={item.name} item={item} onClick={resetBodyModal}/>)
     } else {
-      rows.push(<DropdownItem key={item.name} item={item}/>)
+      rows.push(<DropdownItem key={item.name} item={item} onClick={resetBodyModal}/>)
     }
   }
 
@@ -39,8 +40,10 @@ const Dropdown = ({ items, dropdownDisplay = false}) => {
   )
 }
 
+const dropdownName = ownProps => ownProps.items[0].id.slice(0, -2)
+
 const mapStateToProps = (state, ownProps) => ({
-  dropdownDisplay: state.selectedDropdown && (state.selectedDropdown === ownProps.items[0].id.slice(0, -2))
+  dropdownDisplay: state.selectedDropdown && (state.selectedDropdown === dropdownName(ownProps))
 })
 
-export default connect(mapStateToProps)(Dropdown)
+export default connect(mapStateToProps, { resetBodyModal })(Dropdown)

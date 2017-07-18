@@ -15,13 +15,10 @@ describe('<DropdownLink/>', () => {
       onClick: sinon.spy()
     }
     const wrapper = shallow(<DropdownLink {...props}/>),
-          parentDivWrapper = wrapper.children(),
-          subDivWrapper = parentDivWrapper.find('div'),
           dropdownWrapperProps = wrapper.find(Dropdown).props()
-    expect(parentDivWrapper.length).to.equal(2)
-    subDivWrapper.simulate('click')
+    expect(wrapper.children().length).to.equal(2)
+    wrapper.children().find('div').simulate('click')
     expect(props.onClick.calledOnce).to.be.true
     expect(dropdownWrapperProps.items).to.equal(props.link)
-    expect(dropdownWrapperProps.dropdownDisplay).to.equal(props.isDisplay)
   })
 })

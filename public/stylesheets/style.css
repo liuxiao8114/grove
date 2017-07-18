@@ -11,5 +11,7 @@ body {
   font-size: 14px;
   line-height: 1.5;
   margin: 0;
+  min-width: 1020px;
+  overflow-wrap: break-word;
   padding: 0;
 }
