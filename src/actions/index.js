@@ -7,7 +7,7 @@ export const CODE_SEARCH = 'CODE_SEARCH'
 export const SIGN_IN = 'SIGN_IN'
 export const SIGN_IN_ERROR = 'SIGN_IN_ERROR'
 
-export const signIn = (nameOrMail = '', password = '') => {
+export const signIn = (nameOrMail, password) => {
   const mailExp = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
   let username, publicEmail = null
   if(mailExp.exec(nameOrMail)) {
@@ -16,12 +16,19 @@ export const signIn = (nameOrMail = '', password = '') => {
   } else {
     username = nameOrMail
   }
+
   return {
     type: SIGN_IN,
     username,
     password,
     publicEmail
   }
+}
+
+export const signInAsync = (nameOrMail, password) => dispatch => {
+  setTimeout(() => {
+    dispatch(signIn(nameOrMail, password))
+  }, 3000)
 }
 
 export const signInError = msg => ({

@@ -7,7 +7,7 @@ import style from './Dropdown.scss'
 
 const USER_NAME = 'username'
 
-const Dropdown = ({ items, dropdownDisplay = false}) => {
+const Dropdown = ({ items, currentUsername, dropdownDisplay = false}) => {
   let rows = []
   let lastCategory = null, dividerNo = 1
   const renderItem = item => {
@@ -16,7 +16,7 @@ const Dropdown = ({ items, dropdownDisplay = false}) => {
       rows.push(
         <div key="dropdown-header" className={style['dropdown-header']}>
           Signed in as{' '}
-          <strong className={style['css-truncate-target']}>{item.name}</strong>
+          <strong className={style['css-truncate-target']}>{currentUsername}</strong>
         </div>
       )
     } else if(!lastCategory) {
@@ -43,7 +43,8 @@ const Dropdown = ({ items, dropdownDisplay = false}) => {
 const dropdownName = ownProps => ownProps.items[0].id.slice(0, -2)
 
 const mapStateToProps = (state, ownProps) => ({
-  dropdownDisplay: state.selectedDropdown && (state.selectedDropdown === dropdownName(ownProps))
+  dropdownDisplay: state.selectedDropdown && (state.selectedDropdown === dropdownName(ownProps)),
+  currentUsername: state.currentUser.username
 })
 
 export default connect(mapStateToProps, { resetBodyModal })(Dropdown)
