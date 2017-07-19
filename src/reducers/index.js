@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import { routerReducer as routing } from 'react-router-redux'
 import { SELECTED_DROPDOWN, RESET_BODY_MODAL } from '../actions'
 
-import { signUpUser, currentUser, signInError } from './signIn'
+import { signUpUser, currentUser } from './signIn'
 
 const selectedDropdown = (state = null, action) => {
   switch(action.type) {
@@ -21,7 +21,6 @@ const rootReducer = combineReducers({
   selectedDropdown,
   signUpUser,
   currentUser,
-  signInError,
   routing
 })
 

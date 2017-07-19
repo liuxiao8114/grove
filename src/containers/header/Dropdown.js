@@ -7,7 +7,7 @@ import style from './Dropdown.scss'
 
 const USER_NAME = 'username'
 
-const Dropdown = ({ items, currentUsername, dropdownDisplay = false}) => {
+const Dropdown = ({ items, currentUsername, dropdownDisplay = false }) => {
   let rows = []
   let lastCategory = null, dividerNo = 1
   const renderItem = item => {
@@ -16,7 +16,7 @@ const Dropdown = ({ items, currentUsername, dropdownDisplay = false}) => {
       rows.push(
         <div key="dropdown-header" className={style['dropdown-header']}>
           Signed in as{' '}
-          <strong className={style['css-truncate-target']}>{currentUsername}</strong>
+          <strong className={style['css-truncate-target']}>{item.name}</strong>
         </div>
       )
     } else if(!lastCategory) {

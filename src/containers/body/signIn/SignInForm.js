@@ -2,21 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux'
 
-import { signIn, signInError } from '../../../actions'
+import { signInAsync, signInError } from '../../../actions'
 import style from './SignInForm.scss'
 
 export class SignInForm extends Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    if(!this.nameInput || !this.passInput) {
-      return
-    }
-
     if(!this.nameInput.value.trim() || !this.passInput.value.trim()) {
       this.props.dispatch(signInError('no empty!'))
     } else {
-      this.props.dispatch(signIn(this.nameInput, this.passInput))
+      this.props.dispatch(signInAsync(this.nameInput, this.passInput))
       this.nameInput.value = ''
       this.passInput.value = ''
     }
@@ -58,11 +54,15 @@ export class SignInForm extends Component {
             defaultValue=""
             ref={input => this.passInput = input}
             onKeyUp={this.handleKeyUp.bind(this)} />
-          <input type="submit" className={style['btn']} value="Sign in" tabIndex="3"/>
+            <input type="submit" className={style['btn']} value={this.props.isFetching ? 'SignIning...' : 'Sign in'} tabIndex="3"/>
         </div>
       </form>
     )
   }
 }
 
-export default connect()(SignInForm)
+const mapStateToProps = state => ({
+  isFetching: state.currentUser.isFetching
+})
+
+export default connect(mapStateToProps)(SignInForm)

@@ -1,4 +1,4 @@
-import { SIGN_IN, SIGN_UP, SIGN_IN_ERROR } from '../actions'
+import { SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_ERROR, SIGN_UP } from '../actions'
 
 export const signUpUser = (state = {
   users: {
@@ -23,17 +23,35 @@ export const signUpUser = (state = {
   return state
 }
 
-export const currentUser = (state = null, action) => {
-  if(action.type === SIGN_IN) {
-    return {
-      username: action.username,
-      password: action.password
+export const currentUser = (state = {}, action) => {
+  switch (action.type) {
+    case SIGN_IN_REQUEST: {
+      return {
+        ...state,
+        isFetching: true
+      }
     }
+    case SIGN_IN_SUCCESS: {
+      return {
+        ...state,
+        username: action.username,
+        password: action.password,
+        isFetching: false,
+        error: null
+      }
+    }
+    case SIGN_IN_ERROR: {
+      return {
+        isFetching: false,
+        error: action.msg
+      }
+    }
+    default:
+      return state
   }
-  return state
 }
 
-export const signInError = (state = null, action) => {
+const signInError = (state = null, action) => {
   if(action.type === SIGN_IN_ERROR) {
     return {
       error: action.msg

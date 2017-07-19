@@ -4,10 +4,17 @@ export const REPO_SEARCH = 'REPO_SEARCH'
 export const USER_SEARCH = 'USER_SEARCH'
 export const CODE_SEARCH = 'CODE_SEARCH'
 
-export const SIGN_IN = 'SIGN_IN'
+export const SIGN_IN_REQUEST = 'SIGN_IN_REQUEST'
+export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS'
 export const SIGN_IN_ERROR = 'SIGN_IN_ERROR'
 
-export const signIn = (nameOrMail, password) => {
+const signInRequest = () => {
+  return {
+    type: SIGN_IN_REQUEST
+  }
+}
+
+const signInSuccess = (nameOrMail, password) => {
   const mailExp = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/
   let username, publicEmail = null
   if(mailExp.exec(nameOrMail)) {
@@ -18,23 +25,32 @@ export const signIn = (nameOrMail, password) => {
   }
 
   return {
-    type: SIGN_IN,
+    type: SIGN_IN_SUCCESS,
     username,
     password,
     publicEmail
   }
 }
 
-export const signInAsync = (nameOrMail, password) => dispatch => {
-  setTimeout(() => {
-    dispatch(signIn(nameOrMail, password))
-  }, 3000)
-}
+
 
 export const signInError = msg => ({
   type: SIGN_IN_ERROR,
   msg
 })
+
+
+export const signInAsync = (nameOrMail, password) => dispatch => {
+  dispatch(signInRequest())
+  try {
+    setTimeout(() => {
+      dispatch(signInSuccess(nameOrMail, password))
+    }, 3000)
+  } catch (e) {
+    dispatch(signInError(e))
+  }
+}
+
 
 //TODO: async auth
 export const shouldFetchUser = (nameOrMail) => (dispatch, getState) => {

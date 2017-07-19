@@ -1,5 +1,22 @@
 ###[redux]
-1. redux-thunk 源码
+1. redux-thunk的两个问题
+
+```js
+//actions.js
+const fetchUser = login => ({
+  [CALL_API]: {
+    types: [ USER_REQUEST, USER_SUCCESS, USER_FAILURE ],
+    endpoint: `/users/${login}`,
+    schema: userSchema
+  }
+})
+
+//middleware api
+const api = ({ dispatch, getState }) => next => action => {
+  if(action[CALL_API])
+}
+```
+
 
 2. 为什么异步处理一定是function类型的action?
 

@@ -13,7 +13,7 @@ export class App extends Component {
   }
 
   render() {
-    if(!this.props.currentUser) {
+    if(!this.props.currentUser.username) {
       return <SignIn />
     }
 
