@@ -1,3 +1,5 @@
+import { } from '../middleware/fetchAPI'
+
 export const RESET_BODY_MODAL = 'RESET_BODY_MODAL'
 export const SELECTED_DROPDOWN = 'SELECTED_DROPDOWN'
 export const REPO_SEARCH = 'REPO_SEARCH'
@@ -27,18 +29,15 @@ const signInSuccess = (nameOrMail, password) => {
   return {
     type: SIGN_IN_SUCCESS,
     username,
-    password,
-    publicEmail
+    password: password,
+    publicEmail: publicEmail
   }
 }
-
-
 
 export const signInError = msg => ({
   type: SIGN_IN_ERROR,
   msg
 })
-
 
 export const signInAsync = (nameOrMail, password) => dispatch => {
   dispatch(signInRequest())
@@ -51,8 +50,7 @@ export const signInAsync = (nameOrMail, password) => dispatch => {
   }
 }
 
-
-//TODO: async auth
+//TODO: async auth, this needs server to hold the session
 export const shouldFetchUser = (nameOrMail) => (dispatch, getState) => {
   if(getState().entities.users[nameOrMail]) {
     return
@@ -75,12 +73,12 @@ export const resetBodyModal = () => {
 }
 
 // TODO: async fetch and use Github API
-export const repoSearch = text => (dispatch, getState) => {
+export const repoSearch = keyword => (dispatch, getState) => {
   const repos = getState().pagination
   return {
     type: REPO_SEARCH,
     endpoint: `/repository_search`,
-    text
+    keyword
   }
 }
 

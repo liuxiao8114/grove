@@ -8,13 +8,15 @@ import style from './SignInForm.scss'
 export class SignInForm extends Component {
   handleSubmit(e) {
     e.preventDefault()
+    let username = this.nameInput.value,
+        password = this.passInput.value
 
-    if(!this.nameInput.value.trim() || !this.passInput.value.trim()) {
+    if(!username.trim() || !password.trim()) {
       this.props.dispatch(signInError('no empty!'))
     } else {
-      this.props.dispatch(signInAsync(this.nameInput, this.passInput))
-      this.nameInput.value = ''
-      this.passInput.value = ''
+      this.props.dispatch(signInAsync(username, password))
+      username = ''
+      password = ''
     }
   }
 

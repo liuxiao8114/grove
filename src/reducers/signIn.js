@@ -33,7 +33,6 @@ export const currentUser = (state = {}, action) => {
     }
     case SIGN_IN_SUCCESS: {
       return {
-        ...state,
         username: action.username,
         password: action.password,
         isFetching: false,

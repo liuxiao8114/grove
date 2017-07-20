@@ -22,7 +22,9 @@ const state = {
   },
 
   currentUser: {
-
+    username: '',
+    password: '',
+    error: null
   },
 
   pagination: {
@@ -41,6 +43,9 @@ const state = {
 
     }
   },
-  inputSearchValue: 'xiao',
+  searchBar: {
+    status: 'thisRepo',
+    inputSearchValue: 'xiao'
+  },
   selectedDropdown: null
 }

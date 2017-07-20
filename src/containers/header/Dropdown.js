@@ -16,7 +16,7 @@ const Dropdown = ({ items, currentUsername, dropdownDisplay = false }) => {
       rows.push(
         <div key="dropdown-header" className={style['dropdown-header']}>
           Signed in as{' '}
-          <strong className={style['css-truncate-target']}>{item.name}</strong>
+          <strong className={style['css-truncate-target']}>{currentUsername}</strong>
         </div>
       )
     } else if(!lastCategory) {

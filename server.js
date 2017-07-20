@@ -10,7 +10,6 @@ import webpackConfig from './webpack.config';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
-// console.log('clientConfig : ' + webpackConfig);
 var app = express();
 //const clientConfig = webpackConfig.find(x => x.target === 'web')
 
