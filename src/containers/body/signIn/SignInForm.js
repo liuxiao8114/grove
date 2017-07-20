@@ -56,7 +56,10 @@ export class SignInForm extends Component {
             defaultValue=""
             ref={input => this.passInput = input}
             onKeyUp={this.handleKeyUp.bind(this)} />
-            <input type="submit" className={style['btn']} value={this.props.isFetching ? 'SignIning...' : 'Sign in'} tabIndex="3"/>
+            <input type="submit" className={style['btn']}
+              value={this.props.isFetching ? 'SignIning...' : 'Sign in'}
+              disabled={!this.props.isFetching}
+              tabIndex="3"/>
         </div>
       </form>
     )
