@@ -1,4 +1,4 @@
-import { } from '../middleware/fetchAPI'
+import { CALL_API } from '../middleware/fetchAPI'
 
 export const RESET_BODY_MODAL = 'RESET_BODY_MODAL'
 export const SELECTED_DROPDOWN = 'SELECTED_DROPDOWN'
@@ -72,18 +72,30 @@ export const resetBodyModal = () => {
   }
 }
 
-// TODO: async fetch and use Github API
-export const repoSearch = keyword => (dispatch, getState) => {
-  const repos = getState().pagination
-  return {
+const fetchRepoSearch = (keyword, nextPageUrl) => ({
+  [CALL_API]: {
     type: REPO_SEARCH,
-    endpoint: `/repository_search`,
-    keyword
+    endpoint: `/search/repositories?q=${keyword}&p=1`,
+    schema: ''
   }
+})
+
+// TODO: async fetch and use Github API
+export const loadRepoSearch = (keyword, nextPage) => (dispatch, getState) => {
+  const {
+    nextPageUrl = `/search/repositories?q=${keyword}`,
+    pageCount = 0
+  } = getState().pagination.repoSearch[keyword] || {}
+
+  if(pageCount > 0 && !nextPage) {
+    return null
+  }
+
+  return fetchRepoSearch(keyword, nextPageUrl)
 }
 
 // TODO: async fetch and use Github API
-export const codeSearch = {
+export const loadCodeSearch = (keyword, nextPage) => (dispatch, getState) => {
 
 }
 
