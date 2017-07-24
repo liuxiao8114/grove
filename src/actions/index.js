@@ -1,4 +1,4 @@
-import { CALL_API } from '../middleware/fetchAPI'
+import { SEARCH_API, Schemas } from '../middleware/fetchAPI'
 
 export const RESET_BODY_MODAL = 'RESET_BODY_MODAL'
 export const SELECTED_DROPDOWN = 'SELECTED_DROPDOWN'
@@ -73,10 +73,10 @@ export const resetBodyModal = () => {
 }
 
 const fetchRepoSearch = (keyword, nextPageUrl) => ({
-  [CALL_API]: {
+  [SEARCH_API]: {
     type: REPO_SEARCH,
-    endpoint: `/search/repositories?q=${keyword}&p=1`,
-    schema: ''
+    endpoint: nextPageUrl,
+    schema: Schemas.REPO
   }
 })
 
@@ -91,7 +91,7 @@ export const loadRepoSearch = (keyword, nextPage) => (dispatch, getState) => {
     return null
   }
 
-  return fetchRepoSearch(keyword, nextPageUrl)
+  return dispatch(fetchRepoSearch(keyword, nextPageUrl))
 }
 
 // TODO: async fetch and use Github API
