@@ -12,7 +12,8 @@ const repoSchema = new schema.Entity('repo', {
 
 export const Schemas = {
   USER: userSchema,
-  REPO: repoSchema
+  REPO: repoSchema,
+  REPO_SEARCH_RESULTS: [repoSchema]
 }
 
 export const FETCH_API = 'FETCH_API'
@@ -20,7 +21,7 @@ export const FETCH_API = 'FETCH_API'
 const getNextUrl = response => {
   /*
   Link: <https://api.github.com/user/repos?page=3&per_page=100>; rel="next",
-  <https://api.github.com/user/repos?page=50&per_page=100>; rel="last"
+        <https://api.github.com/user/repos?page=50&per_page=100>; rel="last"
   */
 
   const link = response.header.get('link')

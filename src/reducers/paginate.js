@@ -1,0 +1,5 @@
+const updatePaginate = (state = {
+  
+}, action) => {
+
+}
