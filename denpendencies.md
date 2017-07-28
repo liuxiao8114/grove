@@ -24,3 +24,7 @@ cnpm install --save-dev ignore-styles
 
 //fix object rest-spread compile(need to add plugin in .babelrc)
 cnpm install --save-dev babel-plugin-transform-object-rest-spread
+
+
+"test": "mocha \"srcTest/**/*.test.js\" --compilers js:babel-register --require ignore-styles"
+"test": "mocha \"src/lexical/es6.test.js\" --compilers js:babel-register --require ignore-styles"

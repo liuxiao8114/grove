@@ -5,7 +5,9 @@ let jQuery = (selector, context) => {
 }
 
 let init = jQuery.fn.init = (selector, context) => {
-
+  if(selector.match()) {
+    
+  }
 }
 
 init.prototype = jQuery.fn = jQuery.prototype = {
