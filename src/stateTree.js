@@ -13,9 +13,14 @@ const state = {
     },
     repos: {
       grove: {
-
+        name: 'grove',
+        full_name: 'liuxiao/grove',
+        owner: 'xiao',
+        private: false,
+        description: '',
+        languages:'JavaScript'
       },
-      webpack: {
+      redux: {
 
       }
     }
@@ -49,9 +54,11 @@ const state = {
 
     }
   },
+  /* 
   searchBar: {
     status: 'thisRepo',
     inputSearchValue: 'xiao'
   },
+  */
   selectedDropdown: null
 }

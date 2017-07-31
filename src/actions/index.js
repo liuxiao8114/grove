@@ -2,9 +2,18 @@ import { SEARCH_API, Schemas } from '../middleware/fetchAPI'
 
 export const RESET_BODY_MODAL = 'RESET_BODY_MODAL'
 export const SELECTED_DROPDOWN = 'SELECTED_DROPDOWN'
-export const REPO_SEARCH = 'REPO_SEARCH'
-export const USER_SEARCH = 'USER_SEARCH'
-export const CODE_SEARCH = 'CODE_SEARCH'
+
+export const REPO_SEARCH_REQUEST = 'REPO_SEARCH_REQUEST'
+export const REPO_SEARCH_SUCCESS = 'REPO_SEARCH_SUCCESS'
+export const REPO_SEARCH_FAILURE = 'REPO_SEARCH_FAILURE'
+
+export const USER_SEARCH_REQUEST = 'USER_SEARCH_REQUEST'
+export const USER_SEARCH_SUCCESS = 'USER_SEARCH_SUCCESS'
+export const USER_SEARCH_FAILURE = 'USER_SEARCH_FAILURE'
+
+export const CODE_SEARCH_REQUEST = 'CODE_SEARCH_REQUEST'
+export const CODE_SEARCH_SUCCESS = 'CODE_SEARCH_SUCCESS'
+export const CODE_SEARCH_FAILURE = 'CODE_SEARCH_FAILURE'
 
 export const SIGN_IN_REQUEST = 'SIGN_IN_REQUEST'
 export const SIGN_IN_SUCCESS = 'SIGN_IN_SUCCESS'
@@ -74,9 +83,9 @@ export const resetBodyModal = () => {
 
 const fetchRepoSearch = (keyword, nextPageUrl) => ({
   [SEARCH_API]: {
-    type: REPO_SEARCH,
+    type: [ REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE ],
     endpoint: nextPageUrl,
-    schema: Schemas.REPO
+    schema: Schemas.REPO_SEARCH_RESULTS
   }
 })
 

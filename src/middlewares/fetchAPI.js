@@ -65,7 +65,7 @@ export default store => next => action => {
   let { endpoint } = action[FETCH_API]
 
   if(typeof types !== Array) {
-    throw new Error()
+    throw new Error(`types must be Array but got: "${typeof types}"`)
   }
 
   if(types.length !== 3) {
@@ -77,17 +77,17 @@ export default store => next => action => {
   }
 
   const [ requestType, successType, failureType ] = types
-  const actionwith = data => {
+  const actionWith = data => {
     const finalAction = Object.assign({}, action, data)
     delete finalAction[FETCH_API]
     return finalAction
   }
 
-  next(actionwith(action, { type: requestType }))
-  return callApi(endpoint, schema).then(response => next(actionwith({
+  next(actionWith({ type: requestType }))
+  return callApi(endpoint, schema).then(response => next(actionWith({
     type: successType,
     response
-  }))).catch(error => next(actionwith({
+  }))).catch(error => next(actionWith({
     type: failureType,
     error: error || 'Something bad happened'
   })))

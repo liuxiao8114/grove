@@ -41,8 +41,8 @@ export const currentUser = (state = {}, action) => {
     }
     case SIGN_IN_ERROR: {
       return {
-        isFetching: false,
-        error: action.msg
+        ...state,
+        isFetching: false
       }
     }
     default:
