@@ -4,6 +4,7 @@ import App from '../containers/app/App'
 import Entry from '../containers/body/entry'
 import Profile from '../containers/body/profile'
 import Stars from '../containers/body/stars'
+import Search from '../containers/body/search'
 
 import Settings from '../containers/body/settings'
 import SettingProfile from '../containers/body/settings/SettingProfile'
@@ -15,6 +16,7 @@ const routes = {
   childRoutes: [
     { path: 'profile', component: Profile },
     { path: 'stars', component: Stars },
+    { path: 'search/:keywords', component: Search },
     { path: 'settings',
       component: Settings,
       indexRoute: { path: 'profile', component: SettingProfile },

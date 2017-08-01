@@ -1,4 +1,4 @@
-import { SEARCH_API, Schemas } from '../middleware/fetchAPI'
+import { FETCH_API, Schemas } from '../middlewares/fetchAPI'
 
 export const RESET_BODY_MODAL = 'RESET_BODY_MODAL'
 export const SELECTED_DROPDOWN = 'SELECTED_DROPDOWN'
@@ -82,7 +82,7 @@ export const resetBodyModal = () => {
 }
 
 const fetchRepoSearch = (keyword, nextPageUrl) => ({
-  [SEARCH_API]: {
+  [FETCH_API]: {
     type: [ REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE ],
     endpoint: nextPageUrl,
     schema: Schemas.REPO_SEARCH_RESULTS

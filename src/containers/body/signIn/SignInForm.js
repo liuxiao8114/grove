@@ -12,7 +12,8 @@ export class SignInForm extends Component {
         password = this.passInput.value
 
     if(!username.trim() || !password.trim()) {
-      this.props.dispatch(signInError('no empty!'))
+      this.props.dispatch(
+        signInError(`cannot be empty! please check your username: ${username.trim()} & password: ${password.trim()}`))
     } else {
       this.props.dispatch(signInAsync(username, password))
       username = ''
@@ -58,7 +59,7 @@ export class SignInForm extends Component {
             onKeyUp={this.handleKeyUp.bind(this)} />
             <input type="submit" className={style['btn']}
               value={this.props.isFetching ? 'SignIning...' : 'Sign in'}
-              disabled={!this.props.isFetching}
+              disabled={this.props.isFetching}
               tabIndex="3"/>
         </div>
       </form>

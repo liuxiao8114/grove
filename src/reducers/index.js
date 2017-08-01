@@ -24,11 +24,8 @@ const selectedDropdown = (state = null, action) => {
 const pagination = combineReducers({
   repoSearch: paginate({
     mapActionToKey: action => action.full_name,
-    type: [ REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE ]
-  }),
-  codeSearch: {
-    
-  }
+    types: [ REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE ]
+  })
 })
 
 const rootReducer = combineReducers({

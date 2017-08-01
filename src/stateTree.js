@@ -18,11 +18,18 @@ const state = {
         owner: 'xiao',
         private: false,
         description: '',
+        lastUpdated: '',
         languages:'JavaScript'
       },
       redux: {
 
       }
+    },
+    codes: {
+
+    },
+    commits: {
+
     }
   },
 
@@ -40,7 +47,6 @@ const state = {
       keyword: '',
       isFetching: false,
       ids: ['1', '2', '4'],
-      lastUpdated: '',
       counts: 124123,
       pageCount: 0
     },
@@ -54,7 +60,7 @@ const state = {
 
     }
   },
-  /* 
+  /*
   searchBar: {
     status: 'thisRepo',
     inputSearchValue: 'xiao'

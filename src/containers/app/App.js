@@ -9,7 +9,7 @@ import style from './App.scss'
 
 export class App extends Component {
   handleSubmit(nextValue) {
-    browserHistory.push(`/${nextValue}`)
+    browserHistory.push(`/search/${nextValue}`)
   }
 
   render() {

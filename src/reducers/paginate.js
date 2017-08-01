@@ -1,10 +1,5 @@
 import { union } from 'lodash'
 
-const initialState = {
-  isFetching: false,
-  ids: []
-}
-
 const paginate = ({ mapActionToKey, types }) => {
   const [ requestType, successType, failtureType ] = types
 
