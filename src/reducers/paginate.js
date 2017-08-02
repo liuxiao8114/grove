@@ -4,6 +4,7 @@ const paginate = ({ mapActionToKey, types }) => {
   const [ requestType, successType, failtureType ] = types
 
   const updatePaginate = (state = {
+    keyword: '',
     isFetching: false,
     nextPageUrl: '',
     pageCount: 0,
@@ -13,11 +14,13 @@ const paginate = ({ mapActionToKey, types }) => {
       case requestType: {
         return {
           ...state,
+          keyword: action.keyword,
           isFetching: true
         }
       }
       case successType: {
         return {
+          keyword: action.keyword,
           isFetching: false,
           ids: union(state.ids, action.response.result),
           nextPageUrl: action.nextPageUrl,
@@ -26,6 +29,8 @@ const paginate = ({ mapActionToKey, types }) => {
       }
       case failtureType: {
         return {
+          ...state,
+          keyword: action.keyword,
           isFetching: false
         }
       }
@@ -39,11 +44,10 @@ const paginate = ({ mapActionToKey, types }) => {
       case requestType:
       case successType:
       case failtureType: {
-        const actionKey = mapActionToKey(action)
-        if(typeof actionKey !== 'string') {
+        if(typeof mapActionToKey !== 'string') {
           throw new Error('Exect action key to be a string')
         }
-        return updatePaginate(state, actionKey)
+        return updatePaginate(state[mapActionToKey], action)
       }
       default:
         return state

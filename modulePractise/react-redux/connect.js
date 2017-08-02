@@ -11,7 +11,7 @@ function wrapActionCreators(actionCreators) {
 
 export default function connect(mapStateToProps, mapDispatchToProps, mergeProps) {
   const version = nextVersion++
-  return function wrappWithConnect(WrappedComponent) {
+  return function wrapWithConnect(WrappedComponent) {
     let mapDispatch
 
     if(!mapDispatchToProps) {
@@ -55,7 +55,7 @@ export default function connect(mapStateToProps, mapDispatchToProps, mergeProps)
       }
 
       isSubscribed() {
-        
+
       }
 
       render() {

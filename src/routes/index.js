@@ -16,7 +16,7 @@ const routes = {
   childRoutes: [
     { path: 'profile', component: Profile },
     { path: 'stars', component: Stars },
-    { path: 'search/:keywords', component: Search },
+    { path: 'search/:keyword', component: Search },
     { path: 'settings',
       component: Settings,
       indexRoute: { path: 'profile', component: SettingProfile },

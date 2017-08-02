@@ -12,7 +12,7 @@ describe('actions', () => {
     expect(result.password).to.equal(pass)
     expect(result.publicEmail).to.equal(null)
 
-    name = 'liuxiao8114@163.com', pass = 1234.
+    name = 'liuxiao8114@163.com', pass = 1234
     result = actions.signIn(name, pass)
     expect(result.username).to.equal('liuxiao8114')
     expect(result.password).to.equal(pass)

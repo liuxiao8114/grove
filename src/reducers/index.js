@@ -1,4 +1,6 @@
 import { combineReducers } from 'redux'
+import { merge } from 'lodash'
+
 import { routerReducer as routing } from 'react-router-redux'
 import { SELECTED_DROPDOWN,
          RESET_BODY_MODAL,
@@ -21,9 +23,16 @@ const selectedDropdown = (state = null, action) => {
   }
 }
 
+const entities = (state = { users: {}, repos: {} }, action) => {
+  if(action.response && action.response.entities) {
+    return merge({}, state, action.response.entities)
+  }
+  return state
+}
+
 const pagination = combineReducers({
   repoSearch: paginate({
-    mapActionToKey: action => action.full_name,
+    mapActionToKey: 'repoSearch',
     types: [ REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE ]
   })
 })
@@ -32,6 +41,7 @@ const rootReducer = combineReducers({
   selectedDropdown,
   signUpUser,
   currentUser,
+  entities,
   pagination,
   routing
 })

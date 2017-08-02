@@ -82,6 +82,7 @@ export const resetBodyModal = () => {
 }
 
 const fetchRepoSearch = (keyword, nextPageUrl) => ({
+  keyword,
   [FETCH_API]: {
     type: [ REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE ],
     endpoint: nextPageUrl,
@@ -92,9 +93,9 @@ const fetchRepoSearch = (keyword, nextPageUrl) => ({
 // TODO: async fetch and use Github API
 export const loadRepoSearch = (keyword, nextPage) => (dispatch, getState) => {
   const {
-    nextPageUrl = `/search/repositories?q=${keyword}`,
+    nextPageUrl = `search/repositories?q=${keyword}`,
     pageCount = 0
-  } = getState().pagination.repoSearch[keyword] || {}
+  } = getState().pagination.repoSearch || {}
 
   if(pageCount > 0 && !nextPage) {
     return null

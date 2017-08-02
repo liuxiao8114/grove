@@ -49,7 +49,7 @@ const callApi = (endpoint, schema) => {
         return Promise.reject()
       }
 
-      const nextPageUrl = getNextUrl()
+      const nextPageUrl = getNextUrl(response)
       return Object.assign({},
         normalize(json, schema),
         { nextPageUrl })
@@ -58,11 +58,12 @@ const callApi = (endpoint, schema) => {
 }
 
 export default store => next => action => {
-  if(!action[FETCH_API]) {
+  const fetchAPI = action[FETCH_API]
+  if(!fetchAPI) {
     return next(action)
   }
-  const { schema, types } = action[FETCH_API]
-  let { endpoint } = action[FETCH_API]
+  const { schema, types } = fetchAPI
+  let { endpoint } = fetchAPI
 
   if(typeof types !== Array) {
     throw new Error(`types must be Array but got: "${typeof types}"`)
