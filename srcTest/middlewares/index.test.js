@@ -1,5 +1,8 @@
 import sinon from 'sinon'
 import { expect } from 'chai'
+import nock from 'nock'
+import configureMockStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
 
 import fetchAPI, { Schemas, FETCH_API } from '../../src/middlewares/fetchAPI'
 import * as actions from '../../src/actions'
@@ -14,6 +17,9 @@ const create = () => {
   const invoke = fetchAPI(store)(next)
   return { store, next, invoke }
 }
+
+const middlewares = [ thunk, fetchAPI ]
+const mockStore = configureMockStore(middlewares)
 
 describe('middlewares API', () => {
   it('passes non-fetchAPI action', () => {
@@ -37,15 +43,29 @@ describe('middlewares API', () => {
   })
 
   it('passes fetch ', () => {
-    const { next, invoke } = create()
+
+    const endpoint = 'search'
+    const API_ROOT = 'https://api.github.com/'
+
+    nock(API_ROOT)
+      .get(endpoint)
+      .reply(200, {
+
+      })
+
+    const store = mockStore({ pagination: {} })
     const action = {
       keyword: 'xiao',
       [FETCH_API]: {
         types: [ 'request', 'success', 'failure' ],
-        endpoint: 'github.com',
+        endpoint: endpoint,
         schema: Schemas.REPO
       }
     }
-    expect()
+
+
+    store.dispatch(action).then(res => {
+      expect()
+    })
   })
 })

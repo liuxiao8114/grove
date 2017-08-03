@@ -28,8 +28,8 @@ cnpm install --save-dev babel-plugin-transform-object-rest-spread
 //react >=15.5 extracted the built-in prop types to a separate package
 cnpm install prop-types --save
 
-cnpm install --save-dev redux-mock-store 
-
+cnpm install --save-dev redux-mock-store
+cnpm install --save-dev nock
 
 "test": "mocha \"srcTest/**/*.test.js\" --compilers js:babel-register --require ignore-styles"
 "test": "mocha \"src/lexical/es6.test.js\" --compilers js:babel-register --require ignore-styles"
