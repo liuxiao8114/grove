@@ -65,8 +65,8 @@ export default store => next => action => {
   const { schema, types } = fetchAPI
   let { endpoint } = fetchAPI
 
-  if(typeof types !== Array) {
-    throw new Error(`types must be Array but got: "${typeof types}"`)
+  if(!(types instanceof Array)) {
+    throw new Error(`types must be Array but got: "${types.prototype}"`)
   }
 
   if(types.length !== 3) {

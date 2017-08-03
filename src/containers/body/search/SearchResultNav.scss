@@ -1,9 +1,6 @@
-.mb-4 {
-  margin-bottom: 24px;
-}
-
-.border-bottom {
+.border-bottom-mb-4{
   border-bottom: 1px solid #e1e4e8;
+  margin-bottom: 24px;
 }
 
 .container {
@@ -12,4 +9,33 @@
   margin-left: auto;
   margin-right: auto;
   width: 980px;
+}
+
+.underline-nav {
+
+}
+
+.underline-nav-item {
+  border-bottom: 2px soild transparent;
+  color: #586069;
+  font-size: 14px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.underline-nav-item-select {
+  composes: underline-nav-item;
+  border-bottom-color: #e36209;
+  color: #24292e;
+}
+
+.counter-ml-2 {
+  background-color: rgb(27, 31, 35， 0.08);
+  border-radius: 20px;
+  color: #586069;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 8px;
+  padding: 2px 5px;
 }
