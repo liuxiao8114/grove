@@ -1,4 +1,5 @@
 import { normalize, schema } from 'normalizr'
+import fetch from 'node-fetch'
 
 const userSchema = new schema.Entity('user', {}, {
   idAttribute: user => user.login.toLowerCase()
@@ -7,7 +8,7 @@ const userSchema = new schema.Entity('user', {}, {
 const repoSchema = new schema.Entity('repo', {
   owner: userSchema
 }, {
-  idAttribute: repo => repo.fullname.toLowerCase()
+  idAttribute: repo => repo.full_name.toLowerCase()
 })
 
 export const Schemas = {

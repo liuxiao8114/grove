@@ -31,5 +31,8 @@ cnpm install prop-types --save
 cnpm install --save-dev redux-mock-store
 cnpm install --save-dev nock
 
+//for middleware test
+cnpm install node-fetch --save-dev
+
 "test": "mocha \"srcTest/**/*.test.js\" --compilers js:babel-register --require ignore-styles"
 "test": "mocha \"src/lexical/es6.test.js\" --compilers js:babel-register --require ignore-styles"

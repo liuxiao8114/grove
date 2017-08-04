@@ -50,10 +50,28 @@ describe('middlewares API', () => {
     nock(API_ROOT)
       .get(endpoint)
       .reply(200, {
+        "total_count": 53238,
+        "incomplete_results": false,
+        "items": [
+          {
+            "id": 36535156,
+            "name": "redux",
+            "full_name": "reactjs/redux",
+            "owner": {
+              "login": "reactjs",
+              "id": 6412038,
+              "type": "Organization",
+              "site_admin": false
+            }
+          }]
+    })
 
-      })
-
-    const store = mockStore({ pagination: {} })
+    const store = mockStore({
+      entities: {
+        users: {},
+        repos: {}
+      },
+      pagination: {} })
     const action = {
       keyword: 'xiao',
       [FETCH_API]: {
@@ -63,9 +81,11 @@ describe('middlewares API', () => {
       }
     }
 
-
     store.dispatch(action).then(res => {
-      expect()
+      console.log('********* async test! ************')
+      expect(res.type).to.equal('success')
+//      expect(res.keyword).to.equal('xiao')
+//      expect(res.response.result.id).to.equal('123')
     })
   })
 })
