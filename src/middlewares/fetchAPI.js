@@ -2,13 +2,13 @@ import { normalize, schema } from 'normalizr'
 import fetch from 'node-fetch'
 
 const userSchema = new schema.Entity('user', {}, {
-  idAttribute: user => user.login.toLowerCase()
+  idAttribute: user => user.login
 })
 
 const repoSchema = new schema.Entity('repo', {
   owner: userSchema
 }, {
-  idAttribute: repo => repo.full_name.toLowerCase()
+  idAttribute: repo => repo.full_name
 })
 
 export const Schemas = {
@@ -42,18 +42,19 @@ const getNextUrl = response => {
 //fetch data and normalize
 const callApi = (endpoint, schema) => {
   const API_ROOT = 'https://api.github.com/'
-  const fullUrl = endpoint.includes(API_ROOT) ? endpoint : API_ROOT + endpoint
+  const fullUrl = endpoint.includes(API_ROOT) ? endpoint : (API_ROOT + endpoint)
 
-  return fetch(fullUrl).then(response =>
+  return fetch(endpoint).then(response =>
     response.json().then(json => {
       if(!response.ok) {
         return Promise.reject()
       }
 
-      const nextPageUrl = getNextUrl(response)
+//      const nextPageUrl = getNextUrl(response)
       return Object.assign({},
-        normalize(json, schema),
-        { nextPageUrl })
+        normalize(json, schema)
+//        { nextPageUrl }
+      )
     })
   )
 }

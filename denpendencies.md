@@ -34,5 +34,9 @@ cnpm install --save-dev nock
 //for middleware test
 cnpm install node-fetch --save-dev
 
+//for promise test in mocha
+cnpm install chai-as-promised --save-dev
+
+
 "test": "mocha \"srcTest/**/*.test.js\" --compilers js:babel-register --require ignore-styles"
 "test": "mocha \"src/lexical/es6.test.js\" --compilers js:babel-register --require ignore-styles"

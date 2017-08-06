@@ -8,7 +8,7 @@ const SEARCH_RESULT_NAV_LIST = [ 'Repositories', 'Code', 'Commits', 'Issues', 'W
 
 export default class SearchResultNav extends Component {
   renderItem() {
-    SEARCH_RESULT_NAV_LIST.map((item, index) => {
+    return SEARCH_RESULT_NAV_LIST.map((item, index) => {
       return (
         <Link to="#">
           {item}

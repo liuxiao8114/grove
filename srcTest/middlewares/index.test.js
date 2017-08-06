@@ -1,11 +1,17 @@
 import sinon from 'sinon'
-import { expect } from 'chai'
+import chai from 'chai'
+import chaiAsPromised from 'chai-as-promised'
 import nock from 'nock'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
+import fetch from 'node-fetch'
 
 import fetchAPI, { Schemas, FETCH_API } from '../../src/middlewares/fetchAPI'
 import * as actions from '../../src/actions'
+
+chai.use(chaiAsPromised);
+
+const expect = chai.expect
 
 const create = () => {
   const store = {
@@ -44,11 +50,11 @@ describe('middlewares API', () => {
 
   it('passes fetch ', () => {
 
-    const endpoint = 'search'
-    const API_ROOT = 'https://api.github.com/'
+    const endpoint = 'https://api.github.com/search/1'
+    const API_ROOT = 'https://api.github.com'
 
     nock(API_ROOT)
-      .get(endpoint)
+      .get('/search/1')
       .reply(200, {
         "total_count": 53238,
         "incomplete_results": false,
@@ -71,7 +77,8 @@ describe('middlewares API', () => {
         users: {},
         repos: {}
       },
-      pagination: {} })
+      pagination: {}
+    })
     const action = {
       keyword: 'xiao',
       [FETCH_API]: {
@@ -80,12 +87,28 @@ describe('middlewares API', () => {
         schema: Schemas.REPO
       }
     }
+    /*
+    fetch(endpoint).then(response => response.json().then(json => {
+        if(!response.ok) {
+          return Promise.reject()
+        }
+        return Object.assign({}, json)
+      })
+    ).then(result => {
+      expect(result).to.equal(undefined)
+    })
+    */
 
     store.dispatch(action).then(res => {
       console.log('********* async test! ************')
-      expect(res.type).to.equal('success')
+//      expect(res.type).to.equal('success')
+      expect(res.response.result).to.equal(undefined)
 //      expect(res.keyword).to.equal('xiao')
 //      expect(res.response.result.id).to.equal('123')
     })
+
+/*
+
+*/
   })
 })
