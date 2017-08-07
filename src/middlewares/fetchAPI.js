@@ -14,7 +14,9 @@ const repoSchema = new schema.Entity('repo', {
 export const Schemas = {
   USER: userSchema,
   REPO: repoSchema,
-  REPO_SEARCH_RESULTS: { items: [ repoSchema ]}
+  REPO_SEARCH_RESULTS: {
+    items: [repoSchema]
+  }
 }
 
 export const FETCH_API = 'FETCH_API'
@@ -25,7 +27,7 @@ const getNextUrl = response => {
         <https://api.github.com/user/repos?page=50&per_page=100>; rel="last"
   */
 
-  const link = response.header.get('link')
+  const link = response.header && response.header.get('link')
   if(!link) {
     return null
   }
@@ -36,6 +38,7 @@ const getNextUrl = response => {
   }
 
   // https://api.github.com/user/repos?page=3&per_page=100
+  // https://api.github.com/search/repositories?q=redux-thunk
   return nextLink.split(';')[0].slice(1, -1)
 }
 

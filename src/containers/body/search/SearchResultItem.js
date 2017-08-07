@@ -4,7 +4,7 @@ const SearchResultItem = ({ }) => {
 }
 
 
-
+/*
 <div class="repo-list-item d-flex flex-justify-start py-4 public source">
   <div class="col-8 pr-3">
     <h3>
@@ -43,3 +43,4 @@ const SearchResultItem = ({ }) => {
     </a>
   </div>
 </div>
+*/

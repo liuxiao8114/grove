@@ -28,14 +28,14 @@ const middlewares = [ thunk, fetchAPI ]
 const mockStore = configureMockStore(middlewares)
 
 describe('middlewares API', () => {
-  it('passes non-fetchAPI action', () => {
+  it('should call next when passes non-fetchAPI action', () => {
     const { next, invoke } = create()
     const action = { type: 'NON_FETCH' }
     invoke(action)
     expect(next.calledOnce).to.be.true
   })
 
-  it('passes fetch with not 3 types', () => {
+  it('should throw error when passes fetch with not 3 types', () => {
     const { invoke } = create()
     const action = {
       keyword: 'xiao',
@@ -48,13 +48,19 @@ describe('middlewares API', () => {
     expect(() => invoke(action)).to.throw()
   })
 
-  it('passes fetch ', () => {
-
-    const endpoint = 'https://api.github.com/search/1'
-    const API_ROOT = 'https://api.github.com'
+  it('should return normalized object', () => {
+    const API_ROOT = 'https://api.github.com',
+          ENDPOINT = 'search/1',
+          KEYWORD = 'xiao',
+          FULL_NAME = 'reactjs/redux',
+          LOGIN = 'reactjs'
 
     nock(API_ROOT)
-      .get('/search/1')
+      .defaultReplyHeaders({
+        "Content-Type": "application/json; charset=utf-8",
+        "link": '<https://api.github.com/search/repositories?q=redux-thunk&page=2>; rel="next", <https://api.github.com/search/repositories?q=redux-thunk&page=22>; rel="last"'
+      })
+      .get('/' + ENDPOINT)
       .reply(200, {
         "total_count": 53238,
         "incomplete_results": false,
@@ -62,9 +68,9 @@ describe('middlewares API', () => {
           {
             "id": 36535156,
             "name": "redux",
-            "full_name": "reactjs/redux",
+            "full_name": FULL_NAME,
             "owner": {
-              "login": "reactjs",
+              "login": LOGIN,
               "id": 6412038,
               "type": "Organization",
               "site_admin": false
@@ -80,35 +86,23 @@ describe('middlewares API', () => {
       pagination: {}
     })
     const action = {
-      keyword: 'xiao',
+      keyword: KEYWORD,
       [FETCH_API]: {
         types: [ 'request', 'success', 'failure' ],
-        endpoint: endpoint,
+        endpoint: ENDPOINT,
         schema: Schemas.REPO_SEARCH_RESULTS
       }
     }
-    /*
-    fetch(endpoint).then(response => response.json().then(json => {
-        if(!response.ok) {
-          return Promise.reject()
-        }
-        return Object.assign({}, json)
-      })
-    ).then(result => {
-      expect(result).to.equal(undefined)
-    })
-    */
 
     store.dispatch(action).then(res => {
-      console.log('********* async test! ************')
-//      expect(res.type).to.equal('success')
-      expect(res.response.result).to.equal('123')
-//      expect(res.keyword).to.equal('xiao')
-//      expect(res.response.result.id).to.equal('123')
+      expect(res.type).to.equal('success')
+      expect(res.keyword).to.equal(KEYWORD)
+      const response = res.response
+      expect(response[FETCH_API]).to.equal(undefined)
+      expect(response.result.items[0]).to.equal(FULL_NAME)
+
+      expect(response.entities.repo[FULL_NAME].name).to.equal('redux')
+      expect(response.entities.user[LOGIN].login).to.equal(LOGIN)
     })
-
-/*
-
-*/
   })
 })

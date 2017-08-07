@@ -8,7 +8,7 @@ const paginate = ({ mapActionToKey, types }) => {
     isFetching: false,
     nextPageUrl: '',
     pageCount: 0,
-    ids: []
+    items: []
   }, action) => {
     switch(action.type) {
       case requestType: {
@@ -22,7 +22,8 @@ const paginate = ({ mapActionToKey, types }) => {
         return {
           keyword: action.keyword,
           isFetching: false,
-          ids: union(state.ids, action.response.result),
+          items: union(state.items, action.response.result.items),
+          totalCount: action.response.result.total_count,
           nextPageUrl: action.nextPageUrl,
           pageCount: state.pageCount++
         }
