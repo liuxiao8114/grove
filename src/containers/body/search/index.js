@@ -22,14 +22,14 @@ export class Search extends Component {
   }
 
   render() {
-    const { keyword, repoSearchResults, count } = this.props
+    const { keyword, repoSearchResults } = this.props
     if(!keyword || !keyword.trim()) {
       return <SearchHome/>
     }
 
     return (
       <div>
-        <SearchResultNav count={count}/>
+        <SearchResultNav count={repoSearchResults.total_count}/>
         <SearchResult result={repoSearchResults}/>
       </div>
     )
@@ -39,10 +39,10 @@ export class Search extends Component {
 Search.propTypes = {
   keyword: PropTypes.string.isRequired,
   repoSearchResults: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    owner: PropTypes.string.isRequired
-  }),
-  count: PropTypes.number.isRequired
+    full_name: PropTypes.string.isRequired,
+    owner: PropTypes.string.isRequired,
+    total_count: PropTypes.number.isRequired
+  })
 }
 
 const mapStateToProps = (state, ownProps) => {

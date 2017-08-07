@@ -13,7 +13,7 @@ export default class SearchResultNav extends Component {
         <Link to="#">
           {item}
            <span className={style['counter-ml-2']}>
-             {this.props.count || ''}
+             {this.props.count || 100}
            </span>
         </Link>
       )

@@ -84,7 +84,7 @@ describe('middlewares API', () => {
       [FETCH_API]: {
         types: [ 'request', 'success', 'failure' ],
         endpoint: endpoint,
-        schema: Schemas.REPO
+        schema: Schemas.REPO_SEARCH_RESULTS
       }
     }
     /*
@@ -102,7 +102,7 @@ describe('middlewares API', () => {
     store.dispatch(action).then(res => {
       console.log('********* async test! ************')
 //      expect(res.type).to.equal('success')
-      expect(res.response.result).to.equal(undefined)
+      expect(res.response.result).to.equal('123')
 //      expect(res.keyword).to.equal('xiao')
 //      expect(res.response.result.id).to.equal('123')
     })

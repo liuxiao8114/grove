@@ -1,5 +1,12 @@
 .repo-list-item {
-  
+  list-style: outside none none;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+.d-flex {
+  display: flex;
 }
 
 .col-8

@@ -1,0 +1,90 @@
+ul {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+button, input, select, textarea {
+  margin: 0;
+  font: inherit;
+}
+
+a {
+  color: #0366d6;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 980px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.gutter-condensed {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.three-fouths {
+  width: 75%;
+}
+
+.repo-list {
+  position: relative;
+}
+
+.repo-list-item {
+  list-style: outside none none;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.mb-4 {
+  margin-bottom: 24px;
+}
+
+.underline-nav {
+
+}
+
+.underline-nav-item {
+  border-bottom: 2px soild transparent;
+  color: #586069;
+  font-size: 14px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.underline-nav-item-select {
+  composes: underline-nav-item;
+  border-bottom-color: #e36209;
+  color: #24292e;
+}
+
+.counter {
+  background-color: rgba(27, 31, 35, 0.08);
+  border-radius: 20px;
+  color: #586069;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 5px;
+}
+
+.ml-2 {
+  margin-left: 8px;
+}
