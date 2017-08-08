@@ -28,3 +28,10 @@ export const headerDropdowns =  {
    { id: 'repoDropdown_' + rDropdownId++, category: 'repository', name: 'New gist', url: '/gist' }
  ]
 }
+
+export const languageColor = {
+  javascript: 'yellow',
+  java: '',
+  'c++': '',
+  'c': ''
+}

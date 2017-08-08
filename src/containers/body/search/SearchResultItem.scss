@@ -1,12 +1,28 @@
 .repo-list-item {
+  border-top: 1px solid #e1e4e8;
+  border-bottom: 0 none;
+  display: flex;
+  justify-content: flex-start;
   list-style: outside none none;
   padding-top: 30px;
   padding-bottom: 30px;
   position: relative;
 }
 
-.d-flex {
-  display: flex;
+.repo-list-item-first {
+  composes: repo-list-item;
+  border-top: 0 none;
 }
 
-.col-8
+.main-column {
+  padding-right: 16px;
+  width: 66.6667%;
+}
+
+.unnamed-1 {
+  color: #586069;
+  display: inline-block;
+  margin-bottom: 8px;
+  padding-right: 24px;
+  width: 75%;
+}

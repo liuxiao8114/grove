@@ -1,8 +1,39 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router'
 
-const SearchResultItem = ({ }) => {
+import style from './SearchResultItem.scss'
 
+const SearchResultItem = ({ item }) => {
+  const { full_name, html_url, description, language, stargazers_count } = item
+  return (
+    <div className={style['repo-list-item']}>
+      <div className={style['main-column']}>
+        <h3>
+          <Link to={html_url} className={style['']}>{full_name}</Link>
+        </h3>
+        <p className={style['']}>
+
+        </p>
+      </div>
+      <div className={style['middle-column']}>
+        
+      </div>
+      <div className={style['right-column']}>
+
+      </div>
+    </div>
+  )
 }
+
+SearchResultItem.propTypes = {
+  item: PropTypes.shape({
+    full_name: PropTypes.string.isRequired,
+    html_url: PropTypes.strgin.isRequired
+  })
+}
+
+export default SearchResultItem
 
 
 /*
