@@ -17,6 +17,14 @@ a:hover {
   text-decoration: underline;
 }
 
+.border-bottom {
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.mb-4 {
+  margin-bottom: 24px;
+}
+
 .container {
   align-items: center;
   display: flex;
@@ -29,48 +37,26 @@ a:hover {
   display: flex;
 }
 
-.gutter-condensed {
-  margin-left: -8px;
-  margin-right: -8px;
-}
-
-.three-fouths {
-  width: 75%;
-}
-
-.repo-list {
-  position: relative;
-}
-
-.repo-list-item {
-  list-style: outside none none;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  position: relative;
-}
-
-.border-bottom {
-  border-bottom: 1px solid #e1e4e8;
-}
-
-.mb-4 {
-  margin-bottom: 24px;
+.flex-items-center {
+  align-items: center;
 }
 
 .underline-nav {
-
+  display: table;
+  height: 62px;
 }
 
 .underline-nav-item {
   border-bottom: 2px soild transparent;
   color: #586069;
+  display: table-cell;
   font-size: 14px;
   padding-left: 20px;
   padding-right: 20px;
+  vertical-align: middle;
 }
 
-.underline-nav-item-select {
-  composes: underline-nav-item;
+.underline-nav-item.selected {
   border-bottom-color: #e36209;
   color: #24292e;
 }
@@ -87,4 +73,78 @@ a:hover {
 
 .ml-2 {
   margin-left: 8px;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.f6 {
+  font-size: 12px;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.muted-link {
+  color: #586069;
+}
+
+.gutter-condensed {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.three-fouths {
+  width: 75%;
+}
+
+.pr-6 {
+  padding-right: 40px;
+}
+
+.repo-list {
+  position: relative;
+}
+
+.repo-list-item {
+  border-bottom: 1px solid #eee;
+  list-style: outside none none;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: relative;
+}
+
+.codesearch-results .repo-list-item+.repo-list-item {
+  border-top: 1px solid #e1e4e8;
+}
+
+.codesearch-results .repo-list-item {
+  border-bottom: 0 none;
+}
+
+.py-4 {
+  padding-bottom: 24px;
+  padding-top: 24px;
+}
+
+.flex-justify-start {
+  justify-content: flex-start;
+}
+
+.col-8 {
+  width: 66.6667%;
+}
+
+.pr-3 {
+  padding-right: 16px;
+}
+
+.d-table-cell {
+  display: table-cell;
+}
+
+.col-2 {
+  width: 16.6667%;
 }

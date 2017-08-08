@@ -12,12 +12,12 @@ import style from './index.scss'
 
 export class Search extends Component {
   componentWillMount() {
-    loadRepoSearch(this.props.keyword, true)
+    this.props.loadRepoSearch(this.props.keyword, true)
   }
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.keyword !== this.props.keyword) {
-      loadRepoSearch(nextProps.keyword, true)
+      this.props.loadRepoSearch(nextProps.keyword, true)
     }
   }
 
@@ -30,7 +30,7 @@ export class Search extends Component {
     return (
       <div>
         <SearchResultNav count={repoSearchResults.total_count}/>
-        <SearchResult result={repoSearchResults}/>
+        <SearchResult repoSearchResults={repoSearchResults}/>
       </div>
     )
   }
@@ -54,7 +54,7 @@ const mapStateToProps = (state, ownProps) => {
     entities: { repos }
   } = state
 
-  const repoSearchResults = repoSearch.items ? repoSearch.ids.map(id => repos[id]) : []
+  const repoSearchResults = repoSearch.items ? repoSearch.items.map(item => repos[item.full_name]) : []
   return {
     keyword,
     repoSearchResults,

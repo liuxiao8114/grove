@@ -84,7 +84,7 @@ export const resetBodyModal = () => {
 const fetchRepoSearch = (keyword, nextPageUrl) => ({
   keyword,
   [FETCH_API]: {
-    type: [ REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE ],
+    types: [ REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE ],
     endpoint: nextPageUrl,
     schema: Schemas.REPO_SEARCH_RESULTS
   }
@@ -100,7 +100,7 @@ export const loadRepoSearch = (keyword, nextPage) => (dispatch, getState) => {
   if(pageCount > 0 && !nextPage) {
     return null
   }
-
+  
   return dispatch(fetchRepoSearch(keyword, nextPageUrl))
 }
 

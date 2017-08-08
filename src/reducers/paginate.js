@@ -1,6 +1,10 @@
 import { union } from 'lodash'
 
 const paginate = ({ mapActionToKey, types }) => {
+  if(!Array.isArray(types) || types.length !== 3) {
+    throw new Error(`types must be an Array and have length 3`)
+  }
+
   const [ requestType, successType, failtureType ] = types
 
   const updatePaginate = (state = {
@@ -8,6 +12,7 @@ const paginate = ({ mapActionToKey, types }) => {
     isFetching: false,
     nextPageUrl: '',
     pageCount: 0,
+    totalCount: 0,
     items: []
   }, action) => {
     switch(action.type) {
@@ -24,7 +29,7 @@ const paginate = ({ mapActionToKey, types }) => {
           isFetching: false,
           items: union(state.items, action.response.result.items),
           totalCount: action.response.result.total_count,
-          nextPageUrl: action.nextPageUrl,
+          nextPageUrl: action.response.nextPageUrl,
           pageCount: state.pageCount++
         }
       }

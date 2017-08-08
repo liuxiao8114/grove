@@ -1,5 +1,5 @@
 import { normalize, schema } from 'normalizr'
-import fetch from 'node-fetch'
+//import fetch from 'node-fetch'
 
 const userSchema = new schema.Entity('user', {}, {
   idAttribute: user => user.login.toLocaleLowerCase()
@@ -26,7 +26,6 @@ const getNextUrl = response => {
   Link: <https://api.github.com/user/repos?page=3&per_page=100>; rel="next",
         <https://api.github.com/user/repos?page=50&per_page=100>; rel="last"
   */
-
   const link = response.header && response.header.get('link')
   if(!link) {
     return null
@@ -54,6 +53,15 @@ const callApi = (endpoint, schema) => {
       }
 
       const nextPageUrl = getNextUrl(response)
+      /*{
+        entities: {
+
+        },
+        result: {
+
+        },
+        nextPageUrl: ''
+      }*/
       return Object.assign({},
         normalize(json, schema),
         { nextPageUrl }
