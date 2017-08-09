@@ -22,14 +22,14 @@ export class Search extends Component {
   }
 
   render() {
-    const { keyword, repoSearchResults } = this.props
+    const { keyword, repoSearchResults, counts } = this.props
     if(!keyword || !keyword.trim()) {
       return <SearchHome/>
     }
 
     return (
-      <div>
-        <SearchResultNav count={repoSearchResults.total_count}/>
+      <div role="main">
+        <SearchResultNav counts={counts}/>
         <SearchResult repoSearchResults={repoSearchResults}/>
       </div>
     )
@@ -58,7 +58,13 @@ const mapStateToProps = (state, ownProps) => {
   return {
     keyword,
     repoSearchResults,
-    count: repoSearch.count
+    counts: {
+      repositories: repoSearch.totalCount,
+      code: 700,
+      commits: 800,
+      issues: 20,
+      users: 0
+    }
   }
 }
 

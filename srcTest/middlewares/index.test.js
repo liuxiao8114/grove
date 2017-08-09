@@ -27,7 +27,7 @@ const create = () => {
 const middlewares = [ thunk, fetchAPI ]
 const mockStore = configureMockStore(middlewares)
 
-describe('middlewares API', () => {
+describe('Middlewares test: fetchAPI', () => {
   it('should call next when passes non-fetchAPI action', () => {
     const { next, invoke } = create()
     const action = { type: 'NON_FETCH' }
@@ -75,7 +75,8 @@ describe('middlewares API', () => {
               "type": "Organization",
               "site_admin": false
             }
-          }]
+          }
+        ]
     })
 
     const store = mockStore({

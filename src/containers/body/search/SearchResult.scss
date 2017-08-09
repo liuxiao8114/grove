@@ -9,8 +9,16 @@
   margin-right: -8px;
 }
 
-.three-fouths {
+.column-three-fouths {
   width: 75%;
+  padding-right: 40px;
+}
+
+.repo-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e1e4e8;
 }
 
 .repo-list {

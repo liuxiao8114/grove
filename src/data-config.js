@@ -30,7 +30,7 @@ export const headerDropdowns =  {
 }
 
 export const languageColor = {
-  javascript: 'yellow',
+  javascript: '#f1e05a',
   java: '',
   'c++': '',
   'c': ''

@@ -1,11 +1,11 @@
 import { normalize, schema } from 'normalizr'
 //import fetch from 'node-fetch'
 
-const userSchema = new schema.Entity('user', {}, {
+const userSchema = new schema.Entity('users', {}, {
   idAttribute: user => user.login.toLocaleLowerCase()
 })
 
-const repoSchema = new schema.Entity('repo', {
+const repoSchema = new schema.Entity('repos', {
   owner: userSchema
 }, {
   idAttribute: repo => repo.full_name.toLocaleLowerCase()

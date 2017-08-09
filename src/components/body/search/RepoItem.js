@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 
-import style from './SearchResultItem.scss'
-import { languageColor } from '../../../data-config.js'
+import style from './RepoItem.scss'
+import { languageColor } from '../../../../data-config.js'
 
-class SearchResultItem extends Component {
+class RepoItem extends Component {
   renderTopic() {
 
   }
@@ -19,7 +19,6 @@ class SearchResultItem extends Component {
             stargazers_count = 0,
             updated_at
           } = this.props.item
-
     return (
       <div className={style['repo-list-item']}>
         <div className={style['main-column']}>
@@ -46,14 +45,14 @@ class SearchResultItem extends Component {
   }
 }
 
-SearchResultItem.propTypes = {
+RepoItem.propTypes = {
   item: PropTypes.shape({
     full_name: PropTypes.string.isRequired,
     html_url: PropTypes.string.isRequired
   })
 }
 
-export default SearchResultItem
+export default RepoItem
 
 
 /*
