@@ -1,13 +1,5 @@
 import { FETCH_API, Schemas } from '../middlewares/fetchAPI'
 
-import {
-  SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_ERROR,
-  signInError, signInAsync
-} from './signIn'
-
-export const RESET_BODY_MODAL = 'RESET_BODY_MODAL'
-export const SELECTED_DROPDOWN = 'SELECTED_DROPDOWN'
-
 export const REPO_SEARCH_REQUEST = 'REPO_SEARCH_REQUEST'
 export const REPO_SEARCH_SUCCESS = 'REPO_SEARCH_SUCCESS'
 export const REPO_SEARCH_FAILURE = 'REPO_SEARCH_FAILURE'
@@ -19,21 +11,6 @@ export const USER_SEARCH_FAILURE = 'USER_SEARCH_FAILURE'
 export const CODE_SEARCH_REQUEST = 'CODE_SEARCH_REQUEST'
 export const CODE_SEARCH_SUCCESS = 'CODE_SEARCH_SUCCESS'
 export const CODE_SEARCH_FAILURE = 'CODE_SEARCH_FAILURE'
-
-export { SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_ERROR, signInError, signInAsync }
-
-export const selectedDropdown = id => {
-  return {
-    type: SELECTED_DROPDOWN,
-    id
-  }
-}
-
-export const resetBodyModal = () => {
-  return {
-    type: RESET_BODY_MODAL
-  }
-}
 
 const fetchRepoSearch = (keyword, nextPageUrl) => ({
   keyword,
@@ -64,25 +41,15 @@ export const loadCodeSearch = (keyword, nextPage) => (dispatch, getState) => {
 }
 
 // TODO: async fetch and use Github API
-const fetchUserSearch = () => {
+export const fetchUserSearch = () => {
 
 }
 
 //TODO: async auth, this needs server to hold the session
-const shouldFetchUser = (name) => (dispatch, getState) => {
-  if(getState().entities.users[name]) {
-    return null
+export const shouldFetchUser = (nameOrMail) => (dispatch, getState) => {
+  if(getState().entities.users[nameOrMail]) {
+    return
   } else {
-    return dispatch(fetchUserSearch(dispatch))
-  }
-}
-
-export const loadUserSearch = (keyword, nextPage) => (dispatch, getState) => {
-  
-}
-
-export const selectedSettings = name => {
-  return {
-
+    return
   }
 }

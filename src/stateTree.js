@@ -33,10 +33,15 @@ const state = {
     }
   },
 
-  currentUser: {
-    username: '',
-    password: '',
-    error: null
+  currentStatus: {
+    user: {
+      username: '',
+      password: '',
+      error: null
+    },
+    searchType: {
+
+    }
   },
 
   pagination: {

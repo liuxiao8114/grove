@@ -13,12 +13,9 @@ export class App extends Component {
   }
 
   render() {
-    /*
     if(!this.props.currentUser.username) {
       return <SignIn/>
     }
-    */
-
 
     const { selectedDropdown = null, inputValue, resetBodyModal } = this.props
     return (
