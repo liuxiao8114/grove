@@ -54,7 +54,7 @@ const mapStateToProps = (state, ownProps) => {
     entities: { repos }
   } = state
 
-  const repoSearchResults = repoSearch.items ? repoSearch.items.map(item => repos[item.full_name]) : []
+  const repoSearchResults = repoSearch.items ? repoSearch.items.map(item => repos[item]) : []
   return {
     keyword,
     repoSearchResults,

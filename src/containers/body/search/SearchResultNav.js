@@ -10,12 +10,12 @@ export default class SearchResultNav extends Component {
   renderItem(counts) {
     return SEARCH_RESULT_NAV_LIST.map(item => {
       return (
-        <Link to="#">
+        <Link to="#" className={style['underline-nav-item-select']}>
           {item}
-          {counts[item.toLowerCase()] &&
+          {counts[item.toLowerCase()] ?
             <span className={style['counter']}>
               {counts[item.toLowerCase()]}
-            </span>}
+            </span> : ''}
         </Link>
       )
     })
