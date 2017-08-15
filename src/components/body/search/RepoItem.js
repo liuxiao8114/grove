@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 
 import style from './RepoItem.scss'
-import { languageColor } from '../../../../data-config.js'
+import { languageColor } from '../../../data-config.js'
 
 class RepoItem extends Component {
   renderTopic() {
@@ -29,7 +29,7 @@ class RepoItem extends Component {
         </div>
         <div className={style['middle-column']}>
           <span className={style['repo-language-color']}
-            style={languageColor[language] && ('background-color: ' + languageColor[language])}></span>
+            style={'background-color: ' + 'blue'}></span>
           {language}
         </div>
         <div className={style['right-column']}>
@@ -53,6 +53,11 @@ RepoItem.propTypes = {
 }
 
 export default RepoItem
+
+/*
+  style={languageColor[language] && ('background-color: ' + languageColor[language])}></span>
+
+*/
 
 
 /*

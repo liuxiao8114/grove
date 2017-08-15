@@ -23,7 +23,7 @@ const selectedDropdown = (state = null, action) => {
   }
 }
 
-const entities = (state = { users: {}, repos: {} }, action) => {
+const entities = (state = { users: {}, repositories: {} }, action) => {
   if(action.response && action.response.entities) {
     return merge({}, state, action.response.entities)
   }

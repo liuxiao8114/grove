@@ -9,13 +9,25 @@ import style from './App.scss'
 
 export class App extends Component {
   handleSubmit(nextValue) {
-    browserHistory.push(`/search/${nextValue}`)
+    const DEFAULT_QUERY = {
+      q: nextValue,
+      type: 'repositories'
+    }
+
+    browserHistory.push({
+      pathname: `/search`,
+      query: DEFAULT_QUERY
+    })
   }
 
+  /*
+  if(!this.props.currentUser.username) {
+    return <SignIn/>
+  }
+  */
+
   render() {
-    if(!this.props.currentUser.username) {
-      return <SignIn/>
-    }
+
 
     const { selectedDropdown = null, inputValue, resetBodyModal } = this.props
     return (

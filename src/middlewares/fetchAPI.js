@@ -5,7 +5,7 @@ const userSchema = new schema.Entity('users', {}, {
   idAttribute: user => user.login.toLocaleLowerCase()
 })
 
-const repoSchema = new schema.Entity('repos', {
+const repoSchema = new schema.Entity('repositories', {
   owner: userSchema
 }, {
   idAttribute: repo => repo.full_name.toLocaleLowerCase()

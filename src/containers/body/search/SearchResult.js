@@ -1,35 +1,52 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import SearchResultItem from './SearchResultItem'
+import RepoItem from '../../../components/body/search/RepoItem'
+import UserItem from '../../../components/body/search/UserItem'
 import SearchResultPagination from './SearchResultPagination'
 
 import style from './SearchResult.scss'
 
+const resultTypeMappingComponent = {
+  repositories: RepoItem,
+  code: 'CodeItem',
+  commits: 'CommitItem',
+  issues: 'IssueItem',
+  wikis: 'WikiItem',
+  users: UserItem
+}
+
 export default class SearchResult extends Component {
-  renderItem(items) {
-    return items.map(item => <SearchResultItem item={item}/>)
+  renderItem(result, type) {
+    const ItemComponent = resultTypeMappingComponent[type]
+    return result.map(item => <ItemComponent item={item}/>)
   }
 
   render() {
-    const repoSearchResults = this.props.repoSearchResults
-    const { total_count, items } = repoSearchResults
+    const { currentCount, type, result } = this.props
     return (
       <div className={style['container']}>
-        <div className={style['column-three-fouths']}>
-          <div className={style['repo-header']}>
-            <h3>{total_count} repository results</h3>
+        <div className={style['main-content']}>
+          <div className={style['result-header']}>
+            <h3>{currentCount + ' ' + type + ' '} results</h3>
             <div><button>Best match</button></div>
           </div>
-          <ul className={style['repo-list']}>
-            {total_count > 0 && items.length > 0 && this.renderItem(items)}
+          <ul className={style['result-list']}>
+            {this.renderItem(result)}
           </ul>
           <SearchResultPagination />
         </div>
-        <div className={style['column-one-fouth']}>
+        {}
+        <div className={style['lang-list']}>
 
         </div>
       </div>
     )
   }
 }
+/*
+{(currentCount > 0 && result.length > 0) ? this.renderItem(result) :
+
+}
+
+*/

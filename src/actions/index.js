@@ -1,10 +1,5 @@
 import { FETCH_API, Schemas } from '../middlewares/fetchAPI'
 
-import {
-  SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_ERROR,
-  signInError, signInAsync
-} from './signIn'
-
 export const RESET_BODY_MODAL = 'RESET_BODY_MODAL'
 export const SELECTED_DROPDOWN = 'SELECTED_DROPDOWN'
 
@@ -20,7 +15,7 @@ export const CODE_SEARCH_REQUEST = 'CODE_SEARCH_REQUEST'
 export const CODE_SEARCH_SUCCESS = 'CODE_SEARCH_SUCCESS'
 export const CODE_SEARCH_FAILURE = 'CODE_SEARCH_FAILURE'
 
-export { SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_ERROR, signInError, signInAsync }
+export { SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_ERROR, signInError, signInAsync } from './signIn'
 
 export const selectedDropdown = id => {
   return {
@@ -78,7 +73,7 @@ const shouldFetchUser = (name) => (dispatch, getState) => {
 }
 
 export const loadUserSearch = (keyword, nextPage) => (dispatch, getState) => {
-  
+
 }
 
 export const selectedSettings = name => {

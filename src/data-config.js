@@ -35,3 +35,22 @@ export const languageColor = {
   'c++': '',
   'c': ''
 }
+
+export const searchResultTypeMappingComponent = {
+  repositories: 'RepoItem',
+  code: 'CodeItem',
+  commits: 'CommitItem',
+  issues: 'IssueItem',
+  wikis: 'WikiItem',
+  users: 'UserItem'
+}
+
+export const searchQueryMappingReducer = {
+  repo: 'repoSearch',
+  repositories: 'repoSearch',
+  code: 'codeSearch',
+  commits: 'commitSearch',
+  issues: 'issueSearch',
+  wikis: 'wikiSearch',
+  users: 'userSearch'
+}

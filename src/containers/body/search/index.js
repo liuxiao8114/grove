@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
 import { loadRepoSearch } from '../../../actions'
+import { searchQueryMappingReducer } from '../../../data-config'
 
 import SearchResult from './SearchResult'
 import SearchResultNav from './SearchResultNav'
@@ -22,7 +23,7 @@ export class Search extends Component {
   }
 
   render() {
-    const { keyword, repoSearchResults, counts } = this.props
+    const { keyword, result, counts, currentCount, type } = this.props
     if(!keyword || !keyword.trim()) {
       return <SearchHome/>
     }
@@ -30,7 +31,7 @@ export class Search extends Component {
     return (
       <div role="main">
         <SearchResultNav counts={counts}/>
-        <SearchResult repoSearchResults={repoSearchResults}/>
+        <SearchResult currentCount={currentCount} result={result} type={type}/>
       </div>
     )
   }
@@ -38,28 +39,33 @@ export class Search extends Component {
 
 Search.propTypes = {
   keyword: PropTypes.string.isRequired,
-  repoSearchResults: PropTypes.shape({
+  result: PropTypes.shape({
     full_name: PropTypes.string.isRequired,
     owner: PropTypes.string.isRequired,
     total_count: PropTypes.number.isRequired
-  })
+  }),
+  type: PropTypes.string.isRequired
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const keyword = ownProps.params.keyword
+  const { q: keyword, type = 'repositories' } = ownProps.location.query
 
   const {
-    //TODO: we need more search conditions in further
-    pagination: { repoSearch },
-    entities: { repos }
+    pagination,
+    entities: { [type]: entityValue }
   } = state
 
-  const repoSearchResults = repoSearch.items ? repoSearch.items.map(item => repos[item]) : []
+  const searchValue = pagination[searchQueryMappingReducer[type]],
+        result = searchValue.items ? searchValue.items.map(item => entityValue[item]) : [],
+        currentCount = searchValue.totalCount
+
   return {
     keyword,
-    repoSearchResults,
+    type,
+    result,
+    currentCount,
     counts: {
-      repositories: repoSearch.totalCount,
+      repositories: pagination.repoSearch.totalCount,
       code: 700,
       commits: 800,
       issues: 20,
