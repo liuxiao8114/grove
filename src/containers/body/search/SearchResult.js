@@ -18,8 +18,13 @@ const resultTypeMappingComponent = {
 
 export default class SearchResult extends Component {
   renderItem(result, type) {
-    const ItemComponent = resultTypeMappingComponent[type]
-    return result.map(item => <ItemComponent item={item}/>)
+    const ItemComponent = type && resultTypeMappingComponent[type]
+
+    if(!ItemComponent){
+      return null
+    }
+
+    return result.map(item => <ItemComponent item={item} key={item.id}/>)
   }
 
   render() {
@@ -32,7 +37,7 @@ export default class SearchResult extends Component {
             <div><button>Best match</button></div>
           </div>
           <ul className={style['result-list']}>
-            {this.renderItem(result)}
+            {this.renderItem(result, type)}
           </ul>
           <SearchResultPagination />
         </div>

@@ -16,6 +16,9 @@ export const Schemas = {
   REPO: repoSchema,
   REPO_SEARCH_RESULTS: {
     items: [repoSchema]
+  },
+  USER_SEARCH_RESULTS: {
+    items: [userSchema]
   }
 }
 
@@ -23,10 +26,10 @@ export const FETCH_API = 'FETCH_API'
 
 const getNextUrl = response => {
   /*
-  Link: <https://api.github.com/user/repos?page=3&per_page=100>; rel="next",
-        <https://api.github.com/user/repos?page=50&per_page=100>; rel="last"
+  Link: <https://api.github.com/search/repositories?q=redux&page=2>; rel="next",
+        <https://api.github.com/search/repositories?q=redux&page=34>; rel="last"
   */
-  const link = response.header && response.header.get('link')
+  const link = response.header && response.header.get('Link')
   if(!link) {
     return null
   }
@@ -53,15 +56,8 @@ const callApi = (endpoint, schema) => {
       }
 
       const nextPageUrl = getNextUrl(response)
-      /*{
-        entities: {
+      //{ entities: {}, result: {}, nextPageUrl: '' }
 
-        },
-        result: {
-
-        },
-        nextPageUrl: ''
-      }*/
       return Object.assign({},
         normalize(json, schema),
         { nextPageUrl }

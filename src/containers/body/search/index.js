@@ -39,11 +39,7 @@ export class Search extends Component {
 
 Search.propTypes = {
   keyword: PropTypes.string.isRequired,
-  result: PropTypes.shape({
-    full_name: PropTypes.string.isRequired,
-    owner: PropTypes.string.isRequired,
-    total_count: PropTypes.number.isRequired
-  }),
+  result: PropTypes.arrayOf(PropTypes.object),
   type: PropTypes.string.isRequired
 }
 

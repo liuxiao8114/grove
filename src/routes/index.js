@@ -17,7 +17,7 @@ const routes = {
     { path: 'profile', component: Profile },
     { path: 'stars', component: Stars },
     { path: 'search',
-      component: Search 
+      component: Search
     },
     { path: 'settings',
       component: Settings,

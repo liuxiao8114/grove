@@ -14,6 +14,7 @@ export const CODE_SEARCH_FAILURE = 'CODE_SEARCH_FAILURE'
 
 const fetchRepoSearch = (keyword, nextPageUrl) => ({
   keyword,
+  nextPageUrl,
   [FETCH_API]: {
     types: [ REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE ],
     endpoint: nextPageUrl,
@@ -23,10 +24,12 @@ const fetchRepoSearch = (keyword, nextPageUrl) => ({
 
 // TODO: async fetch and use Github API
 export const loadRepoSearch = (keyword, nextPage) => (dispatch, getState) => {
+  const repoSearch = getState().pagination.repoSearch
+
   const {
     nextPageUrl = `search/repositories?q=${keyword}`,
     pageCount = 0
-  } = getState().pagination.repoSearch || {}
+  } = (repoSearch.keyword && repoSearch.keyword === keyword) ? repoSearch : {}
 
   if(pageCount > 0 && !nextPage) {
     return null
@@ -41,15 +44,25 @@ export const loadCodeSearch = (keyword, nextPage) => (dispatch, getState) => {
 }
 
 // TODO: async fetch and use Github API
-export const fetchUserSearch = () => {
-
-}
+const fetchUserSearch = (keyword, nextPageUrl) => ({
+  keyword,
+  [FETCH_API]: {
+    types: [ USER_SEARCH_REQUEST, USER_SEARCH_SUCCESS, USER_SEARCH_FAILURE ],
+    endpoint: nextPageUrl,
+    schema: Schemas.USER_SEARCH_RESULTS
+  }
+})
 
 //TODO: async auth, this needs server to hold the session
-export const shouldFetchUser = (nameOrMail) => (dispatch, getState) => {
-  if(getState().entities.users[nameOrMail]) {
-    return
+const shouldFetchUser = name => (dispatch, getState) => {
+  if(getState().entities.users[name]) {
+    return null
   } else {
-    return
+    return dispatch(fetchUserSearch(dispatch))
   }
+}
+
+export const loadUserSearch = (keyword, nextPage) => (dispatch, getState) => {
+  const userSearch = getState.pagination.userSearch
+
 }

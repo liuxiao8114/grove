@@ -4,7 +4,8 @@ import { merge } from 'lodash'
 import { routerReducer as routing } from 'react-router-redux'
 import { SELECTED_DROPDOWN,
          RESET_BODY_MODAL,
-         REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE
+         REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE,
+         USER_SEARCH_REQUEST, USER_SEARCH_SUCCESS, USER_SEARCH_FAILURE
        } from '../actions'
 
 import { signUpUser, currentUser } from './signIn'
@@ -34,6 +35,10 @@ const pagination = combineReducers({
   repoSearch: paginate({
     mapActionToKey: 'repoSearch',
     types: [ REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE ]
+  }),
+  userSearch: paginate({
+    mapActionToKey: 'userSearch',
+    types: [ USER_SEARCH_REQUEST, USER_SEARCH_SUCCESS, USER_SEARCH_FAILURE ]
   })
 })
 
