@@ -39,7 +39,7 @@ export default class SearchResult extends Component {
           <ul className={style['result-list']}>
             {this.renderItem(result, type)}
           </ul>
-          <SearchResultPagination keyword={keyword} type={type} />
+          <SearchResultPagination keyword={keyword} type={type} page={keyword}/>
         </div>
         {}
         <div className={style['lang-list']}>
