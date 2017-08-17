@@ -28,7 +28,7 @@ export default class SearchResult extends Component {
   }
 
   render() {
-    const { currentCount, type, result } = this.props
+    const { keyword, currentCount, type, result } = this.props
     return (
       <div className={style['container']}>
         <div className={style['main-content']}>
@@ -39,7 +39,7 @@ export default class SearchResult extends Component {
           <ul className={style['result-list']}>
             {this.renderItem(result, type)}
           </ul>
-          <SearchResultPagination />
+          <SearchResultPagination keyword={keyword} type={type} />
         </div>
         {}
         <div className={style['lang-list']}>

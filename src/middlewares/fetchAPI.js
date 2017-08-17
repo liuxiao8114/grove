@@ -41,6 +41,7 @@ const getNextUrl = response => {
 
   // https://api.github.com/user/repos?page=3&per_page=100
   // https://api.github.com/search/repositories?q=redux-thunk
+  // https://api.github.com/search/repositories?q=asdfe
   return nextLink.split(';')[0].slice(1, -1)
 }
 

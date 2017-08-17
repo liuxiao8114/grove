@@ -1,11 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Link } from 'react-router'
 
-export default class SearchResultPagination extends Component {
-  render() {
-    return (
+import style from './SearchResultPagination.scss'
+
+const SearchResultPagination = (totalCount, totalPage, keyword, page = 1, type) => {
+  return (
+    <div className={style.paginationContainer}>
       <div>
-        Pagination waiting for edit!
+
       </div>
-    )
-  }
+      Pagination waiting for edit!
+    </div>
+  )
 }
+
+export default SearchResultPagination

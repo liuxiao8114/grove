@@ -31,7 +31,7 @@ export class Search extends Component {
     return (
       <div role="main">
         <SearchResultNav counts={counts}/>
-        <SearchResult currentCount={currentCount} result={result} type={type}/>
+        <SearchResult keyword={keyword} currentCount={currentCount} result={result} type={type}/>
       </div>
     )
   }
