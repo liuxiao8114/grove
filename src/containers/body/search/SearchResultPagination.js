@@ -13,7 +13,7 @@ function renderItem(page, currentPage, linkUrl) {
 
   function renderPages(front, middle, end, divideCount) {
     for(let i = 1; i <= front; i++) {
-      blocks.push(<Link to={linkUrl(i)}>{i}</Link>)
+      blocks.push(<Link to={linkUrl(i)} className={style.pageItem} activeClassName={style.current}>{i}</Link>)
     }
 
     if(arguments.length === 1) {
@@ -25,21 +25,21 @@ function renderItem(page, currentPage, linkUrl) {
     if(middle) {
       let middlePageNumIndex = currentPage - 2, index = 5
       while(index > 0) {
-        blocks.push(<Link to={linkUrl(middlePageNumIndex)}>{middlePageNumIndex++}</Link>)
+        blocks.push(<Link to={linkUrl(middlePageNumIndex)} className={style.pageItem} activeClassName={style.current}>{middlePageNumIndex++}</Link>)
         index--
       }
     }
 
     divideCount && blocks.push(<span>...</span>)
     for(let i = end; i <= page; i++) {
-      blocks.push(<Link to={linkUrl(i)}>{i}</Link>)
+      blocks.push(<Link to={linkUrl(i)} className={style.pageItem} activeClassName={style.current}>{i}</Link>)
     }
   }
 
   if(currentPage === 1) {
-    blocks.push(<span className={style.disabled}>disabled Previous</span>)
+    blocks.push(<span className={style.disabled}>Previous</span>)
   } else {
-    blocks.push(<Link to="#">Previous</Link>)
+    blocks.push(<Link to={linkUrl(currentPage - 1)} className={style.pageItem} activeClassName={style.current}>Previous</Link>)
   }
 
   switch (true) {
@@ -59,22 +59,22 @@ function renderItem(page, currentPage, linkUrl) {
       renderPages(2, false, currentPage - 2, 1)
       break;
     default:
-      blocks.push(<Link to="#">you should not see this!</Link>)
+      blocks.push(<Link to="#">you should never see this!</Link>)
       return blocks
   }
 
   if(currentPage === blocksLength) {
-    blocks.push(<span className={style.disabled}>disabled Next</span>)
+    blocks.push(<span className={style.disabled}>Next</span>)
   } else {
-    blocks.push(<Link to="#">Next</Link>)
+    blocks.push(<Link to={linkUrl(currentPage + 1)} className={style.pageItem} activeClassName={style.current}>Next</Link>)
   }
   return blocks
 }
 
-const SearchResultPagination = (keyword, totalPage, currentPage = 1, type) => {
+const SearchResultPagination = ({ keyword, totalPage, currentPage = 1, type }) => {
   return (
     <div className={style.paginationContainer}>
-      <div>
+      <div className={style.pagination}>
         {renderItem(totalPage, currentPage, searchQuery(keyword, type))}
         <p>This part is in coding!</p>
       </div>
