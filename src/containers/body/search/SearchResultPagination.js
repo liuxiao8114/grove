@@ -3,30 +3,81 @@ import { Link } from 'react-router'
 
 import style from './SearchResultPagination.scss'
 
-function renderItem(page, currentPage = 1) {
+const DIVIDE_COUNT = 10
+const searchQuery = (keyword, type) => pageNum =>
+`/search?q=${keyword}&type=${type}&page=${pageNum}`
+
+function renderItem(page, currentPage, linkUrl) {
   const blocks = []
+  let blocksLength = blocks.length
+
+  function renderPages(front, middle, end, divideCount) {
+    for(let i = 1; i <= front; i++) {
+      blocks.push(<Link to={linkUrl(i)}>{i}</Link>)
+    }
+
+    if(arguments.length === 1) {
+      return
+    }
+
+    divideCount-- && blocks.push(<span>...</span>)
+
+    if(middle) {
+      let middlePageNumIndex = currentPage - 2, index = 5
+      while(index > 0) {
+        blocks.push(<Link to={linkUrl(middlePageNumIndex)}>{middlePageNumIndex++}</Link>)
+        index--
+      }
+    }
+
+    divideCount && blocks.push(<span>...</span>)
+    for(let i = end; i <= page; i++) {
+      blocks.push(<Link to={linkUrl(i)}>{i}</Link>)
+    }
+  }
+
   if(currentPage === 1) {
-    blocks.push(<span className={style.disabled}>Previous</span>)
+    blocks.push(<span className={style.disabled}>disabled Previous</span>)
   } else {
     blocks.push(<Link to="#">Previous</Link>)
   }
 
-  for(let i = 0; i <= page; i++) {
-    if(i === currentPage) {
-      blocks.push(<em className={style.current}>{i}</em>)
-    } else {
-      blocks.push()
-    }
+  switch (true) {
+    case (page <= DIVIDE_COUNT):
+      renderPages(page)
+      break;
+    case (currentPage < 4):
+      renderPages(5, false, page - 1, 1)
+      break;
+    case (currentPage >= 4 && currentPage < 7):
+      renderPages(currentPage + 2, false, page - 1, 1)
+      break;
+    case (currentPage >= 7 && currentPage < page - 5):
+      renderPages(2, true, page - 1, 2)
+      break;
+    case (currentPage >= page - 5):
+      renderPages(2, false, currentPage - 2, 1)
+      break;
+    default:
+      blocks.push(<Link to="#">you should not see this!</Link>)
+      return blocks
   }
+
+  if(currentPage === blocksLength) {
+    blocks.push(<span className={style.disabled}>disabled Next</span>)
+  } else {
+    blocks.push(<Link to="#">Next</Link>)
+  }
+  return blocks
 }
 
-const SearchResultPagination = (keyword, page, currentPage = 1, type) => {
+const SearchResultPagination = (keyword, totalPage, currentPage = 1, type) => {
   return (
     <div className={style.paginationContainer}>
       <div>
-
+        {renderItem(totalPage, currentPage, searchQuery(keyword, type))}
+        <p>This part is in coding!</p>
       </div>
-      Pagination waiting for edit!
     </div>
   )
 }

@@ -23,7 +23,7 @@ export class Search extends Component {
   }
 
   render() {
-    const { keyword, result, counts, currentCount, type } = this.props
+    const { keyword, result, counts, currentCount, currentPage, type } = this.props
     if(!keyword || !keyword.trim()) {
       return <SearchHome/>
     }
@@ -31,7 +31,8 @@ export class Search extends Component {
     return (
       <div role="main">
         <SearchResultNav counts={counts}/>
-        <SearchResult keyword={keyword} currentCount={currentCount} result={result} type={type}/>
+        <SearchResult keyword={keyword} currentCount={currentCount}
+          result={result} type={type} currentPage={currentPage}/>
       </div>
     )
   }
@@ -44,7 +45,7 @@ Search.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { q: keyword, type = 'repositories' } = ownProps.location.query
+  const { q: keyword, type = 'repositories', page = 1 } = ownProps.location.query
 
   const {
     pagination,
@@ -60,6 +61,7 @@ const mapStateToProps = (state, ownProps) => {
     type,
     result,
     currentCount,
+    currentPage: page,
     counts: {
       repositories: pagination.repoSearch.totalCount,
       code: 700,

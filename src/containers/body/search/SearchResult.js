@@ -8,17 +8,23 @@ import SearchResultPagination from './SearchResultPagination'
 import style from './SearchResult.scss'
 
 const resultTypeMappingComponent = {
-  repositories: RepoItem,
+  repositories: {
+    component: RepoItem,
+    perPage: 10
+  },
   code: 'CodeItem',
   commits: 'CommitItem',
   issues: 'IssueItem',
   wikis: 'WikiItem',
-  users: UserItem
+  users: {
+    component: UserItem,
+    perPage: 10
+  }
 }
 
 export default class SearchResult extends Component {
   renderItem(result, type) {
-    const ItemComponent = type && resultTypeMappingComponent[type]
+    const ItemComponent = type && resultTypeMappingComponent[type].component
 
     if(!ItemComponent){
       return null
@@ -28,7 +34,10 @@ export default class SearchResult extends Component {
   }
 
   render() {
-    const { keyword, currentCount, type, result } = this.props
+    const { keyword, currentCount, type, result, currentPage } = this.props
+    let totalPage = Math.ceil(currentCount / resultTypeMappingComponent[type].perPage)
+    if(totalPage > 100)  totalPage = 100
+
     return (
       <div className={style['container']}>
         <div className={style['main-content']}>
@@ -39,7 +48,8 @@ export default class SearchResult extends Component {
           <ul className={style['result-list']}>
             {this.renderItem(result, type)}
           </ul>
-          <SearchResultPagination keyword={keyword} type={type} page={keyword}/>
+          <SearchResultPagination keyword={keyword} type={type}
+            totalPage={totalPage} currentPage={currentPage}/>
         </div>
         {}
         <div className={style['lang-list']}>
