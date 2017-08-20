@@ -14,7 +14,6 @@ export const CODE_SEARCH_FAILURE = 'CODE_SEARCH_FAILURE'
 
 const fetchRepoSearch = (keyword, nextPageUrl) => ({
   keyword,
-  nextPageUrl,
   [FETCH_API]: {
     types: [ REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE ],
     endpoint: nextPageUrl,

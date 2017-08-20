@@ -1,6 +1,7 @@
 .pagination-container {
   margin-top: 20px;
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .pagination {
@@ -30,6 +31,11 @@
   padding: 7px 12px;
   margin-left: -1px;
   vertical-align: middle;
+}
+.page-item-disabled {
+  background-color: #fafbfc;
+  color: #d1d5da;
+  cursor: default;
 }
 
 .page-item:hover {

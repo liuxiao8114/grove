@@ -17,7 +17,7 @@ export class Search extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.keyword !== this.props.keyword) {
+    if(nextProps.keyword !== this.props.keyword || nextProps.currentPage !== this.props.currentPage) {
       this.props.loadRepoSearch(nextProps.keyword, true)
     }
   }
