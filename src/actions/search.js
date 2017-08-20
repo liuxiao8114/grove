@@ -1,4 +1,4 @@
-import { FETCH_API, Schemas } from '../middlewares/fetchAPI'
+  import { FETCH_API, Schemas } from '../middlewares/fetchAPI'
 
 export const REPO_SEARCH_REQUEST = 'REPO_SEARCH_REQUEST'
 export const REPO_SEARCH_SUCCESS = 'REPO_SEARCH_SUCCESS'

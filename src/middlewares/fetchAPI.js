@@ -1,5 +1,6 @@
 import { normalize, schema } from 'normalizr'
-//import fetch from 'node-fetch'
+// only for unit test
+// import fetch from 'node-fetch'
 
 const userSchema = new schema.Entity('users', {}, {
   idAttribute: user => user.login.toLocaleLowerCase()
@@ -29,12 +30,12 @@ const getNextUrl = response => {
   Link: <https://api.github.com/search/repositories?q=redux&page=2>; rel="next",
         <https://api.github.com/search/repositories?q=redux&page=34>; rel="last"
   */
-  const link = response.header && response.header.get('Link')
+  const link = response.headers.get('link')
   if(!link) {
     return null
   }
 
-  const nextLink = link.split(',').find('rel="next"')
+  const nextLink = link.split(',').find(n => n.includes('rel="next"'))
   if(!nextLink) {
     return null
   }

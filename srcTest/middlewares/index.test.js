@@ -54,11 +54,13 @@ describe('Middlewares test: fetchAPI', () => {
           KEYWORD = 'xiao',
           FULL_NAME = 'reactjs/redux',
           LOGIN = 'reactjs'
+    const nextPageUrl = 'https://api.github.com/search/repositories?q=redux-thunk&page=2'
+    const lastPageUrl = 'https://api.github.com/search/repositories?q=redux-thunk&page=22'
 
     nock(API_ROOT)
       .defaultReplyHeaders({
         "Content-Type": "application/json; charset=utf-8",
-        "link": '<https://api.github.com/search/repositories?q=redux-thunk&page=2>; rel="next", <https://api.github.com/search/repositories?q=redux-thunk&page=22>; rel="last"'
+        "link": `<${nextPageUrl}>; rel=\"next\", <${lastPageUrl}>; rel=\"last\"`
       })
       .get('/' + ENDPOINT)
       .reply(200, {
@@ -101,9 +103,9 @@ describe('Middlewares test: fetchAPI', () => {
       const response = res.response
       expect(response[FETCH_API]).to.equal(undefined)
       expect(response.result.items[0]).to.equal(FULL_NAME)
-
-      expect(response.entities.repo[FULL_NAME].name).to.equal('redux')
-      expect(response.entities.user[LOGIN].login).to.equal(LOGIN)
+      expect(response.entities.repositories[FULL_NAME].name).to.equal('redux')
+      expect(response.entities.users[LOGIN].login).to.equal(LOGIN)
+      expect(response.nextPageUrl).to.equal(nextPageUrl)
     })
   })
 })
