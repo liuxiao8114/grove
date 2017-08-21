@@ -12,10 +12,10 @@ function renderItem(page, currentPage, linkUrl) {
         blocksLength = blocks.length
 
   function renderPages(front, middle, end, divideCount) {
-    blocks.push(<Link to={linkUrl(1)} className={currentPage === 1 ? style['current'] : style['page-item']}>{1}</Link>)
+    blocks.push(<Link to={linkUrl(1)} className={currentPage === 1 ? style['current'] : style['page-item']} key={1}>{1}</Link>)
 
     for(let i = 2; i <= front; i++) {
-      blocks.push(<Link to={linkUrl(i)} className={style['page-item']} activeClassName={style['current']}>{i}</Link>)
+      blocks.push(<Link to={linkUrl(i)} className={style['page-item']} activeClassName={style['current']} key={i}>{i}</Link>)
     }
 
     if(arguments.length === 1) {
@@ -27,14 +27,14 @@ function renderItem(page, currentPage, linkUrl) {
     if(middle) {
       let middlePageNumIndex = currentPage - 2, index = 5
       while(index > 0) {
-        blocks.push(<Link to={linkUrl(middlePageNumIndex)} className={style['page-item']} activeClassName={style['current']}>{middlePageNumIndex++}</Link>)
+        blocks.push(<Link to={linkUrl(middlePageNumIndex)} className={style['page-item']} activeClassName={style['current']} key={middlePageNumIndex}>{middlePageNumIndex++}</Link>)
         index--
       }
     }
 
     divideCount && blocks.push(<span>...</span>)
     for(let i = end; i <= page; i++) {
-      blocks.push(<Link to={linkUrl(i)} className={style['page-item']} activeClassName={style['current']}>{i}</Link>)
+      blocks.push(<Link to={linkUrl(i)} className={style['page-item']} activeClassName={style['current']} key={i}>{i}</Link>)
     }
   }
 

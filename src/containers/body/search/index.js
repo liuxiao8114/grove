@@ -17,8 +17,10 @@ export class Search extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.keyword !== this.props.keyword || nextProps.currentPage !== this.props.currentPage) {
-      this.props.loadRepoSearch(nextProps.keyword,nextProps.currentPage, 10, true)
+    if(nextProps.keyword !== this.props.keyword
+      || nextProps.currentPage !== this.props.currentPage
+      || nextProps.type !== this.props.type) {
+      this.props.loadRepoSearch(nextProps.keyword, nextProps.currentPage, 10, true)
     }
   }
 
@@ -30,7 +32,7 @@ export class Search extends Component {
 
     return (
       <div role="main">
-        <SearchResultNav counts={counts}/>
+        <SearchResultNav counts={counts} type={type} keyword={keyword}/>
         <SearchResult keyword={keyword} currentCount={currentCount}
           result={result} type={type} currentPage={currentPage}/>
       </div>

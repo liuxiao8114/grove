@@ -1,4 +1,4 @@
-  import { FETCH_API, Schemas } from '../middlewares/fetchAPI'
+import { FETCH_API, Schemas } from '../middlewares/fetchAPI'
 
 export const REPO_SEARCH_REQUEST = 'REPO_SEARCH_REQUEST'
 export const REPO_SEARCH_SUCCESS = 'REPO_SEARCH_SUCCESS'
@@ -21,11 +21,11 @@ const fetchRepoSearch = (keyword, nextPageUrl) => ({
   }
 })
 
-// TODO: async fetch and use Github API
 export const loadRepoSearch = (keyword, displayPageNum = 1, perPage = 10, nextPage) => (dispatch, getState) => {
-  const repoSearch = getState().pagination.repoSearch
-  const nextPageUrl = `search/repositories?q=${keyword}&page=${displayPageNum}&per_page=${perPage}`
+  const repoSearch = getState().pagination.repoSearch,
+        nextPageUrl = `search/repositories?q=${keyword}&page=${displayPageNum}&per_page=${perPage}`
 
+  //TODO: what's the meaning of this?
   const {
     pageCount = 0
   } = repoSearch.keyword === keyword ? repoSearch : {}
@@ -37,12 +37,11 @@ export const loadRepoSearch = (keyword, displayPageNum = 1, perPage = 10, nextPa
   return dispatch(fetchRepoSearch(keyword, nextPageUrl))
 }
 
-// TODO: async fetch and use Github API
+// TODO: waiting for coding
 export const loadCodeSearch = (keyword, nextPage) => (dispatch, getState) => {
 
 }
 
-// TODO: async fetch and use Github API
 const fetchUserSearch = (keyword, nextPageUrl) => ({
   keyword,
   [FETCH_API]: {
@@ -53,15 +52,16 @@ const fetchUserSearch = (keyword, nextPageUrl) => ({
 })
 
 //TODO: async auth, this needs server to hold the session
-const shouldFetchUser = name => (dispatch, getState) => {
-  if(getState().entities.users[name]) {
-    return null
-  } else {
-    return dispatch(fetchUserSearch(dispatch))
+const shouldFetchUser = (nextName, currentUsers) => {
+  if(currentUsers.includes(nextName)) {
+    return false
   }
+  return true
 }
 
-export const loadUserSearch = (keyword, nextPage) => (dispatch, getState) => {
-  const userSearch = getState.pagination.userSearch
-
+export const loadUserSearch = (keyword, displayPageNum, perPage = 10) => (dispatch, getState) => {
+  if(shouldFetchUser(keyword, getState().entities.users)) {
+    const nextPageUrl = `search/users?q=${keyword}&page=${displayPageNum}&per_page=${perPage}`
+    return fetchUserSearch(keyword, nextPageUrl)
+  }
 }
