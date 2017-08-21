@@ -31,9 +31,14 @@ export const headerDropdowns =  {
 
 export const languageColor = {
   javascript: '#f1e05a',
-  java: '',
+  java: '#b07219',
   'c++': '',
-  'c': ''
+  'c': '',
+  'css': '#563d7c',
+  'go': '#375eab',
+  'php': '#4F5D95',
+  'ruby': '#701516',
+  'typescript': '#2b7489'
 }
 
 export const searchResultTypeMappingComponent = {

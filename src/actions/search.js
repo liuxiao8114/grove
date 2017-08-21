@@ -22,13 +22,13 @@ const fetchRepoSearch = (keyword, nextPageUrl) => ({
 })
 
 // TODO: async fetch and use Github API
-export const loadRepoSearch = (keyword, nextPage) => (dispatch, getState) => {
+export const loadRepoSearch = (keyword, displayPageNum = 1, perPage = 10, nextPage) => (dispatch, getState) => {
   const repoSearch = getState().pagination.repoSearch
+  const nextPageUrl = `search/repositories?q=${keyword}&page=${displayPageNum}&per_page=${perPage}`
 
   const {
-    nextPageUrl = `search/repositories?q=${keyword}`,
     pageCount = 0
-  } = (repoSearch.keyword && repoSearch.keyword === keyword) ? repoSearch : {}
+  } = repoSearch.keyword === keyword ? repoSearch : {}
 
   if(pageCount > 0 && !nextPage) {
     return null

@@ -13,12 +13,12 @@ import style from './index.scss'
 
 export class Search extends Component {
   componentWillMount() {
-    this.props.loadRepoSearch(this.props.keyword, true)
+    this.props.loadRepoSearch(this.props.keyword, this.props.currentPage, 10, true)
   }
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.keyword !== this.props.keyword || nextProps.currentPage !== this.props.currentPage) {
-      this.props.loadRepoSearch(nextProps.keyword, true)
+      this.props.loadRepoSearch(nextProps.keyword,nextProps.currentPage, 10, true)
     }
   }
 
@@ -61,7 +61,7 @@ const mapStateToProps = (state, ownProps) => {
     type,
     result,
     currentCount,
-    currentPage: page,
+    currentPage: parseInt(page, 10),
     counts: {
       repositories: pagination.repoSearch.totalCount,
       code: 700,

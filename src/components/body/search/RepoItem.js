@@ -28,8 +28,11 @@ class RepoItem extends Component {
           <p>{updated_at}</p>
         </div>
         <div className={style['middle-column']}>
-          <span className={style['repo-language-color']}
-            style={{ backgroundColor: '#e99' }}></span>
+          {
+            language &&
+            <span className={style['repo-language-color']}
+              style={{ backgroundColor: languageColor[language.toLowerCase()] }}></span>
+          }
           {language}
         </div>
         <div className={style['right-column']}>

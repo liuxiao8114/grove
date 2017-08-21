@@ -8,11 +8,13 @@ const searchQuery = (keyword, type) => pageNum =>
 `/search?q=${keyword}&type=${type}&page=${pageNum}`
 
 function renderItem(page, currentPage, linkUrl) {
-  const blocks = []
-  let blocksLength = blocks.length
+  const blocks = [],
+        blocksLength = blocks.length
 
   function renderPages(front, middle, end, divideCount) {
-    for(let i = 1; i <= front; i++) {
+    blocks.push(<Link to={linkUrl(1)} className={currentPage === 1 ? style['current'] : style['page-item']}>{1}</Link>)
+
+    for(let i = 2; i <= front; i++) {
       blocks.push(<Link to={linkUrl(i)} className={style['page-item']} activeClassName={style['current']}>{i}</Link>)
     }
 
@@ -76,7 +78,6 @@ const SearchResultPagination = ({ keyword, totalPage, currentPage = 1, type }) =
     <div className={style['paginationContainer']}>
       <div className={style['pagination']}>
         {renderItem(totalPage, currentPage, searchQuery(keyword, type))}
-        <p>This part is in coding!</p>
       </div>
     </div>
   )
