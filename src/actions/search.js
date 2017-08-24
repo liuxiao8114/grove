@@ -21,16 +21,23 @@ const fetchRepoSearch = (keyword, nextPageUrl) => ({
   }
 })
 
-export const loadRepoSearch = (keyword, displayPageNum = 1, perPage = 10, nextPage) => (dispatch, getState) => {
-  const repoSearch = getState().pagination.repoSearch,
-        nextPageUrl = `search/repositories?q=${keyword}&page=${displayPageNum}&per_page=${perPage}`
+export const loadRepoSearch = (keyword, ...params) => (dispatch, getState) => {
+  const { currentPage = 1, perPage = 10, ...otherParams } = params
+  const repoSearch = getState().pagination.repoSearch
+  let nextPageUrl = `search/repositories?q=${keyword}&page=${currentPage}&per_page=${perPage}`
+
+  if(otherParams) {
+    for(let key in otherParams) {
+      nextPageUrl += `&${key}=${otherParams[key]}`
+    }
+  }
 
   //TODO: what's the meaning of this?
   const {
     pageCount = 0
   } = repoSearch.keyword === keyword ? repoSearch : {}
 
-  if(pageCount > 0 && !nextPage) {
+  if(pageCount > 0) {
     return null
   }
 
@@ -38,7 +45,7 @@ export const loadRepoSearch = (keyword, displayPageNum = 1, perPage = 10, nextPa
 }
 
 // TODO: waiting for coding
-export const loadCodeSearch = (keyword, nextPage) => (dispatch, getState) => {
+export const loadCodeSearch = (keyword) => (dispatch, getState) => {
 
 }
 
@@ -52,6 +59,7 @@ const fetchUserSearch = (keyword, nextPageUrl) => ({
 })
 
 //TODO: async auth, this needs server to hold the session
+//Maybe this is not needed here
 const shouldFetchUser = (nextName, currentUsers) => {
   if(currentUsers.includes(nextName)) {
     return false
@@ -59,9 +67,13 @@ const shouldFetchUser = (nextName, currentUsers) => {
   return true
 }
 
-export const loadUserSearch = (keyword, displayPageNum, perPage = 10) => (dispatch, getState) => {
-  if(shouldFetchUser(keyword, getState().entities.users)) {
-    const nextPageUrl = `search/users?q=${keyword}&page=${displayPageNum}&per_page=${perPage}`
-    return fetchUserSearch(keyword, nextPageUrl)
+export const loadUserSearch = (keyword, ...params) => (dispatch, getState) => {
+  const { currentPage = 1, perPage = 10, language } = params
+  let nextPageUrl = `search/users?q=${keyword}&page=${currentPage}&per_page=${perPage}`
+
+  if(language) {
+    nextPageUrl += `&l=${language}`
   }
+
+  return fetchUserSearch(keyword, nextPageUrl)
 }

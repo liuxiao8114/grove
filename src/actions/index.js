@@ -1,5 +1,3 @@
-import { FETCH_API, Schemas } from '../middlewares/fetchAPI'
-
 export const RESET_BODY_MODAL = 'RESET_BODY_MODAL'
 export const SELECTED_DROPDOWN = 'SELECTED_DROPDOWN'
 

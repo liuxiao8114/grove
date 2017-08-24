@@ -22,6 +22,10 @@ const resultTypeMappingComponent = {
   }
 }
 
+const typesHaveLanguageList = {
+
+}
+
 export default class SearchResult extends Component {
   renderItem(result, type) {
     const ItemComponent = type && resultTypeMappingComponent[type].component
@@ -51,10 +55,11 @@ export default class SearchResult extends Component {
           <SearchResultPagination keyword={keyword} type={type}
             totalPage={totalPage} currentPage={currentPage}/>
         </div>
-        {}
-        <div className={style['lang-list']}>
+        {typesHaveLanguageList[type] ?
+          <div className={style['lang-list']}>
 
-        </div>
+          </div> : ''
+        }
       </div>
     )
   }

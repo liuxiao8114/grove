@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
-import { loadRepoSearch } from '../../../actions'
+import { loadRepoSearch, loadUserSearch } from '../../../actions'
 import { searchQueryMappingReducer } from '../../../data-config'
 
 import SearchResult from './SearchResult'
@@ -11,9 +11,22 @@ import SearchHome from './SearchHome'
 
 import style from './index.scss'
 
+function loadData(...searchActions) {
+  return (keyword, ...params) => {
+    searchActions.forEach(action => {
+
+      action(keyword, params)
+    })
+  }
+}
+
 export class Search extends Component {
   componentWillMount() {
-    this.props.loadRepoSearch(this.props.keyword, this.props.currentPage, 10, true)
+    const {
+      loadRepoSearch, loadUserSearch,
+      keyword, type, currentPage, otherParams
+    } = this.props
+    loadData(loadRepoSearch, loadUserSearch)(keyword, type, currentPage, ...otherParams)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -47,7 +60,7 @@ Search.propTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { q: keyword, type = 'repositories', page = 1 } = ownProps.location.query
+  const { q: keyword, type = 'repositories', page = 1, ...otherParams } = ownProps.location.query
 
   const {
     pagination,
@@ -63,17 +76,18 @@ const mapStateToProps = (state, ownProps) => {
     type,
     result,
     currentCount,
+    otherParams,
     currentPage: parseInt(page, 10),
     counts: {
-      repositories: pagination.repoSearch.totalCount,
+      repositories: pagination.repoSearch.totalCount || '',
       code: 700,
       commits: 800,
       issues: 20,
-      users: 0
+      users: pagination.userSearch.totalCount || ''
     }
   }
 }
 
 export default connect(mapStateToProps, {
-  loadRepoSearch
+  loadRepoSearch, loadUserSearch
 })(Search)
