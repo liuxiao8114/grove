@@ -11,11 +11,13 @@ function renderItem(page, currentPage, linkUrl) {
   const blocks = [],
         blocksLength = blocks.length
 
+  let key = 0
+
   function renderPages(front, middle, end, divideCount) {
-    blocks.push(<Link to={linkUrl(1)} className={currentPage === 1 ? style['current'] : style['page-item']} key={1}>{1}</Link>)
+    blocks.push(<Link to={linkUrl(1)} className={currentPage === 1 ? style['current'] : style['page-item']} key={key++}>{1}</Link>)
 
     for(let i = 2; i <= front; i++) {
-      blocks.push(<Link to={linkUrl(i)} className={style['page-item']} activeClassName={style['current']} key={i}>{i}</Link>)
+      blocks.push(<Link to={linkUrl(i)} className={style['page-item']} activeClassName={style['current']} key={key++}>{i}</Link>)
     }
 
     if(arguments.length === 1) {
@@ -27,21 +29,21 @@ function renderItem(page, currentPage, linkUrl) {
     if(middle) {
       let middlePageNumIndex = currentPage - 2, index = 5
       while(index > 0) {
-        blocks.push(<Link to={linkUrl(middlePageNumIndex)} className={style['page-item']} activeClassName={style['current']} key={middlePageNumIndex}>{middlePageNumIndex++}</Link>)
+        blocks.push(<Link to={linkUrl(middlePageNumIndex)} className={style['page-item']} activeClassName={style['current']} key={key++}>{middlePageNumIndex++}</Link>)
         index--
       }
     }
 
     divideCount && blocks.push(<span>...</span>)
     for(let i = end; i <= page; i++) {
-      blocks.push(<Link to={linkUrl(i)} className={style['page-item']} activeClassName={style['current']} key={i}>{i}</Link>)
+      blocks.push(<Link to={linkUrl(i)} className={style['page-item'] } activeClassName={style['current']} key={key++}>{i}</Link>)
     }
   }
 
   if(currentPage === 1) {
-    blocks.push(<span className={style['page-item-disabled']}>Previous</span>)
+    blocks.push(<span className={style['page-item-disabled']} key={key++}>Previous</span>)
   } else {
-    blocks.push(<Link to={linkUrl(currentPage - 1)} className={style['page-item']} activeClassName={style['current']}>Previous</Link>)
+    blocks.push(<Link to={linkUrl(currentPage - 1)} className={style['page-item']} activeClassName={style['current']} key={key++}>Previous</Link>)
   }
 
   switch (true) {
@@ -66,9 +68,9 @@ function renderItem(page, currentPage, linkUrl) {
   }
 
   if(currentPage === blocksLength) {
-    blocks.push(<span className={style['page-item-disabled']}>Next</span>)
+    blocks.push(<span className={style['page-item-disabled']} key={key++}>Next</span>)
   } else {
-    blocks.push(<Link to={linkUrl(currentPage + 1)} className={style['page-item']} activeClassName={style['current']}>Next</Link>)
+    blocks.push(<Link to={linkUrl(currentPage + 1)} className={style['page-item']} activeClassName={style['current']} key={key++}>Next</Link>)
   }
   return blocks
 }

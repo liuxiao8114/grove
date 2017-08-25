@@ -11,12 +11,20 @@ import SearchHome from './SearchHome'
 
 import style from './index.scss'
 
-function loadData(...searchActions) {
-  return (keyword, ...params) => {
-    searchActions.forEach(action => {
+const SERACH_PER_PAGE = {
+  repositories: 10,
+  code: 10,
+  commits: 10,
+  issues: 10,
+  wikis: 10,
+  users: 15
+}
 
-      action(keyword, params)
-    })
+function loadData(...searchActions) {
+  return (keyword, currentPage, type, params) => {
+    for(let action of searchActions) {
+      action(keyword, currentPage, SERACH_PER_PAGE[type], type, params)
+    }
   }
 }
 
@@ -24,16 +32,27 @@ export class Search extends Component {
   componentWillMount() {
     const {
       loadRepoSearch, loadUserSearch,
-      keyword, type, currentPage, otherParams
+      keyword, type, currentPage, otherParams = null
     } = this.props
-    loadData(loadRepoSearch, loadUserSearch)(keyword, type, currentPage, ...otherParams)
+
+    loadData(
+      loadRepoSearch, loadUserSearch
+    )(keyword, currentPage, type, otherParams)
   }
 
   componentWillReceiveProps(nextProps) {
+    const {
+      loadRepoSearch, loadUserSearch,
+      keyword, currentPage, type, otherParams = null
+    } = nextProps
+
+    // TODO: reconsider in which conditions won't rerender this
     if(nextProps.keyword !== this.props.keyword
       || nextProps.currentPage !== this.props.currentPage
       || nextProps.type !== this.props.type) {
-      this.props.loadRepoSearch(nextProps.keyword, nextProps.currentPage, 10, true)
+        loadData(
+          loadRepoSearch, loadUserSearch
+        )(keyword, currentPage, type, otherParams)
     }
   }
 
@@ -46,8 +65,8 @@ export class Search extends Component {
     return (
       <div role="main">
         <SearchResultNav counts={counts} type={type} keyword={keyword}/>
-        <SearchResult keyword={keyword} currentCount={currentCount}
-          result={result} type={type} currentPage={currentPage}/>
+        <SearchResult keyword={keyword} currentCount={currentCount} result={result}
+          type={type} currentPage={currentPage} perPage={SERACH_PER_PAGE[type]}/>
       </div>
     )
   }

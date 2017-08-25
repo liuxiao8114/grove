@@ -31,23 +31,3 @@ const routes = {
 }
 
 export default routes
-/*
-<Route path="/" component={App}>
-  <IndexRoute component={Entry}/>
-  <Route path="profile" component={Profile}></Route>
-  <Route path="pulls"></Route>
-  <Route path="issues"></Route>
-  <Route path="gist"></Route>
-  <Route path="stars" component={Stars}></Route>
-  <Route path="/:username"></Route>
-  <Route path="/settings" component={Settings}>
-    <IndexRoute path="profile" component={}></IndexRoute>
-    <Route path="admin"></Route>
-    <Route path="emails"></Route>
-  </Route>
-  <Route component={Settings}>
-    <Route path="admin"></Route>
-    <Route path="emails"></Route>
-  </Route>
-</Route>
-*/

@@ -12,6 +12,11 @@ export const CODE_SEARCH_REQUEST = 'CODE_SEARCH_REQUEST'
 export const CODE_SEARCH_SUCCESS = 'CODE_SEARCH_SUCCESS'
 export const CODE_SEARCH_FAILURE = 'CODE_SEARCH_FAILURE'
 
+const typeMapping = {
+  repoSearch: 'repositories',
+  userSearch: 'users'
+}
+
 const fetchRepoSearch = (keyword, nextPageUrl) => ({
   keyword,
   [FETCH_API]: {
@@ -21,14 +26,20 @@ const fetchRepoSearch = (keyword, nextPageUrl) => ({
   }
 })
 
-export const loadRepoSearch = (keyword, ...params) => (dispatch, getState) => {
-  const { currentPage = 1, perPage = 10, ...otherParams } = params
-  const repoSearch = getState().pagination.repoSearch
-  let nextPageUrl = `search/repositories?q=${keyword}&page=${currentPage}&per_page=${perPage}`
+export const loadRepoSearch = (keyword, currentPage = 1, perPage = 10, type, params) => (dispatch, getState) => {
+  const repoSearch = getState().pagination.repoSearch,
+        currentType = typeMapping.repoSearch
 
-  if(otherParams) {
-    for(let key in otherParams) {
-      nextPageUrl += `&${key}=${otherParams[key]}`
+  if(type && type !== currentType) {
+    currentPage = 1
+  }
+
+  let nextPageUrl = `search/${currentType}?` +
+                    `q=${keyword}&page=${currentPage}&per_page=${perPage}`
+
+  if(params && Object.keys(params)) {
+    for(let key in params) {
+      nextPageUrl += `&${key}=${params[key]}`
     }
   }
 
@@ -67,12 +78,19 @@ const shouldFetchUser = (nextName, currentUsers) => {
   return true
 }
 
-export const loadUserSearch = (keyword, ...params) => (dispatch, getState) => {
-  const { currentPage = 1, perPage = 10, language } = params
-  let nextPageUrl = `search/users?q=${keyword}&page=${currentPage}&per_page=${perPage}`
+export const loadUserSearch = (keyword, currentPage = 1, perPage = 10, type, params) => (dispatch, getState) => {
+  const currentType = typeMapping.userSearch
+  if(!type || type !== currentType) {
+    currentPage = 1
+  }
 
-  if(language) {
-    nextPageUrl += `&l=${language}`
+  let nextPageUrl = `search/${currentType}?` +
+                    `q=${keyword}&page=${currentPage}&per_page=${perPage}`
+
+  if(params && Object.keys(params)) {
+    for(let key in params) {
+      nextPageUrl += `&${key}=${params[key]}`
+    }
   }
 
   return fetchUserSearch(keyword, nextPageUrl)
