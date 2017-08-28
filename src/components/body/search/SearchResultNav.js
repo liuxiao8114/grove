@@ -11,12 +11,14 @@ export default class SearchResultNav extends Component {
     return SEARCH_RESULT_NAV_LIST.map(item => {
       return (
         <Link to={{
-          pathname: '/search',
+          pathname: `/search`,
           query: {
             q: keyword,
             type: item.toLowerCase()
           }
-        }} className={type === item.toLowerCase() ? style['underline-nav-item-select'] :style['underline-nav-item']} key={item}>
+        }} className={type === item.toLowerCase() ?
+          style['underline-nav-item-select'] :
+          style['underline-nav-item']} key={item}>
           {item}
           {counts[item.toLowerCase()] ?
             <span className={style['counter']}>

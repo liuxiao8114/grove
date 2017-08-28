@@ -93,5 +93,5 @@ export const loadUserSearch = (keyword, currentPage = 1, perPage = 10, type, par
     }
   }
 
-  return fetchUserSearch(keyword, nextPageUrl)
+  return dispatch(fetchUserSearch(keyword, nextPageUrl))
 }

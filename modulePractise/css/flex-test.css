@@ -1,0 +1,20 @@
+.container {
+
+}
+
+.item {
+  display: flex;
+  border-bottom: #e1e4e8;
+}
+
+.content {
+  flex: 5;
+}
+
+.follow {
+  background-color: #eff3f6;
+}
+
+.follow:hover {
+  background-color: #e6ebf1;
+}

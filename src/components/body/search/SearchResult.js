@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import RepoItem from '../../../components/body/search/RepoItem'
-import UserItem from '../../../components/body/search/UserItem'
+import RepoItem from './RepoItem'
+import UserItem from './UserItem'
 import SearchResultPagination from './SearchResultPagination'
 
 import style from './SearchResult.scss'

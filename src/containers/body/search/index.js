@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import { loadRepoSearch, loadUserSearch } from '../../../actions'
 import { searchQueryMappingReducer } from '../../../data-config'
 
-import SearchResult from './SearchResult'
-import SearchResultNav from './SearchResultNav'
+import SearchResult from '../../../components/body/search/SearchResult'
+import SearchResultNav from '../../../components/body/search/SearchResultNav'
 import SearchHome from './SearchHome'
 
 import style from './index.scss'
