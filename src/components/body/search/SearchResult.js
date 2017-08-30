@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import RepoItem from './RepoItem'
 import UserItem from './UserItem'
 import SearchResultPagination from './SearchResultPagination'
+import LanguageList from './LanguageList'
 
 import style from './SearchResult.scss'
 
@@ -22,10 +23,6 @@ const resultTypeMappingComponent = {
     perPage: 10,
     language: false
   }
-}
-
-const typesHaveLanguageList = {
-
 }
 
 export default class SearchResult extends Component {
@@ -57,11 +54,7 @@ export default class SearchResult extends Component {
           <SearchResultPagination keyword={keyword} type={type}
             totalPage={totalPage} currentPage={currentPage}/>
         </div>
-        {resultTypeMappingComponent[type].language ?
-          <div className={style['lang-list']}>
-            list language
-          </div> : 'no language!'
-        }
+        {resultTypeMappingComponent[type].language && <LanguageList />}
       </div>
     )
   }

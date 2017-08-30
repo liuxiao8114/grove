@@ -29,13 +29,14 @@ export class SignInForm extends Component {
 
   render() {
     const EN_SPACE = ' '
+    const { isFetching, error = null } = this.props
     return (
       <form onSubmit={e => this.handleSubmit(e)}>
         <div className={style['auth-form-header']}>
           <h1 className={style['login-title']}>Sign in to Github</h1>
         </div>
         <div className={style['auth-form-body']}>
-          <div>need to be toggled(error msg)</div>
+          {error && <div className={style['error-msg']}>{error}</div>} 
           <label className={style['label-default']} for="login_field">Username or email address</label>
           <input type="text"
             className={'form-control' + EN_SPACE + style['input-block']}
@@ -58,8 +59,8 @@ export class SignInForm extends Component {
             ref={input => this.passInput = input}
             onKeyUp={this.handleKeyUp.bind(this)} />
             <input type="submit" className={style['btn']}
-              value={this.props.isFetching ? 'SignIning...' : 'Sign in'}
-              disabled={this.props.isFetching}
+              value={isFetching ? 'SignIning...' : 'Sign in'}
+              disabled={isFetching}
               tabIndex="3"/>
         </div>
       </form>
@@ -68,7 +69,8 @@ export class SignInForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  isFetching: state.currentUser.isFetching
+  isFetching: state.currentUser.isFetching,
+  error: state.currentUser.error
 })
 
 export default connect(mapStateToProps)(SignInForm)

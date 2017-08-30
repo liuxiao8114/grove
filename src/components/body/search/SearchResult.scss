@@ -1,4 +1,5 @@
 .container {
+  display: flex;
   margin-left: auto;
   margin-right: auto;
   width: 980px;
@@ -10,21 +11,18 @@
 }
 
 .main-content {
-  width: 75%;
+  flex: 3;
   padding-right: 40px;
 }
 
 .result-header {
+  border-bottom: 1px solid #e1e4e8;
   display: flex;
   justify-content: space-between;
   padding-bottom: 16px;
-  border-bottom: 1px solid #e1e4e8;
+  margin-bottom: -1px;
 }
 
 .result-list {
   position: relative;
-}
-
-.lang-list {
-  
 }

@@ -4,15 +4,23 @@
 
 .item {
   display: flex;
-  border-bottom: #e1e4e8;
+  align-items: center;
+  border: 2px solid #e1e4e8;
+  margin-top: -2px;
+}
+
+.image {
+
 }
 
 .content {
-  flex: 5;
+  flex: 1;
 }
 
 .follow {
+  border-radius: 
   background-color: #eff3f6;
+  font-weight: 600;
 }
 
 .follow:hover {

@@ -77,7 +77,7 @@ function renderItem(page, currentPage, linkUrl) {
 
 const SearchResultPagination = ({ keyword, totalPage, currentPage = 1, type }) => {
   return (
-    <div className={style['paginationContainer']}>
+    <div className={style['pagination-container']}>
       <div className={style['pagination']}>
         {renderItem(totalPage, currentPage, searchQuery(keyword, type))}
       </div>

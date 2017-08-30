@@ -20,14 +20,10 @@ export class App extends Component {
     })
   }
 
-  /*
-  if(!this.props.currentUser.username) {
-    return <SignIn/>
-  }
-  */
-
   render() {
-
+    if(!this.props.currentUser.username) {
+      return <SignIn/>
+    }
 
     const { selectedDropdown = null, inputValue, resetBodyModal } = this.props
     return (
