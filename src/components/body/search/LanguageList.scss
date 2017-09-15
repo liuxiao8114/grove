@@ -8,3 +8,17 @@
 .language-list {
   padding: 10px;
 }
+
+.item {
+  text-align: justify;
+}
+
+.item:hover {
+  background-color: #e1e4e8;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+.item-active {
+  
+}

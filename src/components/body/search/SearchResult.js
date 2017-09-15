@@ -54,7 +54,7 @@ export default class SearchResult extends Component {
           <SearchResultPagination keyword={keyword} type={type}
             totalPage={totalPage} currentPage={currentPage}/>
         </div>
-        {resultTypeMappingComponent[type].language && <LanguageList />}
+        {resultTypeMappingComponent[type].language && <LanguageList keyword={keyword} type={type}/>}
       </div>
     )
   }
