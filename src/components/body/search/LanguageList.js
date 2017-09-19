@@ -5,8 +5,14 @@ import style from './LanguageList.scss'
 
 const DEFAULT_LIST_ITEMS = [ 'JavaScript', 'Java', 'CSS', 'Ruby', 'HTML', 'PHP' ]
 
-const searchQuery = (keyword, type) => language =>
-`/search?q=${keyword}&type=${type}&l=${language}`
+const searchQuery = (keyword, type) => language => ({
+  pathname: `search`,
+  query: {
+    q: keyword,
+    type: type,
+    l: language
+  }
+})
 
 function renderItems(items, query) {
   const list = []
@@ -27,7 +33,7 @@ const LanguageList = ({ items = DEFAULT_LIST_ITEMS, keyword, type = 'repositorie
     <div className={style['container']}>
       <div className={style['language-list']}>
         <h2>Languages</h2>
-      {items && renderItems(items, searchQuery(keyword, type))}
+        {items && renderItems(items, searchQuery(keyword, type))}
       </div>
     </div>
   )

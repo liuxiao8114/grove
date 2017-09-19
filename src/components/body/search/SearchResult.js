@@ -59,6 +59,11 @@ export default class SearchResult extends Component {
     )
   }
 }
+
+const mapStateToProps = () => {
+  
+
+}
 /*
 {(currentCount > 0 && result.length > 0) ? this.renderItem(result) :
 
