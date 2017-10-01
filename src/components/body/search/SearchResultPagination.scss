@@ -29,6 +29,7 @@
 
 .current {
   composes: page-item;
+  cursor: default;
   background-color: #0366d6;
   border-color: #0366d6;
   color: #fff;

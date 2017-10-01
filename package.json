@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "babel-node tools/run start.js",
-    "test": "mocha \"srcTest/**/*.test.js\" --compilers js:babel-register --require ignore-styles",
+    "test": "mocha \"test/lexical/es5.test.js\" --compilers js:babel-register --require ignore-styles",
     "server": "babel-node server.js"
   },
   "dependencies": {

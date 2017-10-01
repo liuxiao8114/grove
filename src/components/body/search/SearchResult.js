@@ -29,7 +29,7 @@ export default class SearchResult extends Component {
   renderItem(result, type) {
     const ItemComponent = type && resultTypeMappingComponent[type].component
 
-    if(!ItemComponent){
+    if(!ItemComponent) {
       return null
     }
 
@@ -61,7 +61,7 @@ export default class SearchResult extends Component {
 }
 
 const mapStateToProps = () => {
-  
+
 
 }
 /*

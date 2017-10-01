@@ -279,6 +279,7 @@ describe('es5 feature', () => {
     })).toEqual(9)
   })
 
+  // in mocha, use => function with "this" will cause unexpected problem
   it('test this', () => {
     var app = {} // while it occurs error with cannot assign to read only property when var app = function(){}
     app.login = function() {
@@ -301,5 +302,19 @@ describe('es5 feature', () => {
 
     expect(app.name).toEqual('xiao')
     expect(e.name).toEqual('xiao')
+  })
+
+  // param quote
+  it('test quote', () => {
+    let a1 = ['a1', 'b1']
+    let a2 = a1
+    a2[0] = 'a2'
+//    console.log('a1: ' + a1) ; a2, b1
+    let f1 = arr => {
+      let a3 = arr
+      a3[0] = 'a3'
+    }
+    f1(a1)
+    console.log('a1: ' + a1)
   })
 })

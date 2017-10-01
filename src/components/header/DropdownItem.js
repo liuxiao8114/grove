@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import style from './DropdownItem.scss'
 
 export default class DropdownItem extends React.Component {
-  handleClick(e) {
+  handleClick(event) {
     function resolveToLocation(to, router) {
       return typeof to === 'function' ? to(router.location) : to
     }

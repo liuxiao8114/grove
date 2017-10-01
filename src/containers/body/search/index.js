@@ -57,7 +57,7 @@ export class Search extends Component {
   }
 
   render() {
-    const { keyword, result, counts, currentCount, currentPage, type } = this.props
+    const { keyword, result, counts, currentCount, currentPage, type, otherParams } = this.props
     if(!keyword || !keyword.trim()) {
       return <SearchHome/>
     }
@@ -66,7 +66,8 @@ export class Search extends Component {
       <div role="main">
         <SearchResultNav counts={counts} type={type} keyword={keyword}/>
         <SearchResult keyword={keyword} currentCount={currentCount} result={result}
-          type={type} currentPage={currentPage} perPage={SERACH_PER_PAGE[type]}/>
+          type={type} currentPage={currentPage} perPage={SERACH_PER_PAGE[type]}
+          params={otherParams}/>
       </div>
     )
   }
