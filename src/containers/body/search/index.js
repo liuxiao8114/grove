@@ -29,11 +29,12 @@ function loadData(...searchActions) {
 }
 
 export class Search extends Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props)
     const {
       loadRepoSearch, loadUserSearch,
-      keyword, type, currentPage, otherParams = null
-    } = this.props
+      keyword, currentPage, type, otherParams = null
+    } = props
 
     loadData(
       loadRepoSearch, loadUserSearch

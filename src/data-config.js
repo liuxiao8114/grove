@@ -50,6 +50,7 @@ export const searchResultTypeMappingComponent = {
   users: 'UserItem'
 }
 
+// used in ???
 export const searchQueryMappingReducer = {
   repo: 'repoSearch',
   repositories: 'repoSearch',

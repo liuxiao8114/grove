@@ -46,7 +46,14 @@ export default class SearchResult extends Component {
         <div className={style['main-content']}>
           <div className={style['result-header']}>
             <h3>{currentCount + ' ' + type + ' '} results</h3>
-            <div><button>Best match</button></div>
+            <div>
+              <button className={style['result-sort-btn']}>
+                <span>Sort:</span> {'Best match'}
+              </button>
+              <div className={style['result-sort-list']}>
+
+              </div>
+            </div>
           </div>
           <ul className={style['result-list']}>
             {this.renderItem(result, type)}

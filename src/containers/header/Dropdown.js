@@ -9,24 +9,21 @@ const USER_NAME = 'username'
 
 const Dropdown = ({ items, currentUsername, dropdownDisplay = false }) => {
   let rows = []
-  let lastCategory = null, dividerNo = 1
+  let currentCategory = null, dividerNo = 1
   const renderItem = item => {
     if(item.category === USER_NAME) {
-      lastCategory = item.category
+      currentCategory = item.category
       rows.push(
         <div key="dropdown-header" className={style['dropdown-header']}>
           Signed in as{' '}
           <strong className={style['css-truncate-target']}>{currentUsername}</strong>
         </div>
       )
-    } else if(!lastCategory) {
-      lastCategory = item.category
-      rows.push(<DropdownItem key={item.name} item={item} onClick={resetBodyModal}/>)
-    } else if(lastCategory && item.category !== lastCategory) {
-      lastCategory = item.category
-      rows.push(<div key={dividerNo++} className={style['dropdown-divider']} />)
-      rows.push(<DropdownItem key={item.name} item={item} onClick={resetBodyModal}/>)
     } else {
+      if(item.category !== currentCategory) {
+        currentCategory = item.category
+        rows.push(<div key={dividerNo++} className={style['dropdown-divider']} />)
+      }
       rows.push(<DropdownItem key={item.name} item={item} onClick={resetBodyModal}/>)
     }
   }

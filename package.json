@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "babel-node tools/run start.js",
-    "test": "mocha \"test/lexical/es5.test.js\" --compilers js:babel-register --require ignore-styles",
+    "test": "mocha \"test/sicp/index.js\" --compilers js:babel-register --require ignore-styles",
     "server": "babel-node server.js"
   },
   "dependencies": {
@@ -42,7 +42,6 @@
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.5.2",
-    "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.24.1",
     "babel-register": "^6.24.1",
     "chai": "^4.0.2",
