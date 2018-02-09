@@ -24,7 +24,7 @@ const Dropdown = ({ items, currentUsername, dropdownDisplay = false }) => {
         currentCategory = item.category
         rows.push(<div key={dividerNo++} className={style['dropdown-divider']} />)
       }
-      rows.push(<DropdownItem key={item.name} item={item} onClick={resetBodyModal}/>)
+      rows.push(<DropdownItem key={item.name} item={item} /*2017/12/12 无用代码? onClick={resetBodyModal}*/ />)
     }
   }
 
@@ -37,10 +37,12 @@ const Dropdown = ({ items, currentUsername, dropdownDisplay = false }) => {
   )
 }
 
+// WTF写法
+// ownProps.items[0].id.slice(0, -2)这一坨参考data-config.js
 const dropdownName = ownProps => ownProps.items[0].id.slice(0, -2)
 
 const mapStateToProps = (state, ownProps) => ({
-  dropdownDisplay: state.selectedDropdown && (state.selectedDropdown === dropdownName(ownProps)),
+  dropdownDisplay: state.selectedDropdown === dropdownName(ownProps),
   currentUsername: state.currentUser.username
 })
 

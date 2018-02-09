@@ -1,6 +1,7 @@
 cnpm uninstall react react-dom
 cnpm uninstall babel-core babel-cli babel-loader babel-eslint babel-register babel-runtime
 cnpm uninstall normalizr
+cnpm uninstall node-sass
 
 cnpm install --save redux redux-thunk react-redux react-router-redux
 cnpm install --save redux-logger

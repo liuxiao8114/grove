@@ -50,9 +50,9 @@ export default class SearchResult extends Component {
               <button className={style['result-sort-btn']}>
                 <span>Sort:</span> {'Best match'}
               </button>
-              <div className={style['result-sort-list']}>
+              <ul className={style['result-sort-list']}>
 
-              </div>
+              </ul>
             </div>
           </div>
           <ul className={style['result-list']}>

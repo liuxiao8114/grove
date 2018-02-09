@@ -3,12 +3,12 @@ const Table = () => {
   let result = {}
 
   const lookup = n => {
-    if(!result.n) return NOT_FOUND_MSG
-    return result.n
+    if(!result[n]) return NOT_FOUND_MSG
+    return result[n]
   }
 
   function insert(key, value) {
-    result.key = value
+    result[key] = value
   }
 
   return {

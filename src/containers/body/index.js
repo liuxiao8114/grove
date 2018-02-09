@@ -8,12 +8,9 @@ import style from './index.scss'
 export class Body extends React.Component {
 
   render() {
-    const { isBodyModalDisplay = false, content, resetBodyModal } = this.props
+    const { content } = this.props
     return (
       <div>
-        <div className={isBodyModalDisplay ? style['modal-active'] : style['modal-backdrop']}
-          onClick={resetBodyModal}>
-        </div>
         {content || <Entry/>}
       </div>
     )
@@ -22,11 +19,8 @@ export class Body extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    isBodyModalDisplay: state.selectedDropdown,
     content: ownProps.children
   }
 }
 
-export default connect(mapStateToProps, {
-  resetBodyModal
-})(Body)
+export default connect(mapStateToProps)(Body)
