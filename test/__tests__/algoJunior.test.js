@@ -1,8 +1,4 @@
-/* eslint-env mocha */
-/* eslint-disable no-unused-expressions*/
-/* eslint-disable no-console */
 import 'babel-polyfill';
-import { expect } from 'chai';
 
 function sumAll(arr) {
   function sum(from, to){
@@ -82,7 +78,7 @@ function translate(str) {
 }
 
 function pair(str) {
-  const dna = ['A', 'T', 'C', 'G']
+  // const dna = ['A', 'T', 'C', 'G']
   function subPair(c) {
     switch(c){
       case 'A':
@@ -148,7 +144,6 @@ function convertHtml(str) {
       case "\"":
         return "&quot;";
       case "'":
-          console.log(match === "'");
         return "&​apos;";
     }
   })
@@ -323,111 +318,109 @@ function every(collection, pre) {
 }
 
 function add(fn, ...args) {
-  if(!args) return n => {
-    return n + fn
-  }
+  if(!args || args.length === 0) return n => n + fn
   return fn + args
 }
 
 describe('algo-junior', () => {
 
   it('sumAll',() => {
-    expect(sumAll([10, 5])).equal(45);
+    expect(sumAll([10, 5])).toEqual(45);
   })
 
   it('diff',() => {
-    expect(diff([1, 2, 3, 5], [1, 2, 3, 4, 5])[0]).equal(4);
+    expect(diff([1, 2, 3, 5], [1, 2, 3, 4, 5])[0]).toEqual(4);
   })
 
   it('convert',() => {
-    expect(convert(2)).equal("II");
+    expect(convert(2)).toEqual("II");
   })
 
   it('where',() => {
     expect(where([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null },
-    { first: "Tybalt", last: "Capulet" }], { last: "Capulet" })[0].last).equal("Capulet");
+    { first: "Tybalt", last: "Capulet" }], { last: "Capulet" })[0].last).toEqual("Capulet");
   })
 
   it('myReplace',() => {
     expect(myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped"))
-    .equal("A quick brown fox leaped over the lazy dog");
+    .toEqual("A quick brown fox leaped over the lazy dog");
   })
 
   it('translate',() => {
-    expect(translate("california")).equal("aliforniacay");
+    expect(translate("california")).toEqual("aliforniacay");
   })
 
   it('pair',() => {
-    expect(pair("ATCGA")[3][1]).equal("C");
+    expect(pair("ATCGA")[3][1]).toEqual("C");
   })
 
   it('fearNotLetter',() => {
-    expect(fearNotLetter("abce")).equal("d");
+    expect(fearNotLetter("abce")).toEqual("d");
   })
 
   it('boo',() => {
-    expect(boo(undefined)).equal(false);
+    expect(boo(undefined)).toEqual(false);
   })
 
   it('unite',() => {
-    expect(unite([1, 3, 2], [5, 2, 1, 4], [2, 1])[4]).equal(4);
+    expect(unite([1, 3, 2], [5, 2, 1, 4], [2, 1])[4]).toEqual(4);
   })
 
   it('convertHtml',() => {
-    expect(convertHtml("Shindler's List")).equal("Shindler&​apos;s List");
+    expect(convertHtml("Shindler's List")).toEqual("Shindler&​apos;s List");
   })
 
   it('spinalCase',() => {
-    expect(spinalCase("This Is Spinal Tap")).equal("this-is-spinal-tap");
-    expect(spinalCase("thisIsSpinalTap")).equal("this-is-spinal-tap");
-    expect(spinalCase("The_Andy_Griffith_Show")).equal("the-andy-griffith-show");
-    expect(spinalCase("Teletubbies say Eh-oh")).equal("teletubbies-say-eh-oh");
+    expect(spinalCase("This Is Spinal Tap")).toEqual("this-is-spinal-tap");
+    expect(spinalCase("thisIsSpinalTap")).toEqual("this-is-spinal-tap");
+    expect(spinalCase("The_Andy_Griffith_Show")).toEqual("the-andy-griffith-show");
+    expect(spinalCase("Teletubbies say Eh-oh")).toEqual("teletubbies-say-eh-oh");
   })
 
   it('sumFibs',() => {
-    expect(sumFibs(4)).equal(5);
+    expect(sumFibs(4)).toEqual(5);
   })
 
   it('sqrt',() => {
-    expect(Math.floor(sqrt(25))).equal(5);
+    expect(Math.floor(sqrt(25))).toEqual(5);
   })
 
   it('sumPrimes',() => {
-    expect(sumPrimes(10)).equal(17);
+    expect(sumPrimes(10)).toEqual(17);
   })
 
   it('god',() => {
-    expect(god(36363636,1322131231)).equal(1);
+    expect(god(36363636,1322131231)).toEqual(1);
   })
 
   it('smallestCommons',() => {
-    expect(smallestCommons([5, 1])).equal(60);
+    expect(smallestCommons([5, 1])).toEqual(60);
   })
 
   it('find',() => {
-    expect(find([1, 3, 5, 8, 9, 10], function(num) { return num % 2 === 0; })[0]).equal(8);
+    expect(find([1, 3, 5, 8, 9, 10], function(num) { return num % 2 === 0; })[0]).toEqual(8);
   })
 
   it('drop',() => {
-    expect(drop([1, 2, 3, 9, 2], function(n) {return n > 2;})[2]).equal(2);
+    expect(drop([1, 2, 3, 9, 2], function(n) {return n > 2;})[2]).toEqual(2);
   })
 
   it('steamroller',() => {
-    expect(steamroller([[["a"]], [["b"]]])[1]).equal('b');
+    expect(steamroller([[["a"]], [["b"]]])[1]).toEqual('b');
   })
 
   it('binaryAgent',() => {
     expect(
       binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"))
-      .equal('Aren\'t bonfires fun!?');
+      .toEqual('Aren\'t bonfires fun!?');
   })
 
   it('every',() => {
-    expect(every([{"single": "yes"}], "single")).equal(true);
+    expect(every([{"single": "yes"}], "single")).toEqual(true);
   })
 
   it('add',() => {
-    expect(add(2)(3)).equal(5);
+    expect(add(2)(3)).toEqual(5);
   })
 
 });

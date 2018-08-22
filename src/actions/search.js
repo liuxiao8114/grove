@@ -34,8 +34,7 @@ export const loadRepoSearch = (keyword, currentPage = 1, perPage = 10, type, par
     currentPage = 1
   }
 
-  let nextPageUrl = `search/${currentType}?` +
-                    `q=${keyword}&page=${currentPage}&per_page=${perPage}`
+  let nextPageUrl = `search/${currentType}?q=${keyword}&page=${currentPage}&per_page=${perPage}`
 
   if(params && Object.keys(params)) {
     for(let key in params) {
@@ -57,7 +56,7 @@ export const loadRepoSearch = (keyword, currentPage = 1, perPage = 10, type, par
 
 // TODO: waiting for coding
 export const loadCodeSearch = (keyword) => (dispatch, getState) => {
-
+  
 }
 
 const fetchUserSearch = (keyword, nextPageUrl) => ({

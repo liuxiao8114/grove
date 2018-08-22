@@ -29,12 +29,10 @@ export class App extends Component {
     return (
       <div>
         <Header inputValue={inputValue} handleSubmit={this.handleSubmit}/>
-        <div>
-          <div className={selectedDropdown ? style['modal-active'] : style['modal-backdrop']}
-            onClick={resetBodyModal}>
-          </div>
-          {this.props.children}
+        <div className={selectedDropdown ? style['modal-active'] : style['modal-backdrop']}
+          onClick={resetBodyModal}>
         </div>
+        {this.props.children}
       </div>
     )
   }

@@ -1,11 +1,3 @@
-/* eslint-env mocha */
-/* eslint-disable no-unused-expressions*/
-/* eslint-disable no-console */
-import 'babel-polyfill';
-import { expect } from 'chai';
-import toRegExp from 'path-to-regexp';
-import fs from 'fs';
-
 function reverseString(str) {
   let a = str.split('');
   a = a.reverse();
@@ -152,78 +144,66 @@ function where(arr, num) {
   return arr.indexOf(num)
 }
 
-function rot13(str) { // LBH QVQ VG!
-    console.log('a' + 13)
-  return str;
-}
-
-
 describe('algo', () => {
-
   it('reverseString',() => {
-    expect(reverseString("hello")).equal("olleh");
+    expect(reverseString("hello")).toEqual("olleh");
   })
 
   it('factorialize',() => {
     var a = factorialize(5,1);
-    expect(a).equal(120)
+    expect(a).toEqual(120)
   })
 
   it('palindrome',() => {
-    expect(palindrome("Eye")).equal(true)
-    expect(palindrome("yye")).equal(false)
+    expect(palindrome("Eye")).toEqual(true)
+    expect(palindrome("yye")).toEqual(false)
   })
 
   it('titleCase',() => {
-    expect(titleCase("I'm a little tea pot")).equal("I'm A Little Tea Pot")
+    expect(titleCase("I'm a little tea pot")).toEqual("I'm A Little Tea Pot")
   })
 
   it('findLongestWord',() => {
-    expect(findLongestWord("The quick brown fox jumped over the lazy dog")).equal(6)
+    expect(findLongestWord("The quick brown fox jumped over the lazy dog")).toEqual(6)
   })
 
   it('largestOfFour',() => {
-    expect(largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]])[0]).equal(5)
+    expect(largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]])[0]).toEqual(5)
   })
 
   it('truncate',() => {
-    expect(truncate("A-tisket a-tasket A green and yellow basket", 11)).equal("A-tisket...")
+    expect(truncate("A-tisket a-tasket A green and yellow basket", 11)).toEqual("A-tisket...")
   })
 
   it('confirmEnding',() => {
-    expect(confirmEnding("Bastian", "n")).equal(true)
+    expect(confirmEnding("Bastian", "n")).toEqual(true)
   })
 
   it('repeat',() => {
-    expect(repeat("abc", 3)).equal("abcabcabc")
+    expect(repeat("abc", 3)).toEqual("abcabcabc")
   })
 
   it('chunk',() => {
-    expect(chunk([0, 1, 2, 3, 4, 5], 4)[0][1]).equal(1)
+    expect(chunk([0, 1, 2, 3, 4, 5], 4)[0][1]).toEqual(1)
   })
 
   it('slasher',() => {
-    expect(slasher([1, 2, 3], 2)[0]).equal(3)
+    expect(slasher([1, 2, 3], 2)[0]).toEqual(3)
   })
 
   it('mutation',() => {
-    expect(mutation(["Mary", "Army"])).equal(true)
+    expect(mutation(["Mary", "Army"])).toEqual(true)
   })
 
   it('bouncer',() => {
-    expect(bouncer([7, "ate", "", false, 9])[2]).equal(9)
+    expect(bouncer([7, "ate", "", false, 9])[2]).toEqual(9)
   })
 
   it('destory',() => {
-    expect(destroyer(["tree", "hamburger", 53], "tree", 53)[0]).equal("hamburger")
+    expect(destroyer(["tree", "hamburger", 53], "tree", 53)[0]).toEqual("hamburger")
   })
 
   it('where',() => {
-    expect(where([5, 3, 20, 3], 5)).equal(2)
+    expect(where([5, 3, 20, 3], 5)).toEqual(2)
   })
-
-  it('rot13',() => {
-    expect(rot13("SERR PBQR PNZC")).equal()
-  })
-
 });
