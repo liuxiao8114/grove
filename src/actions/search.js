@@ -56,7 +56,7 @@ export const loadRepoSearch = (keyword, currentPage = 1, perPage = 10, type, par
 
 // TODO: waiting for coding
 export const loadCodeSearch = (keyword) => (dispatch, getState) => {
-  
+
 }
 
 const fetchUserSearch = (keyword, nextPageUrl) => ({

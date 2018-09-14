@@ -36,7 +36,7 @@ export class SignInForm extends Component {
           <h1 className={style['login-title']}>Sign in to Github</h1>
         </div>
         <div className={style['auth-form-body']}>
-          {error && <div className={style['error-msg']}>{error}</div>} 
+          {error && <div className={style['error-msg']}>{error}</div>}
           <label className={style['label-default']} for="login_field">Username or email address</label>
           <input type="text"
             className={'form-control' + EN_SPACE + style['input-block']}
@@ -46,7 +46,7 @@ export class SignInForm extends Component {
             defaultValue=""
             ref={input => this.nameInput = input}
             onKeyUp={this.handleKeyUp.bind(this)} />
-          <label for="password" className={style['label-password']}>
+          <label htmlFor="password" className={style['label-password']}>
             Password
             <Link to="/password_reset" className={style['label-link']}>Forgot password?</Link>
           </label>
