@@ -1,33 +1,51 @@
-let navId = 1, userId = 1
-export const headerLinks =  {
-  navLinks: [
-    { id: 'navLinks_' + navId++, name: 'Pull requests', url: '/pulls', category: 'nav' },
-    { id: 'navLinks_' + navId++, name: 'Issues', url: '/issues' },
-    { id: 'navLinks_' + navId++, name: 'Gist', url: '/gist' }
-  ],
-  userLinks: [
-    { id: 'userLinks_' + userId++, name: 'Noti', url: '/notifications', tips: 'You have unread notifications', dropdownId: null },
-    { id: 'userLinks_' + userId++, name: 'Repo', url: null, tips: 'Create new...', dropdownId: 'repoDropdown' },
-    { id: 'userLinks_' + userId++, name: 'User', url: null, tips: 'View profile and more', dropdownId: 'userDropdown' }
-  ]
-}
+const KEY_START_AT = 0
 
-let udropdownID = 0, rDropdownId = 0
+export const navLinks = (id => [
+  { id: `navLinks_${id++}`, name: 'Pull requests', url: '/pulls', category: 'nav' },
+  { id: `navLinks_${id++}`, name: 'Issues', url: '/issues' },
+  { id: `navLinks_${id++}`, name: 'Gist', url: '/gist' }
+](KEY_START_AT))
 
-export const headerDropdowns =  {
- userDropdown: [
-   { id: 'userDropdown_' + udropdownID++, category: 'username', name: 'liuxiao8114' },
-   { id: 'userDropdown_' + udropdownID++, category: 'userItems', name: 'Your profile', url: '/profile' },
-   { id: 'userDropdown_' + udropdownID++, category: 'userItems', name: 'Your stars', url: '/stars' },
-   { id: 'userDropdown_' + udropdownID++, category: 'userItems', name: 'Explore', url: '/explore' },
-   { id: 'userDropdown_' + udropdownID++, category: 'systemItems', name: 'Setting', url: '/settings' }
- ],
- repoDropdown: [
-   { id: 'repoDropdown_' + rDropdownId++, category: 'repository', name: 'New repository', url: '/new' },
-   { id: 'repoDropdown_' + rDropdownId++, category: 'repository', name: 'Import repository', url: '/import' },
-   { id: 'repoDropdown_' + rDropdownId++, category: 'repository', name: 'New gist', url: '/gist' }
- ]
-}
+export const headerDropdowns = (id => ({
+ natification: {
+   id: `userLinks_${id++}`,
+   name: 'Noti',
+   url: '/notifications',
+   tips: 'You have unread notifications'
+ },
+
+ repoDropdown: {
+   id: `userLinks_${id++}`,
+   name: 'Repo',
+   url: null,
+   tips: 'Create new...',
+   items: (id => ({
+     repository: [
+       { id: `repoDropdown_${id++}`, name: 'New repository', url: '/new' },
+       { id: `repoDropdown_${id++}`, name: 'Import repository', url: '/import' },
+       { id: `repoDropdown_${id++}`, name: 'New gist', url: '/gist' }
+     ]
+   })(KEY_START_AT))
+  },
+
+  userDropdown: {
+    id: `userLinks_${id++}`,
+    name: 'User',
+    url: null,
+    tips: 'View profile and more',
+    items: (id => ({
+      user: { id: `userDropdown_${id++}`, name: 'liuxiao8114' },
+      userItems: [
+        { id: `userDropdown_${id++}`, name: 'Your profile', url: '/profile'},
+        { id: `userDropdown_${id++}`, name: 'Your stars', url: '/stars' },
+        { id: `userDropdown_${id++}`, name: 'Explore', url: '/explore' }
+      ],
+      systemItems: [
+        { id: `userDropdown_${id++}`, name: 'Setting', url: '/settings' }
+      ]
+    })(KEY_START_AT))
+  }
+})(KEY_START_AT))
 
 export const languageColor = {
   javascript: '#f1e05a',

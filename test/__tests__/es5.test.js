@@ -114,19 +114,29 @@ describe('es5 features', () => {
   })
 
   describe('Array', () => {
-    it('reduceRight', () => {
-      const fn1 = first => 'first is: ' + first,
-            fn2 = second => 'second is: ' + second,
-            fn3 = last => 'last is: ' + last
+    it('Array.prototype.reduceRight', () => {
+      const fn1 = arg => 'first is: ' + arg,
+            fn2 = arg => 'second is: ' + arg,
+            fn3 = arg => 'last is: ' + arg
 
-      const funcs = [fn1, fn2, fn3],
-            last = funcs[funcs.length - 1],
-            rest = funcs.slice(0, -1)
+      const funcs = [ fn1, fn2, fn3 ]
 
-      expect(rest.reduceRight((composed, f) => f(composed),last('last')))
-      .toEqual('first is: second is: last is: last')
-      expect(funcs.reduce((prev, cur) => (...args) => prev(cur(...args)))('last'))
-      .toEqual('first is: second is: last is: last')
+      // the previous compose implementation in Redux
+      function composeWithReduceRight(funcs) {
+        const last = funcs[funcs.length - 1],
+              rest = funcs.slice(0, funcs.length - 1)
+        return (...init) => rest.reduceRight((composed, f) => f(composed), last(...init))
+      }
+
+      // the current compose implementation in Redux
+      function composeWithReduce(funcs) {
+        return funcs.reduce((prev, cur) => (...args) => prev(cur(...args)))
+      }
+
+      expect(composeWithReduceRight(funcs)('last'))
+        .toEqual('first is: second is: last is: last')
+      expect(composeWithReduce(funcs)('last'))
+        .toEqual('first is: second is: last is: last')
     })
   })
 

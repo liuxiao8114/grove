@@ -1,12 +1,5 @@
 import React from 'react'
-import sinon from 'sinon'
-import { expect } from 'chai'
-import { shallow } from 'enzyme'
-
-import { Provider } from 'react-redux'
-
-import Dropdown from '../../../src/containers/header/Dropdown'
-import DropdownItem from '../../../src/components/header/DropdownItem'
+import Dropdown from '../../../src/components/header/Dropdown'
 
 let udropdownID = 0, rDropdownId = 0
 

@@ -1,11 +1,10 @@
 var path = require('path');
 
 const ROOT_PATH = path.resolve(__dirname);
-const APP_PATH = path.resolve(ROOT_PATH, 'public');
-const BUILD_PATH = path.resolve(ROOT_PATH, 'public');
+const BUILD_PATH = path.resolve(ROOT_PATH, 'public')
 
 const config = {
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
   entry: {
       client: path.resolve(ROOT_PATH,'src/client.js')
   },

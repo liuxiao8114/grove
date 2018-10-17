@@ -37,7 +37,7 @@ export class SignInForm extends Component {
         </div>
         <div className={style['auth-form-body']}>
           {error && <div className={style['error-msg']}>{error}</div>}
-          <label className={style['label-default']} for="login_field">Username or email address</label>
+          <label className={style['label-default']} htmlFor="login_field">Username or email address</label>
           <input type="text"
             className={'form-control' + EN_SPACE + style['input-block']}
             id="login_field"
