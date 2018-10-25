@@ -1,7 +1,11 @@
 export const RESET_BODY_MODAL = 'RESET_BODY_MODAL'
 export const SELECTED_DROPDOWN = 'SELECTED_DROPDOWN'
 
-export { SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_ERROR, signInError, signInAsync } from './signIn'
+export {
+  SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_IN_ERROR,
+  signInError, signInAsync
+} from './signIn'
+
 export {
   REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE,
   USER_SEARCH_REQUEST, USER_SEARCH_SUCCESS, USER_SEARCH_FAILURE,
@@ -22,8 +26,10 @@ export const resetBodyModal = () => {
   }
 }
 
+/*
 export const selectedSettings = name => {
   return {
 
   }
 }
+*/

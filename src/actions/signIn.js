@@ -9,15 +9,11 @@ const signInRequest = () => {
 }
 
 const shouldSignIn = state => {
-  /*
-  const currentTime = 0
-
-  if(state.currentStatus.user &&
-    currentTime - state.currentStatus.user.sesstionTime < 10000) {
+  const currentTime = Date.now()
+  if(state.currentUser &&
+    currentTime - state.currentUser.loginTime < 600000) {
     return false
   }
-  */
-
   return true
 }
 
@@ -47,7 +43,7 @@ export const signInError = msg => ({
 //TODO: try to find out how to got a token from github and use it to login!
 export const signInAsync = (nameOrMail, password) => (dispatch, getState) => {
   if(!shouldSignIn(getState())) {
-    return null
+    return
   }
   dispatch(signInRequest())
   try {

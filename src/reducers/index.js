@@ -25,20 +25,23 @@ const selectedDropdown = (state = null, action) => {
 }
 
 const entities = (state = { users: {}, repositories: {} }, action) => {
-  if(action.response && action.response.entities) {
+  if(action.response && action.response.entities)
     return merge({}, state, action.response.entities)
-  }
   return state
 }
 
 const pagination = combineReducers({
+  userSearch: paginate({
+    mapActionToKey: 'userSearch',
+    types: [ USER_SEARCH_REQUEST, USER_SEARCH_SUCCESS, USER_SEARCH_FAILURE ]
+  }),
   repoSearch: paginate({
     mapActionToKey: 'repoSearch',
     types: [ REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE ]
   }),
-  userSearch: paginate({
-    mapActionToKey: 'userSearch',
-    types: [ USER_SEARCH_REQUEST, USER_SEARCH_SUCCESS, USER_SEARCH_FAILURE ]
+  userRepoSearch: paginate({
+    mapActionToKey: 'repoUserSearch',
+    types: [ REPO_SEARCH_REQUEST, REPO_SEARCH_SUCCESS, REPO_SEARCH_FAILURE ]
   })
 })
 

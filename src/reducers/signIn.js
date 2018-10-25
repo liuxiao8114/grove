@@ -23,7 +23,7 @@ export const signUpUser = (state = {
   return state
 }
 
-export const currentUser = (state = {}, action) => {
+export const currentUser = (state = null, action) => {
   switch (action.type) {
     case SIGN_IN_REQUEST: {
       return {
@@ -35,6 +35,7 @@ export const currentUser = (state = {}, action) => {
       return {
         username: action.username,
         password: action.password,
+        loginTime: Date.now(),
         isFetching: false,
         error: null
       }

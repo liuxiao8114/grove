@@ -19,16 +19,17 @@ const Dropdown = ({ items, currentUsername, isDisplay }) => {
         </div>
       )
     } else {
-      rows.push(<div key={`divider_${i++}`} className={style['dropdown-divider']}/>)
       items[vary].forEach(item => {
         rows.push(
           <Link key={item.id} to={item.url} className={style['dropdown-item']}>{item.name}</Link>
         )
       })
     }
+    rows.push(<div key={`divider_${i++}`} className={style['dropdown-divider']}/>)
   }
 
   Object.keys(items).forEach(renderItem)
+  rows.pop()
 
   return (
     <div className={isDisplay ? style['dropdown-sw-active'] : style['dropdown-menu-sw']}>

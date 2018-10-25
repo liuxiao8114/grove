@@ -26,37 +26,33 @@ const fetchRepoSearch = (keyword, nextPageUrl) => ({
   }
 })
 
-export const loadRepoSearch = (keyword, currentPage = 1, perPage = 10, type, params) => (dispatch, getState) => {
+export const loadRepoSearch = (
+  keyword,
+  currentPage = 1,
+  perPage = 10,
+  type,
+  params
+) => (dispatch, getState) => {
   const repoSearch = getState().pagination.repoSearch,
         currentType = typeMapping.repoSearch
+  let nextPageUrl =
+    `search/${currentType}?q=${keyword}&page=${currentPage}&per_page=${perPage}`
 
-  if(type && type !== currentType) {
+  if(type && type !== currentType)
     currentPage = 1
-  }
-
-  let nextPageUrl = `search/${currentType}?q=${keyword}&page=${currentPage}&per_page=${perPage}`
 
   if(params && Object.keys(params)) {
-    for(let key in params) {
+    for(let key in params)
       nextPageUrl += `&${key}=${params[key]}`
-    }
   }
 
-  //TODO: what's the meaning of this?
-  const {
-    pageCount = 0
-  } = repoSearch.keyword === keyword ? repoSearch : {}
-
-  if(pageCount > 0) {
+  // TODO: what's the meaning of this?
+  // 18/10/23 we have already gotten the results of this search
+  const { pageCount = 0 } = repoSearch.keyword === keyword ? repoSearch : {}
+  if(pageCount > 0)
     return null
-  }
 
   return dispatch(fetchRepoSearch(keyword, nextPageUrl))
-}
-
-// TODO: waiting for coding
-export const loadCodeSearch = (keyword) => (dispatch, getState) => {
-
 }
 
 const fetchUserSearch = (keyword, nextPageUrl) => ({
@@ -68,29 +64,39 @@ const fetchUserSearch = (keyword, nextPageUrl) => ({
   }
 })
 
-//TODO: async auth, this needs server to hold the session
-//Maybe this is not needed here
-const shouldFetchUser = (nextName, currentUsers) => {
-  if(currentUsers.includes(nextName)) {
+// TODO: async auth, this needs server to hold the session
+// Maybe this is not needed here
+// 18/10/23 what fuck session?
+/*
+const shouldFetchUser = (nextName, currentUser) => {
+  if(currentUser.username === nextName) {
     return false
   }
   return true
 }
+*/
 
-export const loadUserSearch = (keyword, currentPage = 1, perPage = 10, type, params) => (dispatch, getState) => {
+export const loadUserSearch = (
+    keyword,
+    currentPage = 1,
+    perPage = 10,
+    type,
+    params
+) => dispatch => {
   const currentType = typeMapping.userSearch
-  if(!type || type !== currentType) {
+  let nextPageUrl =
+    `search/${currentType}?q=${keyword}&page=${currentPage}&per_page=${perPage}`
+
+  if(!type || type !== currentType)
     currentPage = 1
-  }
-
-  let nextPageUrl = `search/${currentType}?` +
-                    `q=${keyword}&page=${currentPage}&per_page=${perPage}`
-
   if(params && Object.keys(params)) {
-    for(let key in params) {
+    for(let key in params)
       nextPageUrl += `&${key}=${params[key]}`
-    }
   }
-
   return dispatch(fetchUserSearch(keyword, nextPageUrl))
+}
+
+// TODO: waiting for coding
+export const loadCodeSearch = (keyword) => (dispatch, getState) => {
+
 }

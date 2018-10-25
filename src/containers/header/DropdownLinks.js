@@ -13,11 +13,9 @@ const USER_CONFIG = 'User'
 export class DropdownLinks extends Component {
   render() {
     const { links, onClick, selectedDropdown, currentUsername } = this.props
-    let keys = Object.keys(links)
-
     return (
       <ul id="user-links" className={style['user-nav']}>
-        {keys.map(k => {
+        {links.map(k => {
           if(links[k].items) {
             const subStyle = (name === USER_CONFIG) ?
               tooltipStyle['tooltipped-s'] : tooltipStyle['tooltipped-sw']
@@ -58,7 +56,7 @@ const mapStateToProps = state => ({
 })
 
 DropdownLinks.propTypes = {
-  links: PropTypes.object,
+  links: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
   selectedDropdown: PropTypes.string.isRequired,
   currentUsername: PropTypes.string.isRequired

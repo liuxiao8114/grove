@@ -26,10 +26,9 @@ export const Schemas = {
 export const FETCH_API = 'FETCH_API'
 
 const getNextUrl = response => {
-  /*
-  Link: <https://api.github.com/search/repositories?q=redux&page=2>; rel="next",
-        <https://api.github.com/search/repositories?q=redux&page=34>; rel="last"
-  */
+  // Link's pattern like below:
+  // <https://api.github.com/search/repositories?q=redux&page=2>; rel="next",
+  // <https://api.github.com/search/repositories?q=redux&page=34>; rel="last"
   const link = response.headers.get('link')
   if(!link) {
     return null
@@ -46,7 +45,7 @@ const getNextUrl = response => {
   return nextLink.split(';')[0].slice(1, -1)
 }
 
-//fetch data and normalize
+// fetch data and normalize
 const callApi = (endpoint, schema) => {
   const API_ROOT = 'https://api.github.com/'
   const fullUrl = endpoint.includes(API_ROOT) ? endpoint : (API_ROOT + endpoint)
@@ -56,14 +55,10 @@ const callApi = (endpoint, schema) => {
       if(!response.ok) {
         return Promise.reject()
       }
-
       const nextPageUrl = getNextUrl(response)
-      //{ entities: {}, result: {}, nextPageUrl: '' }
 
-      return Object.assign({},
-        normalize(json, schema),
-        { nextPageUrl }
-      )
+      // { entities: {}, result: {}, nextPageUrl: '' }
+      return Object.assign({}, normalize(json, schema), { nextPageUrl })
     })
   )
 }

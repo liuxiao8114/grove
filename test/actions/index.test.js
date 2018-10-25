@@ -1,35 +1,47 @@
-import React from 'react'
-import sinon from 'sinon'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
 
-const middlewares = [ thunk ]
-const mockStore = configureMockStore(middlewares)
-
+import fetchAPI from '../../src/middlewares/fetchAPI'
 import * as actions from '../../src/actions'
 
+jest.useFakeTimers()
+
+const middlewares = [ thunk, fetchAPI ]
+const mockStore = configureMockStore(middlewares)
+const SELECTED_DROPDOWN_ID = 'SELECTED_DROPDOWN_ID'
+
 describe('actions', () => {
+  it('select a dropdown and triggle SELECTED_DROPDOWN type', () => {
+    const { type, id } = actions.selectedDropdown(SELECTED_DROPDOWN_ID)
+    expect(type).toBe(actions.SELECTED_DROPDOWN)
+    expect(id).toBe(SELECTED_DROPDOWN_ID)
+  })
 
+  it('resetBodyModal when triggle RESET_BODY_MODAL', () => {
+    const { type } = actions.resetBodyModal()
+    expect(type).toBe(actions.RESET_BODY_MODAL)
+  })
 
-})
-/*
-it('should return an object with name&pass', () => {
-  const store = mockStore({
+  it('should return name&pass calling sign in async', () => {
+    const USERNAME = 'liuxiao8114',
+          PASS = 1234,
+          MAIL = 'liuxiao8114@163.com'
+
+    const store = mockStore({})
+    const expectedActions = [
+      { type: actions.SIGN_IN_REQUEST },
+      { type: actions.SIGN_IN_SUCCESS, username: USERNAME, password: PASS, publicEmail: MAIL }
+    ]
+
+    store.dispatch(actions.signInAsync(MAIL, PASS))
+    jest.runOnlyPendingTimers()
+
+    const receivedActions = store.getActions()
+    expect(receivedActions[0]).toEqual(expectedActions[0])
+    expect(receivedActions[1]).toEqual(expectedActions[1])
+  })
+
+  it('', () => {
 
   })
-  let name = 1234, pass = 12345
-
-  new Promise(store.dispatch(actions.signInAsync(name, pass))).then(res => {
-    let result
-    expect(result.username).to.equal(name)
-    expect(result.password).to.equal(pass)
-    expect(result.publicEmail).to.equal(null)
-  })
 })
-
-name = 'liuxiao8114@163.com', pass = 1234
-result = actions.signIn(name, pass)
-expect(result.username).to.equal('liuxiao8114')
-expect(result.password).to.equal(pass)
-expect(result.publicEmail).to.equal(name)
-*/

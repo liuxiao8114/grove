@@ -1,3 +1,5 @@
+jest.useFakeTimers()
+
 describe('es5 features', () => {
   describe('closure', () => {
     it('test closure for private var', () => {
