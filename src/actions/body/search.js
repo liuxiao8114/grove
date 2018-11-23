@@ -1,4 +1,4 @@
-import { FETCH_API, Schemas } from '../middlewares/fetchAPI'
+import { FETCH_API, Schemas } from '../../middlewares/fetchAPI'
 
 export const REPO_SEARCH_REQUEST = 'REPO_SEARCH_REQUEST'
 export const REPO_SEARCH_SUCCESS = 'REPO_SEARCH_SUCCESS'
@@ -35,22 +35,20 @@ export const loadRepoSearch = (
 ) => (dispatch, getState) => {
   const repoSearch = getState().pagination.repoSearch,
         currentType = typeMapping.repoSearch
+  const { pageCount = 0 } = repoSearch.keyword === keyword ? repoSearch : {}
+  // we got this repo already
+  if(pageCount > 0)
+    return null
+
   let nextPageUrl =
     `search/${currentType}?q=${keyword}&page=${currentPage}&per_page=${perPage}`
 
   if(type && type !== currentType)
     currentPage = 1
-
   if(params && Object.keys(params)) {
     for(let key in params)
       nextPageUrl += `&${key}=${params[key]}`
   }
-
-  // TODO: what's the meaning of this?
-  // 18/10/23 we have already gotten the results of this search
-  const { pageCount = 0 } = repoSearch.keyword === keyword ? repoSearch : {}
-  if(pageCount > 0)
-    return null
 
   return dispatch(fetchRepoSearch(keyword, nextPageUrl))
 }
@@ -77,11 +75,11 @@ const shouldFetchUser = (nextName, currentUser) => {
 */
 
 export const loadUserSearch = (
-    keyword,
-    currentPage = 1,
-    perPage = 10,
-    type,
-    params
+  keyword,
+  currentPage = 1,
+  perPage = 10,
+  type,
+  params
 ) => dispatch => {
   const currentType = typeMapping.userSearch
   let nextPageUrl =
@@ -93,6 +91,7 @@ export const loadUserSearch = (
     for(let key in params)
       nextPageUrl += `&${key}=${params[key]}`
   }
+
   return dispatch(fetchUserSearch(keyword, nextPageUrl))
 }
 

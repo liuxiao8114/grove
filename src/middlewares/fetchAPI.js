@@ -20,6 +20,10 @@ export const Schemas = {
   },
   USER_SEARCH_RESULTS: {
     items: [userSchema]
+  },
+  USER_OWN_REPOS: {
+    user: userSchema,
+    REPOS: [ repoSchema ]
   }
 }
 
@@ -74,11 +78,9 @@ export default store => next => action => {
   if(!(types instanceof Array)) {
     throw new Error(`types must be Array but got: "${types.prototype}"`)
   }
-
   if(types.length !== 3) {
     throw new Error(`in FETCH_API there must have 3 types but now got: ${types.length}`)
   }
-
   if(typeof endpoint == 'function') {
     endpoint = endpoint(store.getState())
   }

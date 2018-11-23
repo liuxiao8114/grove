@@ -1,20 +1,48 @@
 import { FETCH_API, Schemas } from '../../middlewares/fetchAPI'
 
-const USER_REPOS_SEARCH_REQUEST = 'USER_REPOS_SEARCH_REQUEST',
-      USER_REPOS_SEARCH_SUCCESS = 'USER_REPOS_SEARCH_SUCCESS',
-      USER_REPOS_SEARCH_FAILURE = 'USER_REPOS_SEARCH_FAILURE'
+export const USER_REPOS_REQUEST = 'USER_REPOS_REQUEST',
+             USER_REPOS_SUCCESS = 'USER_REPOS_SUCCESS',
+             USER_REPOS_FAILURE = 'USER_REPOS_FAILURE'
 
-const fetchRepoSearch = (keyword, nextPageUrl) => ({
-  keyword,
+export const USER_REPOS_FILTER = 'USER_REPOS_FILTER'
+
+const fetchUserRepos = (user, pageUrl) => ({
+  user,
   [FETCH_API]: {
-    types: [ USER_REPOS_SEARCH_REQUEST, USER_REPOS_SEARCH_SUCCESS, USER_REPOS_SEARCH_FAILURE ],
-    endpoint: nextPageUrl,
-    schema: Schemas.REPOS_SEARCH_RESULTS
+    types: [ USER_REPOS_REQUEST, USER_REPOS_SUCCESS, USER_REPOS_FAILURE ],
+    endpoint: pageUrl,
+    schema: Schemas.USER_OWN_REPOS
   }
 })
 
-const loadUserRepositories = (user, currentPage = 1, perPage = 10 )=> {
-  let nextPageUrl =
-    `search/repositories?page=${currentPage}&per_page=${perPage}`
+export const loadUserRepositories = (user, currentPage, perPage) => (dispatch, getState) => {
+  if(!user) {
+    user = getState().currentUser.username
+  }
+
+  let url = `users/${user}/repos`
+  if(currentPage && perPage) {
+    url += `?page=${currentPage}&per_page=${perPage}`
+  }
+
+  return dispatch(fetchUserRepos(user, url))
+}
+
+export const filterUserRepositories = filter => (dispatch, getState) => {
+  const { items, isFetching } = getState().currentUser.userOwnRepos
+  if(isFetching) {
+    return
+  }
+
+  return dispatch({
+    type: USER_REPOS_FILTER,
+    keyword: filter,
+    items: [],
+    pageCount: 1
+  })
+
+}
+
+export const loadAnnounceList = () => {
 
 }

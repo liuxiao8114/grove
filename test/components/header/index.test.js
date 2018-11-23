@@ -11,8 +11,9 @@ describe('<Header/>', () => {
     const instance = renderer.create(
       <Header inputValue={TEST_VALUE} hasSearchBar={true}>
         children
-      </Header>).root
-    //expect(instance.findByType(HeaderSearch).props.inputValue).toBe(TEST_VALUE)
+      </Header>
+    ).root
+    expect(instance.findByType(HeaderSearch).props.inputValue).toBe(TEST_VALUE)
     expect(instance.findByType(HeaderSearch).props.inputValue).toBe(TEST_VALUE)
   })
 })

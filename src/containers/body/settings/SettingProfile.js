@@ -26,11 +26,11 @@ class SettingProfile extends Component {
   render() {
     return (
       <div className="col-9 float-left">
-        <div class="subhead mt-0 mb-0">
-          <h2 class="subhead-heading">Public Profile</h2>
+        <div className="subhead mt-0 mb-0">
+          <h2 className="subhead-heading">Public Profile</h2>
         </div>
-        <form action="/users/liuxiao8114" class="columns">
-          <div class="column two-thirds">
+        <form action="/users/liuxiao8114" className="columns">
+          <div className="column two-thirds">
 
           </div>
         </form>

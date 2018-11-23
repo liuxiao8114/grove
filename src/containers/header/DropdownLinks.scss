@@ -1,17 +1,19 @@
-.user-nav {
+.header-nav {
   list-style: outside none none;
   margin-right: -8px;
 }
 
 .dropdown {
   position: relative;
-
   // compose form .header-nav-item
-  float: left;
 }
 
 .header-nav-link {
-
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 600;
+  line-height: 20px;
+  padding: 5px 8px;
+  cursor:pointer;
 }
 
 .dropdown-active .dropdown-menu-content {
@@ -19,12 +21,12 @@
   pointer-events: all;
 }
 
-.dropdown-item {
-
-}
-
 .header-nav-item.active .dropdown-menu-content {
   display: block;
+}
+
+.dropdown-item {
+
 }
 
 .logout-form {

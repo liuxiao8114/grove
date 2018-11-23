@@ -10,26 +10,38 @@ const Dropdown = ({ items, currentUsername, isDisplay }) => {
   let rows = []
   let i = 0
 
-  const renderItem = vary => {
-    if(vary === USER_NAME) {
+  const renderItem = varyKeyOrObj => {
+    if(typeof varyKeyOrObj === 'object') {
+      const obj = varyKeyOrObj
       rows.push(
-        <div key="dropdown-header" className={style['dropdown-header']}>
-          Signed in as{' '}
-          <strong className={style['css-truncate-target']}>{currentUsername}</strong>
-        </div>
+        <Link key={obj.id} to={obj.url} className={style['dropdown-item']}>{obj.name}</Link>
       )
     } else {
-      items[vary].forEach(item => {
+      const vary = varyKeyOrObj
+      if(vary === USER_NAME) {
         rows.push(
-          <Link key={item.id} to={item.url} className={style['dropdown-item']}>{item.name}</Link>
+          <div key="dropdown-header" className={style['dropdown-header']}>
+            Signed in as{' '}
+            <strong className={style['css-truncate-target']}>{currentUsername}</strong>
+          </div>
         )
-      })
+      } else {
+        items[vary].forEach(item => {
+          rows.push(
+            <Link key={item.id} to={item.url} className={style['dropdown-item']}>{item.name}</Link>
+          )
+        })
+      }
+      rows.push(<div key={`divider_${i++}`} className={style['dropdown-divider']}/>)
     }
-    rows.push(<div key={`divider_${i++}`} className={style['dropdown-divider']}/>)
   }
 
-  Object.keys(items).forEach(renderItem)
-  rows.pop()
+  if(Array.isArray(items)) {
+    items.forEach(renderItem)
+  } else {
+    Object.keys(items).forEach(renderItem)
+    rows.pop()
+  }
 
   return (
     <div className={isDisplay ? style['dropdown-sw-active'] : style['dropdown-menu-sw']}>
@@ -39,7 +51,10 @@ const Dropdown = ({ items, currentUsername, isDisplay }) => {
 }
 
 Dropdown.propTypes = {
-  items: PropTypes.object,
+  items: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]),
   currentUsername: PropTypes.string.isRequired,
   isDisplay: PropTypes.bool.isRequired
 }

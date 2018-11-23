@@ -38,6 +38,15 @@ cnpm install node-fetch --save-dev
 //for promise test in mocha
 cnpm install chai-as-promised --save-dev
 
+npm remove babel-core babel-preset-env babel-cli babel-register babel-runtime babel-loader
 
+npm remove babel-plugin-transform-object-rest-spread babel-polyfill babel-preset-react
+npm remove babel-eslint babel-jest
 "test": "mocha \"srcTest/**/*.test.js\" --compilers js:babel-register --require ignore-styles"
 "test": "mocha \"src/lexical/es6.test.js\" --compilers js:babel-register --require ignore-styles"
+
+npm install webpack --save
+npm install webpack-dev-middleware webpack-hot-middleware --save-dev
+npm install css-loader webpack-dev-middleware webpack-hot-middleware postcss-loader  postcss-smart-import precss node-sass autoprefixer sass-loader style-loader --save-dev
+
+npm install --save-dev babel-jest 'babel-core@^7.0.0-bridge' @babel/core

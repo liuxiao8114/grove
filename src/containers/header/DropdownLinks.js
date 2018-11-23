@@ -14,33 +14,40 @@ export class DropdownLinks extends Component {
   render() {
     const { links, onClick, selectedDropdown, currentUsername } = this.props
     return (
-      <ul id="user-links" className={style['user-nav']}>
-        {links.map(k => {
-          if(links[k].items) {
-            const subStyle = (name === USER_CONFIG) ?
-              tooltipStyle['tooltipped-s'] : tooltipStyle['tooltipped-sw']
-            return (
-              <div key={links[k].id} className={style['dropdown']}>
-                <div className={`${style['header-nav-link']} ${subStyle}`}
-                     aria-label={links[k].tips}
-                     onClick={() => onClick(k)}>
-                  {links[k].name}
-                </div>
-                <Dropdown
-                  items={links[k].items}
-                  isDisplay={selectedDropdown === k}
-                  currentUsername={currentUsername}/>
-              </div>
-            )
-          }
-          return (
-            <Link key={links[k].id}
-                  to={links[k].url}
-                  className={style['dropdown-item']}>
-              {links[k].name}
-            </Link>
+      <ul id="header-links" className={style['header-nav']}>
+        {
+          links.map(
+            (link, index) => {
+              // link with subList
+              if(link.items) {
+                const subStyle = (link.name === USER_CONFIG) ?
+                  tooltipStyle['tooltipped-s'] : tooltipStyle['tooltipped-sw']
+                return (
+                  <div key={link.id} className={style['dropdown']}>
+                    <div className={`${style['header-nav-link']} ${subStyle}`}
+                         aria-label={link.tips}
+                         onClick={() => onClick(index)}>
+                      {link.name}
+                    </div>
+                    <Dropdown
+                      items={link.items}
+                      isDisplay={selectedDropdown === index}
+                      currentUsername={currentUsername}
+                    />
+                  </div>
+                )
+              }
+              // link only
+              return (
+                <Link key={link.id}
+                      to={link.url}
+                      className={style['dropdown-item']}>
+                  {link.name}
+                </Link>
+              )
+            }
           )
-        })}
+        }
       </ul>
     )
   }

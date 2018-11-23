@@ -7,23 +7,17 @@ import { searchQueryMappingReducer } from '../../../data-config'
 
 import SearchResult from '../../../components/body/search/SearchResult'
 import SearchResultNav from '../../../components/body/search/SearchResultNav'
+import SearchResultPagination from '../../../components/body/search/SearchResultPagination'
+import LanguageList from '../../../components/body/search/LanguageList'
+import { SEARCH_RESULT_TYPES } from '../../../components/body/search/utils'
 import SearchHome from './SearchHome'
 
 import style from './index.scss'
 
-const SERACH_PER_PAGE = {
-  repositories: 10,
-  code: 10,
-  commits: 10,
-  issues: 10,
-  wikis: 10,
-  users: 15
-}
-
 function loadData(...searchActions) {
   return (keyword, currentPage, type, params) => {
     for(let action of searchActions) {
-      action(keyword, currentPage, SERACH_PER_PAGE[type], type, params)
+      action(keyword, currentPage, SEARCH_RESULT_TYPES[type].perPage, type, params)
     }
   }
 }
@@ -58,17 +52,20 @@ export class Search extends Component {
   }
 
   render() {
-    const { keyword, result, counts, currentCount, currentPage, type, otherParams } = this.props
-    if(!keyword || !keyword.trim()) {
+    const { keyword, result, counts, currentCount, currentPage, type } = this.props
+    if(!keyword || !keyword.trim())
       return <SearchHome/>
-    }
+    const { perPage, isDisplayLanguageList } = SEARCH_RESULT_TYPES[type]
+    let totalPage = Math.ceil(currentCount / perPage)
+    if(totalPage > 100) totalPage = 100
 
     return (
-      <div role="main">
+      <div className={style['container']} role='main'>
         <SearchResultNav counts={counts} type={type} keyword={keyword}/>
-        <SearchResult keyword={keyword} currentCount={currentCount} result={result}
-          type={type} currentPage={currentPage} perPage={SERACH_PER_PAGE[type]}
-          params={otherParams}/>
+        <SearchResult currentCount={currentCount} result={result} type={type}>
+          <SearchResultPagination keyword={keyword} type={type} totalPage={totalPage} currentPage={currentPage}/>
+        </SearchResult>
+        {isDisplayLanguageList && <LanguageList keyword={keyword} type={type}/>}
       </div>
     )
   }
@@ -77,17 +74,23 @@ export class Search extends Component {
 Search.propTypes = {
   keyword: PropTypes.string.isRequired,
   result: PropTypes.arrayOf(PropTypes.object),
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  currentPage: PropTypes.number,
+  counts: PropTypes.number,
+  currentCount: PropTypes.number
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const { q: keyword, type = 'repositories', page = 1, ...otherParams } = ownProps.location.query
-
   const {
-    pagination,
-    entities: { [type]: entityValue }
-  } = state
-
+          q: keyword,
+          type = 'repositories',
+          page = 1,
+          ...otherParams
+        } = ownProps.location.query
+  const {
+          pagination,
+          entities: { [type]: entityValue }
+        } = state
   const searchValue = pagination[searchQueryMappingReducer[type]],
         result = searchValue.items ? searchValue.items.map(item => entityValue[item]) : [],
         currentCount = searchValue.totalCount
@@ -109,6 +112,4 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, {
-  loadRepoSearch, loadUserSearch
-})(Search)
+export default connect(mapStateToProps, { loadRepoSearch, loadUserSearch })(Search)

@@ -23,7 +23,7 @@ export const signUpUser = (state = {
   return state
 }
 
-export const currentUser = (state = null, action) => {
+export const currentUser = (state = {}, action) => {
   switch (action.type) {
     case SIGN_IN_REQUEST: {
       return {

@@ -1,3 +1,35 @@
+import RepoItem from './RepoItem'
+import UserItem from './UserItem'
+
+export const SEARCH_RESULT_TYPES = {
+  repositories: {
+    compeont: RepoItem,
+    perPage: 10,
+    isDisplayLanguageList: true
+  },
+  code: {
+    perPage: 10,
+    isDisplayLanguageList: true
+  },
+  commits: {
+    perPage: 10,
+    isDisplayLanguageList: true
+  },
+  issues: {
+    perPage: 10,
+    isDisplayLanguageList: false
+  },
+  wikis: {
+    perPage: 10,
+    isDisplayLanguageList: false
+  },
+  users: {
+    component: UserItem,
+    perPage: 10,
+    isDisplayLanguageList: false
+  }
+}
+
 function SortType(name, key, isAsc) {
   this.name = name
   this.key = key

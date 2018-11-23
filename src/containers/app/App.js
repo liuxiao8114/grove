@@ -19,7 +19,7 @@ export class App extends Component {
       return <SignIn/>
     }
 
-    const { selectedDropdown = null, inputValue, resetBodyModal } = this.props
+    const { selectedDropdown, inputValue, resetBodyModal } = this.props
     return (
       <div>
         <Header inputValue={inputValue}>
@@ -37,7 +37,7 @@ export class App extends Component {
 }
 
 App.propTypes = {
-  selectedDropdown: PropTypes.bool.isRequired,
+  selectedDropdown: PropTypes.string.isRequired,
   inputValue: PropTypes.string,
   resetBodyModal: PropTypes.func.isRequired,
   children: PropTypes.array,
