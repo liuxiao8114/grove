@@ -1,11 +1,11 @@
 .header-nav {
+  flex: 1 0 0;
   list-style: outside none none;
   margin-right: -8px;
 }
 
 .dropdown {
-  position: relative;
-  // compose form .header-nav-item
+  float: left;
 }
 
 .header-nav-link {
@@ -14,6 +14,11 @@
   line-height: 20px;
   padding: 5px 8px;
   cursor:pointer;
+}
+
+.header-nav-link:hover, .header-nav-link:focus {
+  color: #fff;
+  text-decoration: none;
 }
 
 .dropdown-active .dropdown-menu-content {

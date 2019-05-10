@@ -8,11 +8,9 @@ export default function Header(props) {
   const { inputValue, hasSearchBar = true } = props
   return (
     <div className={style.header}>
-      <div className={style.container}>
-        { hasSearchBar && <HeaderSearch inputValue={inputValue}/> }
-        <div className={style['ul-header-layout']}>
-          {props.children}
-        </div>
+      { hasSearchBar && <HeaderSearch inputValue={inputValue}/> }
+      <div className={style['ul-header-layout']}>
+        {props.children}
       </div>
     </div>
   )

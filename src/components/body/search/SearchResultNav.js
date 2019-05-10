@@ -43,7 +43,7 @@ export default class SearchResultNav extends Component {
 }
 
 SearchResultNav.propTypes = {
-  counts: PropTypes.number.isRequired,
+  counts: PropTypes.objectOf(PropTypes.number),
   keyword: PropTypes.string,
   type: PropTypes.string
 }

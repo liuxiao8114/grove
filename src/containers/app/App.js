@@ -19,15 +19,15 @@ export class App extends Component {
       return <SignIn/>
     }
 
-    const { selectedDropdown, inputValue, resetBodyModal } = this.props
+    const { selectedDropdown = -1, inputValue, resetBodyModal } = this.props
     return (
       <div>
-        <Header inputValue={inputValue}>
+        <Header inputValue={inputValue} hasSearchBar={true}>
           <NavLinks links={navLinks}/>
           <DropdownLinks links={headerDropdowns}/>
         </Header>
-        <div className={selectedDropdown ?
-          style['modal-active'] : style['modal-backdrop']}
+        <div className={selectedDropdown === -1 ?
+          style['modal-backdrop'] : style['modal-active']}
           onClick={resetBodyModal}>
         </div>
         {this.props.children}
@@ -37,10 +37,9 @@ export class App extends Component {
 }
 
 App.propTypes = {
-  selectedDropdown: PropTypes.string.isRequired,
+  selectedDropdown: PropTypes.number,
   inputValue: PropTypes.string,
   resetBodyModal: PropTypes.func.isRequired,
-  children: PropTypes.array,
   currentUser: PropTypes.shape({
     username: PropTypes.string
   })

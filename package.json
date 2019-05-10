@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "test": "jest test/containers/header",
+    "test": "jest test/components/body",
     "server": "babel-node server/index.js"
   },
   "dependencies": {

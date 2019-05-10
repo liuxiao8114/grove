@@ -3,7 +3,7 @@ import UserItem from './UserItem'
 
 export const SEARCH_RESULT_TYPES = {
   repositories: {
-    compeont: RepoItem,
+    component: RepoItem,
     perPage: 10,
     isDisplayLanguageList: true
   },
@@ -28,6 +28,16 @@ export const SEARCH_RESULT_TYPES = {
     perPage: 10,
     isDisplayLanguageList: false
   }
+}
+
+export const SEARCH_QUERY_MAPPING = {
+  repo: 'repoSearch',
+  repositories: 'repoSearch',
+  code: 'codeSearch',
+  commits: 'commitSearch',
+  issues: 'issueSearch',
+  wikis: 'wikiSearch',
+  users: 'userSearch'
 }
 
 function SortType(name, key, isAsc) {

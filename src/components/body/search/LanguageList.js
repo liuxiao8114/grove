@@ -18,13 +18,13 @@ function renderItems(items, query) {
   const list = []
   items.forEach(item => {
     list.push(
-      <li className={style.item} activeClassName={style['item-active']}>
+      <li key={item} className={style.item}>
         <Link to={query(item.toLowerCase())}>
           <span>{item}</span><span>10,000</span>
         </Link>
-      </li>)
+      </li>
+    )
   })
-
   return list
 }
 

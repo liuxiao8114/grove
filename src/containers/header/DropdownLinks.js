@@ -18,15 +18,15 @@ export class DropdownLinks extends Component {
         {
           links.map(
             (link, index) => {
-              // link with subList
               if(link.items) {
                 const subStyle = (link.name === USER_CONFIG) ?
                   tooltipStyle['tooltipped-s'] : tooltipStyle['tooltipped-sw']
                 return (
                   <div key={link.id} className={style['dropdown']}>
-                    <div className={`${style['header-nav-link']} ${subStyle}`}
-                         aria-label={link.tips}
-                         onClick={() => onClick(index)}>
+                    <div
+                      className={`${style['header-nav-link']} ${subStyle}`}
+                      aria-label={link.tips}
+                      onClick={() => onClick(index)}>
                       {link.name}
                     </div>
                     <Dropdown
@@ -39,11 +39,11 @@ export class DropdownLinks extends Component {
               }
               // link only
               return (
-                <Link key={link.id}
-                      to={link.url}
-                      className={style['dropdown-item']}>
-                  {link.name}
-                </Link>
+                <div key={link.id} className={style['dropdown']}>
+                  <Link to={link.url} className={style['header-nav-link']}>
+                    {link.name}
+                  </Link>
+                </div>
               )
             }
           )
@@ -65,7 +65,7 @@ const mapStateToProps = state => ({
 DropdownLinks.propTypes = {
   links: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
-  selectedDropdown: PropTypes.string.isRequired,
+  selectedDropdown: PropTypes.number,
   currentUsername: PropTypes.string.isRequired
 }
 

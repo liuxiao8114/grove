@@ -2,53 +2,65 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import RepositoriesTitle from 'react'
-import AnnouncementList from 'react'
-import RepositoryList from 'react'
+import RepositoriesTitle from './RepositoriesTitle'
+import AnnouncementList from './AnnouncementList'
+import RepositoryList from './RepositoryList'
 
 import { loadAnnoucements, loadUserRepositories } from '../../../actions'
+import style from './index.scss'
 
-export class RepositoryZone extends React.Component {
+export class RepositoriesZone extends React.Component {
   constructor(props) {
     super(props)
+    this.doFilter = this.doFilter.bind(this)
   }
 
   componentDidMount() {
-    const { dispatch, loadUserRepositories, currentUser } = this.props
-    dispatch(loadUserRepositories)(currentUser.username)
-    // dispatch(loadAnnoucements)
+    const { loadUserRepositories } = this.props
+    loadUserRepositories()
+//  loadAnnoucements()
+  }
+
+  doFilter(event) {
+    this.props.loadUserRepositories(event.target.value)
   }
 
   render() {
-    const { repos, announcements } = this.props
+    const { repos = [], announcements } = this.props
     return (
-      <div className="">
-        { announcements && announcements.length !== 0 && <AnnouncementList/> }
-        <div className="">
+      <div className={style['repositories-zone']}>
+        { announcements &&
+          announcements.length !== 0 &&
+          <AnnouncementList announcements={announcements}/>
+        }
+        <div className={style['repositories-list-container']}>
           <RepositoriesTitle/>
-          <RepositoryList repos={ repos }/>
+          <RepositoryList repos={repos} doFilter={this.doFilter}/>
         </div>
       </div>
     )
   }
 }
 
-RepositoryZone.propTypes = {
-  repos: PropTypes.array.isRequired,
-  currentUser: PropTypes.shape({
-    username: PropTypes.string.isRequired
-  }),
+RepositoriesZone.propTypes = {
+  repos: PropTypes.array,
   announcements: PropTypes.array,
-  dispatch: PropTypes.func.isRequired,
   loadUserRepositories: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
-  const { pagination, currentUser } = state
-  return {
-    currentUser,
-    repos: pagination.userOwnRepos.repos
+  const {
+    entities: { repositories },
+    pagination: { userOwnRepos }
+  } = state
+  const items = userOwnRepos.items
+  const repos = []
+  if(items && items.length !== 0) {
+    for(let repoKey of items)
+      repos.push(repositories[repoKey])
   }
+  return { repos }
 }
+const mapDispatchToProps = { loadUserRepositories, loadAnnoucements }
 
-export default connect(mapStateToProps, { loadUserRepositories })(RepositoryZone)
+export default connect(mapStateToProps, mapDispatchToProps)(RepositoriesZone)

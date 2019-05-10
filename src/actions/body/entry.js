@@ -15,14 +15,19 @@ const fetchUserRepos = (user, pageUrl) => ({
   }
 })
 
-export const loadUserRepositories = (user, currentPage, perPage) => (dispatch, getState) => {
+export const loadUserRepositories = (filter, currentPage, perPage) => (dispatch, getState) => {
+  const user = getState().currentUser.username
   if(!user) {
-    user = getState().currentUser.username
+    throw new Error('we do not have user yet')
   }
 
   let url = `users/${user}/repos`
-  if(currentPage && perPage) {
-    url += `?page=${currentPage}&per_page=${perPage}`
+  if(filter || currentPage || perPage) {
+    url += `?`
+    if(filter) url += `q=${filter}&`
+    if(currentPage) url += `page=${currentPage}&`
+    if(perPage) url += `per_page=${perPage}&`
+    url = url.slice(0, -1)
   }
 
   return dispatch(fetchUserRepos(user, url))
@@ -37,12 +42,11 @@ export const filterUserRepositories = filter => (dispatch, getState) => {
   return dispatch({
     type: USER_REPOS_FILTER,
     keyword: filter,
-    items: [],
+    items: items || [],
     pageCount: 1
   })
-
 }
 
 export const loadAnnounceList = () => {
-
+  return
 }

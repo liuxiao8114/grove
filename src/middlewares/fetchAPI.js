@@ -1,6 +1,4 @@
 import { normalize, schema } from 'normalizr'
-// only for unit test
-// import fetch from 'node-fetch'
 
 const userSchema = new schema.Entity('users', {}, {
   idAttribute: user => user.login.toLocaleLowerCase()
@@ -21,10 +19,7 @@ export const Schemas = {
   USER_SEARCH_RESULTS: {
     items: [userSchema]
   },
-  USER_OWN_REPOS: {
-    user: userSchema,
-    REPOS: [ repoSchema ]
-  }
+  USER_OWN_REPOS: [repoSchema]
 }
 
 export const FETCH_API = 'FETCH_API'

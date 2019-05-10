@@ -42,6 +42,5 @@ export default class SearchResult extends Component {
 SearchResult.propTypes = {
   currentCount: PropTypes.number,
   type: PropTypes.string,
-  result: PropTypes.arrayOf(PropTypes.object),
-  children: PropTypes.array
+  result: PropTypes.arrayOf(PropTypes.object)
 }

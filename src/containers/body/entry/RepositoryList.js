@@ -1,18 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { filterUserRepositories } from '../../../actions'
 import style from './index.scss'
 
-export class RepositoryList extends React.Component {
+export default class RepositoryList extends React.Component {
   constructor(props) {
     super(props)
     this.renderItem = this.renderItem.bind(this)
-    this.handleChange = this.handleChange.bind(this)
   }
 
-  renderItem() {
-    const { repos } = this.props
+  renderItem(repos) {
     if(!repos || repos.length === 0) {
       return (
         <div>You don't own any repository yet.</div>
@@ -20,25 +17,27 @@ export class RepositoryList extends React.Component {
     }
     const items = []
     for(let repo of repos) {
-      items.push(<li key={repo.full_name}>{repo.type + ' ' + repo.full_name}</li>)
+      items.push(<li key={repo.id}>{repo.full_name}</li>)
     }
-    return items
-  }
-
-  handleChange() {
-
+    return (
+      <ul>
+        {items}
+      </ul>
+    )
   }
 
   render() {
+    const { repos, doFilter } = this.props
     return (
       <div>
-        <input className={ style['abc'] } onChange={ this.handleChange }/>
-        { this.renderItem() }
+        <input className={style['repository-list-filter']} onChange={doFilter}/>
+        { this.renderItem(repos) }
       </div>
     )
   }
 }
 
 RepositoryList.propTypes = {
-  repos: PropTypes.array.isRequired
+  repos: PropTypes.array.isRequired,
+  doFilter: PropTypes.func.isRequired
 }

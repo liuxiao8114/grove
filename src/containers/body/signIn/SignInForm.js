@@ -38,7 +38,8 @@ export class SignInForm extends Component {
         <div className={style['auth-form-body']}>
           {error && <div className={style['error-msg']}>{error}</div>}
           <label className={style['label-default']} htmlFor="login_field">Username or email address</label>
-          <input type="text"
+          <input
+            type="text"
             className={'form-control' + EN_SPACE + style['input-block']}
             id="login_field"
             name="login"
@@ -50,7 +51,8 @@ export class SignInForm extends Component {
             Password
             <Link to="/password_reset" className={style['label-link']}>Forgot password?</Link>
           </label>
-          <input type="password"
+          <input
+            type="password"
             className={'form-control' + EN_SPACE  + style['input-block']}
             id="password"
             name="password"
@@ -58,10 +60,12 @@ export class SignInForm extends Component {
             defaultValue=""
             ref={input => this.passInput = input}
             onKeyUp={this.handleKeyUp.bind(this)} />
-            <input type="submit" className={style['btn']}
-              value={isFetching ? 'SignIning...' : 'Sign in'}
-              disabled={isFetching}
-              tabIndex="3"/>
+          <input
+            type="submit"
+            className={style['btn']}
+            value={isFetching ? 'SignIning...' : 'Sign in'}
+            disabled={isFetching}
+            tabIndex="3"/>
         </div>
       </form>
     )

@@ -54,7 +54,7 @@ describe('Component Dropdown test cases', () => {
     expect(rows.children[1].props.className).toEqual(`dropdown-divider`)
   })
 
-  it('should render ohter dropdown type ', () => {
+  it('should render other dropdown type ', () => {
     const props = {
       items: repoDropdown.items,
       currentUsername: TEST_USERNAME,

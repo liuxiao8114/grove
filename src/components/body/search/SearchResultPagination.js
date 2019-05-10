@@ -10,7 +10,6 @@ const searchQuery = (keyword, type) => pageNum =>
 function renderItem(page, currentPage, linkUrl) {
   const blocks = [],
         blocksLength = blocks.length
-
   let key = 0
 
   function renderPages(front, middle, end, divideCount) {
@@ -24,7 +23,7 @@ function renderItem(page, currentPage, linkUrl) {
       return
     }
 
-    divideCount-- && blocks.push(<span>...</span>)
+    divideCount-- && blocks.push(<span key='before...'>...</span>)
 
     if(middle) {
       let middlePageNumIndex = currentPage - 2, index = 5
@@ -34,7 +33,7 @@ function renderItem(page, currentPage, linkUrl) {
       }
     }
 
-    divideCount && blocks.push(<span>...</span>)
+    divideCount && blocks.push(<span key='after...'>...</span>)
     for(let i = end; i <= page; i++) {
       blocks.push(<Link to={linkUrl(i)} className={style['page-item'] } activeClassName={style['current']} key={key++}>{i}</Link>)
     }
@@ -49,19 +48,19 @@ function renderItem(page, currentPage, linkUrl) {
   switch (true) {
     case (page <= DIVIDE_COUNT):
       renderPages(page)
-      break;
+      break
     case (currentPage < 4):
       renderPages(5, false, page - 1, 1)
-      break;
+      break
     case (currentPage >= 4 && currentPage < 7):
       renderPages(currentPage + 2, false, page - 1, 1)
-      break;
+      break
     case (currentPage >= 7 && currentPage < page - 5):
       renderPages(2, true, page - 1, 2)
-      break;
+      break
     case (currentPage >= page - 5):
       renderPages(2, false, currentPage - 2, 1)
-      break;
+      break
     default:
       blocks.push(<Link to="#">you should never see this!</Link>)
       return blocks
@@ -72,6 +71,7 @@ function renderItem(page, currentPage, linkUrl) {
   } else {
     blocks.push(<Link to={linkUrl(currentPage + 1)} className={style['page-item']} activeClassName={style['current']} key={key++}>Next</Link>)
   }
+
   return blocks
 }
 

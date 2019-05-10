@@ -3,14 +3,17 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
 import { loadRepoSearch, loadUserSearch } from '../../../actions'
-import { searchQueryMappingReducer } from '../../../data-config'
 
 import SearchResult from '../../../components/body/search/SearchResult'
 import SearchResultNav from '../../../components/body/search/SearchResultNav'
 import SearchResultPagination from '../../../components/body/search/SearchResultPagination'
 import LanguageList from '../../../components/body/search/LanguageList'
-import { SEARCH_RESULT_TYPES } from '../../../components/body/search/utils'
 import SearchHome from './SearchHome'
+
+import {
+  SEARCH_RESULT_TYPES,
+  SEARCH_QUERY_MAPPING
+} from '../../../components/body/search/utils'
 
 import style from './index.scss'
 
@@ -23,32 +26,31 @@ function loadData(...searchActions) {
 }
 
 export class Search extends Component {
-  constructor(props) {
-    super(props)
+  componentDidUpdate(prevProps) {
     const {
       loadRepoSearch, loadUserSearch,
       keyword, currentPage, type, otherParams = null
-    } = props
-
-    loadData(
-      loadRepoSearch, loadUserSearch
-    )(keyword, currentPage, type, otherParams)
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const {
-      loadRepoSearch, loadUserSearch,
-      keyword, currentPage, type, otherParams = null
-    } = nextProps
+    } = prevProps
 
     // TODO: reconsider in which conditions won't rerender this
-    if(nextProps.keyword !== this.props.keyword
-      || nextProps.currentPage !== this.props.currentPage
-      || nextProps.type !== this.props.type) {
+    if(prevProps.keyword !== this.props.keyword
+      || prevProps.currentPage !== this.props.currentPage
+      || prevProps.type !== this.props.type) {
         loadData(
           loadRepoSearch, loadUserSearch
         )(keyword, currentPage, type, otherParams)
     }
+  }
+
+  componentDidMount() {
+    const {
+      loadRepoSearch, loadUserSearch,
+      keyword, currentPage, type, otherParams = null
+    } = this.props
+
+    loadData(
+      loadRepoSearch, loadUserSearch
+    )(keyword, currentPage, type, otherParams)
   }
 
   render() {
@@ -76,7 +78,7 @@ Search.propTypes = {
   result: PropTypes.arrayOf(PropTypes.object),
   type: PropTypes.string.isRequired,
   currentPage: PropTypes.number,
-  counts: PropTypes.number,
+  counts: PropTypes.objectOf(PropTypes.number),
   currentCount: PropTypes.number
 }
 
@@ -91,8 +93,9 @@ const mapStateToProps = (state, ownProps) => {
           pagination,
           entities: { [type]: entityValue }
         } = state
-  const searchValue = pagination[searchQueryMappingReducer[type]],
-        result = searchValue.items ? searchValue.items.map(item => entityValue[item]) : [],
+  const searchValue = pagination[SEARCH_QUERY_MAPPING[type]]
+  const result = searchValue.items ?
+          searchValue.items.map(item => entityValue[item]) : [],
         currentCount = searchValue.totalCount
 
   return {
@@ -103,11 +106,11 @@ const mapStateToProps = (state, ownProps) => {
     otherParams,
     currentPage: parseInt(page, 10),
     counts: {
-      repositories: pagination.repoSearch.totalCount || '',
+      repositories: pagination.repoSearch.totalCount,
       code: 700,
       commits: 800,
       issues: 20,
-      users: pagination.userSearch.totalCount || ''
+      users: pagination.userSearch.totalCount
     }
   }
 }
